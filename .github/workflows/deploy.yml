@@ -46,7 +46,7 @@ jobs:
 
       - name: Checkout
         if: steps.check.outputs.has_token == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Node
         if: steps.check.outputs.has_token == 'true'
