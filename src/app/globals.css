@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+
+/*
+  NEW START MD — visual world
+  A direct-sales, partner-first lifestyle brand. Deliberately dark and
+  high-energy: near-black ground, one electric "volt" accent for action and
+  key numbers, a nightlife magenta used once per view for pop. This is a
+  committed single-theme (dark) design — every color is painted explicitly so
+  the page holds on any host background. FitClinicMD is the clinical, editorial
+  sibling; this is its louder retail cousin. The two must not look alike.
+*/
+@theme {
+  /* Grounds + neutrals (charcoal carries a faint green bias toward the volt) */
+  --color-ink: #0b0b0d;
+  --color-surface: #16161b;
+  --color-surface-2: #1f1f27;
+  --color-bone: #f4f3ef;
+  --color-bone-soft: #d7d7d2;
+  --color-muted: #9a9ba6;
+  --color-line: #2a2a32;
+
+  /* Volt — the single bold accent: CTAs, key stats, emphasis */
+  --color-volt: #cbf24a;
+  --color-volt-deep: #a7d42a;
+  --color-volt-ink: #141a05;
+
+  /* Ember — nightlife magenta, one accent moment per view, never a second CTA */
+  --color-ember: #ff4d7d;
+
+  --font-display: var(--font-display), 'Arial Black', system-ui, sans-serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+
+  --container-content: 76rem;
+
+  --radius-xl2: 1.5rem;
+
+  --animate-rise: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes rise {
+    0% {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/*
+  Tailwind v4 default border color is `currentcolor`; pin it to our line token
+  so unstyled borders read as the dark hairline, not the text color.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-line);
+  }
+}
+
+/* A living, athletic background glow — CSS only, no imagery */
+@utility glow {
+  background-image:
+    radial-gradient(55rem 32rem at 8% -12%, rgba(203, 242, 74, 0.14), transparent 60%),
+    radial-gradient(42rem 28rem at 100% 0%, rgba(255, 77, 125, 0.12), transparent 55%);
+}
+
+/* Thin energetic rule under eyebrows / section heads */
+@utility rule {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-volt),
+    rgba(255, 77, 125, 0.7),
+    transparent
+  );
+}
+
+/* Hairline grid texture for hero / stat panels */
+@utility grid-texture {
+  background-image:
+    linear-gradient(to right, rgba(244, 243, 239, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 243, 239, 0.04) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+}
+
+@layer utilities {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ink text-bone antialiased font-sans;
+  }
+  /* WCAG 2.2 — visible, high-contrast focus on every interactive element */
+  :focus-visible {
+    @apply outline-hidden ring-2 ring-volt ring-offset-2 ring-offset-ink rounded-xs;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-balance;
+    font-weight: 800;
+  }
+  p { text-wrap: pretty; }
+  ::selection {
+    background: var(--color-volt);
+    color: var(--color-volt-ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
