@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Container, Section, Eyebrow, Button, Stat, ImageSlot, Disclaimer } from "@/components/ui";
+import { Container, Section, Eyebrow, Button, Stat, ImageSlot, Disclaimer, PriceBand, PriceInline } from "@/components/ui";
 import { GOALS } from "@/lib/products";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
@@ -29,6 +29,9 @@ export default function HomePage() {
                   Browse products
                 </Button>
               </div>
+              <p className="mt-4 text-sm text-muted">
+                Programs <PriceInline /> — your exact plan is set with your provider.
+              </p>
               <div className="mt-12 grid max-w-md grid-cols-3 gap-6">
                 <Stat value="40+" label="Therapies & blends" />
                 <Stat value="100%" label="Physician-guided" />
@@ -135,6 +138,53 @@ export default function HomePage() {
           <Button href={signupUrl}>Start now</Button>
         </div>
       </Section>
+
+      {/* --------------------------------------------- Pricing & what's included */}
+      <section className="border-t border-line bg-surface">
+        <Container className="py-16 sm:py-24">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <Eyebrow>Pricing &amp; what&apos;s included</Eyebrow>
+              <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
+                One plan, everything handled.
+              </h2>
+              <p className="mt-4 max-w-md text-bone-soft">
+                No membership games, no surprise fees. Every program includes the care and
+                the medicine — and your provider helps you choose what&apos;s right for you.
+              </p>
+              <ul className="mt-6 space-y-3 text-sm text-bone-soft">
+                {[
+                  "A visit with a licensed provider",
+                  "A plan personalized to your goal",
+                  "Your therapy delivered to your door",
+                  "Ongoing check-ins and dose adjustments",
+                  "Message your care team whenever you need",
+                ].map((line) => (
+                  <li key={line} className="flex gap-3">
+                    <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-volt" aria-hidden />
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <PriceBand />
+              <div className="rounded-xl2 border border-line bg-surface p-6">
+                <h3 className="text-base font-bold">Not sure what you need?</h3>
+                <p className="mt-2 text-sm text-muted">
+                  Talk it through with our team — no pressure, and no cost to ask.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <Button href={signupUrl}>Start now</Button>
+                  <Button href="/contact" variant="ghost">
+                    Ask a question
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       {/* -------------------------------------------------------------- Closing */}
       <section className="border-t border-line glow">

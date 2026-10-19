@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container, Section, Eyebrow, Button, Disclaimer } from "@/components/ui";
+import { Container, Section, Eyebrow, Button, Disclaimer, PriceBand, ProductImageSlot } from "@/components/ui";
 import { GOALS, PRODUCTS, BLENDS, getGoal } from "@/lib/products";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
@@ -31,6 +31,8 @@ export default async function ProductsPage({
             Everything we carry, grouped by what you want to change. A licensed provider
             decides what is right for you after a visit — nothing here is sold over the counter.
           </p>
+
+          <PriceBand className="mt-8 max-w-xl" />
 
           {/* Goal filter */}
           <div className="mt-8 flex flex-wrap gap-2">
@@ -66,6 +68,7 @@ export default async function ProductsPage({
                   href={`/products/${p.slug}`}
                   className="group rounded-xl2 border border-line bg-surface p-6 transition hover:border-volt"
                 >
+                  <ProductImageSlot name={p.name} src={p.image} className="mb-4" />
                   <div className="flex items-start justify-between gap-3">
                     <h3 className="text-lg font-bold text-bone">{p.name}</h3>
                     {p.legitScript ? (
@@ -86,6 +89,7 @@ export default async function ProductsPage({
 
               {blends.map((b) => (
                 <div key={b.slug} className="rounded-xl2 border border-line bg-surface p-6">
+                  <ProductImageSlot name={b.name} src={b.image} className="mb-4" />
                   <div className="flex items-center gap-2">
                     <h3 className="text-lg font-bold text-bone">{b.name}</h3>
                     <span className="rounded-full bg-ember/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-wide text-ember">

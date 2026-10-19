@@ -46,6 +46,9 @@ export type Product = {
   legitScript?: boolean;
   /** Long-form copy, populated from the approved source + clinical sign-off. */
   detail?: string;
+  /** Product photo (vial/packaging). Real photos only — supplied by the team;
+   *  until set, a branded product-photo slot renders. */
+  image?: string;
 };
 
 // Singles. Descriptors are deliberately plain and usage-framed.
@@ -99,6 +102,8 @@ export type Blend = {
   components: string[];
   usedFor: string;
   legitScript?: boolean;
+  /** Product photo. Real photos only; a branded slot renders until set. */
+  image?: string;
 };
 
 // Blends — a representative set. The full line (per Todd, ~48 blends) is added

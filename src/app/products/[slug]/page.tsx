@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Container, Button, Disclaimer } from "@/components/ui";
+import { Container, Button, Disclaimer, PriceBand, ProductImageSlot } from "@/components/ui";
 import { PRODUCTS, getProduct, getGoal } from "@/lib/products";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
@@ -85,6 +85,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
 
           <aside className="space-y-4">
+            <ProductImageSlot name={product.name} src={product.image} ratio="aspect-square" />
+            <PriceBand />
             <div className="rounded-xl2 border border-line bg-surface p-6">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">Category</h2>
               <p className="mt-2 font-bold text-bone">{goal?.label ?? "—"}</p>
