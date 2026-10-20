@@ -41,7 +41,7 @@ export default function HomePage() {
 
             <div className="grid grid-cols-2 gap-4">
               <ImageSlot mood="Strength" className="mt-8" />
-              <ImageSlot mood="Nightlife" ratio="aspect-[4/5]" />
+              <ImageSlot mood="Golden hour" ratio="aspect-[4/5]" />
               <ImageSlot mood="Confidence" ratio="aspect-square" className="col-span-2" />
             </div>
           </div>

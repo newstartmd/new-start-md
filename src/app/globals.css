@@ -1,31 +1,38 @@
 @import 'tailwindcss';
 
 /*
-  NEW START MD — visual world
-  A direct-sales, partner-first lifestyle brand. Deliberately dark and
-  high-energy: near-black ground, one electric "volt" accent for action and
-  key numbers, a nightlife magenta used once per view for pop. This is a
-  committed single-theme (dark) design — every color is painted explicitly so
-  the page holds on any host background. FitClinicMD is the clinical, editorial
-  sibling; this is its louder retail cousin. The two must not look alike.
+  NEW START MD — visual world (BRIGHT edition, 2026-10-19)
+  Re-skinned dark → bright per Michael + competitor research: the high-volume
+  peptide / GLP-1 DTC leaders (Hims/Hers, Ro, Joi+Blokes) are light, airy, and
+  sunny with aspirational lifestyle photography. Palette: warm paper grounds,
+  a SUNLIT CORAL primary accent and an AMBER secondary — bright, optimistic,
+  "get this life."
+
+  NOTE ON TOKEN NAMES: the names are historical from the first (dark) build and
+  are kept to avoid a risky global rename. They now mean:
+    `ink`   = the warm paper GROUND (light)
+    `bone`  = the warm near-black TEXT (dark)
+    `volt`  = the SUNLIT CORAL accent
+    `ember` = AMBER
+  Values, not names, define the look.
 */
 @theme {
-  /* Grounds + neutrals (charcoal carries a faint green bias toward the volt) */
-  --color-ink: #0b0b0d;
-  --color-surface: #16161b;
-  --color-surface-2: #1f1f27;
-  --color-bone: #f4f3ef;
-  --color-bone-soft: #d7d7d2;
-  --color-muted: #9a9ba6;
-  --color-line: #2a2a32;
+  --color-ink: #fbf6ee;        /* warm paper — the page ground */
+  --color-surface: #ffffff;    /* raised cards / bands */
+  --color-surface-2: #f5ebdd;  /* warm sand — photo slots, alt panels */
 
-  /* Volt — the single bold accent: CTAs, key stats, emphasis */
-  --color-volt: #cbf24a;
-  --color-volt-deep: #a7d42a;
-  --color-volt-ink: #141a05;
+  --color-bone: #251a12;       /* warm near-black — primary text */
+  --color-bone-soft: #574a3f;  /* secondary text */
+  --color-muted: #948676;      /* warm muted */
+  --color-line: #ece0d0;       /* warm hairline */
 
-  /* Ember — nightlife magenta, one accent moment per view, never a second CTA */
-  --color-ember: #ff4d7d;
+  /* Sunlit coral — the primary accent */
+  --color-volt: #fb6a45;
+  --color-volt-deep: #e4502a;
+  --color-volt-ink: #ffffff;   /* text on coral */
+
+  /* Amber — secondary accent / the "sun" moment */
+  --color-ember: #f3a02f;
 
   --font-display: var(--font-display), 'Arial Black', system-ui, sans-serif;
   --font-sans: var(--font-sans), system-ui, sans-serif;
@@ -48,10 +55,6 @@
   }
 }
 
-/*
-  Tailwind v4 default border color is `currentcolor`; pin it to our line token
-  so unstyled borders read as the dark hairline, not the text color.
-*/
 @layer base {
   *,
   ::after,
@@ -62,34 +65,34 @@
   }
 }
 
-/* A living, athletic background glow — CSS only, no imagery */
+/* Warm sunlit wash — soft coral + amber light on the paper ground */
 @utility glow {
   background-image:
-    radial-gradient(55rem 32rem at 8% -12%, rgba(203, 242, 74, 0.14), transparent 60%),
-    radial-gradient(42rem 28rem at 100% 0%, rgba(255, 77, 125, 0.12), transparent 55%);
+    radial-gradient(55rem 32rem at 6% -14%, rgba(251, 106, 69, 0.16), transparent 60%),
+    radial-gradient(44rem 30rem at 100% -4%, rgba(243, 160, 47, 0.2), transparent 58%);
 }
 
-/* Thin energetic rule under eyebrows / section heads */
+/* Thin sunlit rule under eyebrows / section heads */
 @utility rule {
   background-image: linear-gradient(
     90deg,
     var(--color-volt),
-    rgba(255, 77, 125, 0.7),
+    rgba(243, 160, 47, 0.85),
     transparent
   );
 }
 
-/* Hairline grid texture for hero / stat panels */
+/* Faint grid texture (warm dark lines on light) */
 @utility grid-texture {
   background-image:
-    linear-gradient(to right, rgba(244, 243, 239, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(244, 243, 239, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(37, 26, 18, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 26, 18, 0.045) 1px, transparent 1px);
   background-size: 3.5rem 3.5rem;
 }
 
 @layer utilities {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 }
 

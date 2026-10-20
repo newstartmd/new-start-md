@@ -112,7 +112,7 @@ export function ImageSlot({
   }
   return (
     <div
-      className={`${ratio} relative w-full overflow-hidden rounded-xl2 border border-line bg-surface glow ${className}`}
+      className={`${ratio} relative w-full overflow-hidden rounded-xl2 border border-line bg-surface-2 ${className}`}
       data-photo-slot
       role="img"
       aria-label={alt ?? (mood ? `${mood} — lifestyle photo` : "lifestyle photo")}
