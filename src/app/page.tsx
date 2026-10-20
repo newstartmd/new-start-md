@@ -40,9 +40,9 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <ImageSlot mood="Strength" className="mt-8" />
-              <ImageSlot mood="Golden hour" ratio="aspect-[4/5]" />
-              <ImageSlot mood="Confidence" ratio="aspect-square" className="col-span-2" />
+              <ImageSlot mood="Powder day" className="mt-8" />
+              <ImageSlot mood="Young & free" ratio="aspect-[4/5]" />
+              <ImageSlot mood="Family day" ratio="aspect-square" className="col-span-2" />
             </div>
           </div>
         </Container>
@@ -75,6 +75,41 @@ export default function HomePage() {
               </span>
             </Link>
           ))}
+        </div>
+      </Section>
+
+      {/* ------------------------------------------------------------- Portal */}
+      <Section id="portal">
+        <div className="grid items-start gap-12 lg:grid-cols-2">
+          <div className="lg:sticky lg:top-24">
+            <Eyebrow>Your portal</Eyebrow>
+            <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
+              More than medicine — your whole plan in one place.
+            </h2>
+            <p className="mt-4 max-w-md text-bone-soft">
+              New Start isn&apos;t just where you get your therapy. It&apos;s your home base:
+              your training, your nutrition, your workouts and your goals, right alongside
+              your plan — and the trainer who sent you stays in the loop.
+            </p>
+            <div className="mt-8">
+              <Button href={signupUrl}>Start now</Button>
+            </div>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              { h: "Training programs", p: "Built around your goals and updated as you progress." },
+              { h: "Nutrition & food", p: "Simple meal guidance that fits your plan and your life." },
+              { h: "Workouts", p: "Follow-along sessions you can log and track." },
+              { h: "Goals & progress", p: "Set targets, track results, and see how far you've come." },
+              { h: "Your therapy", p: "Your products and your provider, in the same place." },
+              { h: "Your trainer", p: "The coach who sent you stays connected to your journey." },
+            ].map((f) => (
+              <div key={f.h} className="rounded-xl2 border border-line bg-surface p-5">
+                <h3 className="text-base font-bold text-bone">{f.h}</h3>
+                <p className="mt-2 text-sm text-muted">{f.p}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 

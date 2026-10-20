@@ -13,7 +13,7 @@ const STEPS = [
   { n: "01", h: "Tell us your goal", p: "Start a quick intake — weight, hormones, recovery, longevity, or a mix. It takes a few minutes and there's no waiting room." },
   { n: "02", h: "Meet your provider", p: "A licensed provider reviews your intake and history, talks it through, and decides what (if anything) is appropriate for you." },
   { n: "03", h: "We prescribe & ship", p: "If you're a fit, your therapy is prepared by a compounding pharmacy and delivered to your door — discreetly, with clear guidance." },
-  { n: "04", h: "We stay with you", p: "Check-ins, adjustments, and refills as you go. This isn't a one-and-done — it's a plan you can keep." },
+  { n: "04", h: "We stay with you", p: "Check-ins, adjustments and refills — plus your training, nutrition, workouts and goals, all tracked in your portal. This isn't a one-and-done; it's a plan you keep." },
 ];
 
 export default function HowItWorksPage() {

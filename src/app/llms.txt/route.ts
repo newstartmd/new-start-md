@@ -11,10 +11,12 @@ export function GET() {
 
 > ${SITE.blurb}
 
-${SITE.name} (legal entity ${SITE.legalName}) is a telehealth clinic and storefront.
-Patients start a visit, a licensed provider decides what treatment is appropriate,
-and prescribed therapy is delivered to their door. It also runs a partner program
-for gyms, trainers and affiliates.
+${SITE.name} (legal entity ${SITE.legalName}) is a telehealth clinic, storefront, and
+client coaching portal. Patients start a visit, a licensed provider decides what
+treatment is appropriate, and prescribed therapy is delivered to their door. Clients
+also get a portal for training programs, nutrition, workouts, and goal tracking
+alongside their plan. It runs a partner program for gyms, trainers and affiliates,
+who send their clients to sign up and stay connected.
 
 ## What we offer
 ${goals}
