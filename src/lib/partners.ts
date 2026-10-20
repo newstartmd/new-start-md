@@ -8,16 +8,18 @@
 //
 // The code maps cleanly onto the GEN Health V2 Client API's own attribution
 // fields (see lib/genhealth bridge): the partner's promo code becomes the
-// order `couponCode` (which is also what gives the patient their discount),
-// and the campaign/source become `order.tracking`. See
+// order `couponCode` (the partner's attribution code, created in the GEN Health
+// admin — not a patient discount), and the campaign/source become
+// `order.tracking`. See
 // src/lib/genhealth.ts and the fitclinicmd-genhealth-integration client.
 //
 // COMPLIANCE NOTE (this is attribution, not compensation). Capturing who
 // referred a patient is tracking. HOW a partner is paid is a separate, legal
 // question governed by EKRA (18 U.S.C. §220) and state anti-kickback /
 // fee-splitting law: New Start pays partners a flat brand/content-license fee
-// and gives the partner's audience a discount — NEVER a per-patient or
-// per-order bounty. Nothing in this file computes or implies per-referral pay;
+// and supports the partner's local events and community marketing (giveaways,
+// experiences) — NEVER a per-patient or per-order bounty, and no patient-specific
+// discount tied to referrals. Nothing in this file computes or implies per-referral pay;
 // it only records the source. Keep it that way.
 
 /** URL params we honor, in priority order. The first non-empty wins as the
@@ -107,7 +109,7 @@ export function parseAttribution(value: string | undefined): Attribution | null 
 }
 
 /** Map our attribution onto the GEN Health order fields. The partner code
- *  doubles as the promo/coupon code (that is what also discounts the patient);
+ *  doubles as the attribution/promo code (created in the GEN Health admin);
  *  the UTM context travels as free-form tracking. partnerOrderId is minted by
  *  the app at checkout, not here. */
 export function toGenHealthAttribution(a: Attribution | null): {

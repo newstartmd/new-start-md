@@ -6,7 +6,7 @@ import { PARTNER_DISCLAIMER } from "@/lib/legal";
 export const metadata: Metadata = {
   title: "Apply to refer",
   description:
-    "Gyms, trainers and affiliates: apply to partner with New Start MD. A branded code, a discount for your people, and a simple licensing arrangement.",
+    "Gyms, trainers and affiliates: apply to partner with New Start MD. A branded code, local events and giveaways for your community, and a simple licensing arrangement.",
   robots: { index: true, follow: true },
 };
 
@@ -23,7 +23,8 @@ export default function ApplyPage() {
             <p className="mt-5 max-w-md text-bone-soft">
               You already changed how your people move. Now give them the medical side of
               the equation — and get recognized for it. Tell us about your business and
-              we&apos;ll set you up with a branded code and a discount to offer.
+              we&apos;ll set you up with a branded code and ways to activate your community —
+              local events, giveaways, and more.
             </p>
             <p className="mt-8 rounded-lg border border-line bg-surface p-4 text-xs text-muted">
               {PARTNER_DISCLAIMER}

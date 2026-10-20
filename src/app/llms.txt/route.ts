@@ -25,7 +25,7 @@ ${goals}
 - Many compounds are not FDA-approved and have not been tested in people for the
   uses described; site content is educational, not medical advice.
 - Partner compensation is a flat brand/content-licensing arrangement plus an
-  audience discount — never per-patient or per-order (EKRA-compliant).
+  plus local events and community giveaways — never per-patient or per-order (EKRA-compliant).
 
 ## Primary pages
 - ${SITE.url}/ — overview

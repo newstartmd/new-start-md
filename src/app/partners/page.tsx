@@ -5,20 +5,20 @@ import { PARTNER_DISCLAIMER } from "@/lib/legal";
 export const metadata: Metadata = {
   title: "Partner program",
   description:
-    "Gyms, trainers and affiliates: partner with New Start MD. A branded code, a discount for your people, and a simple, compliant licensing model.",
+    "Gyms, trainers and affiliates: partner with New Start MD. A branded code, local events and giveaways for your community, and a simple, compliant licensing model.",
 };
 
 const STEPS = [
   { n: "01", h: "Apply & get approved", p: "Tell us about your business. Approved partners get a branded code and link in minutes." },
   { n: "02", h: "Share it", p: "Put your code on your site, your socials, your gym floor. Every visit it brings is tracked automatically." },
-  { n: "03", h: "Your people save", p: "Everyone who uses your code gets a standing discount — a real reason to start, from someone they already trust." },
+  { n: "03", h: "We show up for your crew", p: "We bring local events and giveaways — game and movie tickets, experiences, swag — so your community gets real value from the partnership." },
   { n: "04", h: "You're recognized", p: "A flat brand-and-content licensing arrangement, paid on a simple schedule. No per-patient math, ever." },
 ];
 
 const FAQ = [
   {
     q: "How do I get paid?",
-    a: "Through a flat brand-and-content licensing arrangement — a set fee for the content and brand collaboration we build together. Your audience gets a discount through your code. You are never paid per patient, per order, or as a cut of what someone spends.",
+    a: "Through a flat brand-and-content licensing arrangement — a set fee for the content and brand collaboration we build together. On top of that, we invest in your community with local events and giveaways. You are never paid per patient, per order, or as a cut of what someone spends.",
   },
   {
     q: "Why is it structured that way?",
@@ -26,7 +26,7 @@ const FAQ = [
   },
   {
     q: "What do my people get?",
-    a: "A discount that's yours to offer, physician-guided care, and therapy delivered to their door. They start a visit, a licensed provider decides what's appropriate, and it ships.",
+    a: "Physician-guided care and therapy delivered to their door — plus the local events and giveaways we run together with you. They start a visit, a licensed provider decides what's appropriate, and it ships.",
   },
   {
     q: "Who's a good fit?",

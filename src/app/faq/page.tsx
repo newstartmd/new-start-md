@@ -14,7 +14,7 @@ const FAQ = [
   { q: "Which states do you serve?", a: "We treat where our providers are licensed, and availability varies by state. Start a visit and we'll tell you right away whether we can treat you where you are." },
   { q: "What do you carry?", a: "The full line — weight loss (GLP-1), hormone therapy and TRT, recovery and performance peptides, and longevity and wellness compounds. Browse the products page to see the catalog." },
   { q: "How fast will I hear back?", a: "Typically within two business days of starting a visit." },
-  { q: "I run a gym or train clients — can I refer people?", a: "Yes — that's the partner program. You get a branded code and a discount to offer your people, with a simple, compliant licensing arrangement. See the Partners page." },
+  { q: "I run a gym or train clients — can I refer people?", a: "Yes — that's the partner program. You get a branded code and a simple, compliant licensing arrangement, and we help activate your community with local events and giveaways. See the Partners page." },
   { q: "Are these FDA-approved medicines?", a: "Some are FDA-approved; many are compounded and are not FDA-approved for the uses described, and have not been tested in people for those uses. Your provider will explain what applies to your plan." },
 ];
 

@@ -89,14 +89,14 @@ export default function HomePage() {
               </h2>
               <p className="mt-5 max-w-lg text-bone-soft">
                 Partner with New Start MD and give your members, clients and followers a
-                real path to the body and energy they train for — with a discount that is
-                yours to offer. You build the trust; we handle the medicine, licensing and
-                delivery.
+                real path to the body and energy they train for — and we show up for your
+                community with local events and giveaways. You build the trust; we handle the
+                medicine, licensing and delivery.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-bone-soft">
                 {[
                   "A branded code and link — set up in minutes, tracked automatically.",
-                  "A standing discount for everyone you send.",
+                  "Local events, giveaways and brand experiences for your community.",
                   "Flat brand-and-content licensing — simple, transparent, compliant.",
                 ].map((line) => (
                   <li key={line} className="flex gap-3">
