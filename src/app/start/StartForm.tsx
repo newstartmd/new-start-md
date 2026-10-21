@@ -21,6 +21,17 @@ export default function StartForm() {
         </div>
         <p className="mt-4 font-display text-xl font-bold">You&apos;re in.</p>
         <p className="mt-2 text-sm text-slate-500">{state.message}</p>
+        {state.handoffUrl ? (
+          <a
+            href={state.handoffUrl}
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-royal-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-royal-700"
+          >
+            Continue to your assessment
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        ) : null}
       </div>
     );
   }
