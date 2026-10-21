@@ -5,22 +5,22 @@ import { startAction, type StartState } from "./actions";
 import { GOAL_OPTIONS } from "@/lib/site";
 
 const field =
-  "w-full rounded-lg border border-line bg-surface px-4 py-3 text-sm text-bone placeholder:text-muted focus:border-volt focus:outline-none";
-const label = "block text-sm font-medium text-bone-soft";
+  "w-full rounded-lg border border-line-200 bg-white px-4 py-3 text-sm text-navy-950 placeholder:text-slate-500 focus:border-royal-600 focus:outline-none";
+const label = "block text-sm font-medium text-slate-500";
 
 export default function StartForm() {
   const [state, action, pending] = useActionState<StartState, FormData>(startAction, null);
 
   if (state?.ok) {
     return (
-      <div className="rounded-xl2 border border-volt/40 bg-surface p-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-volt/15 text-volt">
+      <div className="rounded-xl2 border border-royal-600/40 bg-white p-8 text-center">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-royal-600/15 text-royal-600">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
             <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
         <p className="mt-4 font-display text-xl font-bold">You&apos;re in.</p>
-        <p className="mt-2 text-sm text-muted">{state.message}</p>
+        <p className="mt-2 text-sm text-slate-500">{state.message}</p>
       </div>
     );
   }
@@ -45,7 +45,7 @@ export default function StartForm() {
         </div>
         <div>
           <label className={label} htmlFor="phone">
-            Phone <span className="text-muted">(optional)</span>
+            Phone <span className="text-slate-500">(optional)</span>
           </label>
           <input id="phone" name="phone" className={`mt-1.5 ${field}`} placeholder="(555) 555-5555" />
         </div>
@@ -75,17 +75,17 @@ export default function StartForm() {
 
       <div>
         <label className={label} htmlFor="note">
-          Anything we should know? <span className="text-muted">(optional)</span>
+          Anything we should know? <span className="text-slate-500">(optional)</span>
         </label>
         <textarea id="note" name="note" rows={3} className={`mt-1.5 ${field}`} placeholder="Current meds, questions, timing…" />
       </div>
 
-      {state?.ok === false ? <p className="text-sm text-ember">{state.message}</p> : null}
+      {state?.ok === false ? <p className="text-sm text-gold-700">{state.message}</p> : null}
 
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex w-full items-center justify-center rounded-full bg-volt px-6 py-3 text-sm font-semibold text-volt-ink transition hover:bg-volt-deep disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center rounded-full bg-royal-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-royal-700 disabled:opacity-60 sm:w-auto"
       >
         {pending ? "Sending…" : "Request my visit"}
       </button>

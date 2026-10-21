@@ -1,49 +1,78 @@
 @import 'tailwindcss';
 
 /*
-  NEW START MD — visual world (LUXURY edition, 2026-10-21)
-  Direction (Michael): luxury · success · health · beauty — "you want this
-  lifestyle, and it all starts with your health." Elevated, aspirational,
-  editorial. Warm ivory ground, deep EMERALD as the primary accent (health +
-  wealth), CHAMPAGNE GOLD for the fine luxe details, espresso near-black text,
-  and an elegant high-contrast serif. Quiet confidence, generous air.
+  NEW START MD — visual world
+  Built to the NewStartMD Design & Build Guide v1.0 (verbatim direction).
 
-  TOKEN NAMES are historical and kept to avoid a risky global rename:
-    `ink`   = the ivory GROUND (light)
-    `bone`  = the espresso near-black TEXT
-    `volt`  = the EMERALD accent (links, buttons, emphasis)
-    `ember` = CHAMPAGNE GOLD (the luxe detail accent)
-  Values, not names, define the look.
+  Feel: "luxury coastal + clinical precision." White ground, navy / royal /
+  electric BLUES, cool grays, GOLD as a ≤5% accent only. COOL off-white
+  (mist / sky), never cream. Cormorant Garamond display · Inter UI · IBM Plex
+  Mono data.
+
+  HARD RULE (guide §3): never tan, beige, cream, sand, ivory or warm off-white.
+  Gold text on a light ground uses gold-700 ONLY (gold-500 fails contrast).
+
+  Token names now match the guide's own vocabulary (navy / royal / electric /
+  ice / sky / mist / line / slate / gold) — no more historical aliases.
 */
 @theme {
-  --color-ink: #f6f1e8;        /* warm ivory — the page ground */
-  --color-surface: #fffdf9;    /* cream card / raised */
-  --color-surface-2: #efe7d7;  /* champagne — slots, alt panels */
+  /* ---- Blues (brand spine) ---- */
+  --color-navy-950: #0a1a33; /* primary text + deep grounds */
+  --color-navy-800: #11284d; /* dark chapter cards */
+  --color-royal-600: #1f4fd1; /* primary CTA + links */
+  --color-royal-700: #1a43b4; /* CTA hover */
+  --color-electric-500: #3d86ff; /* focus, data highlight, accents on dark */
+  --color-ice-300: #7fb2ff; /* accents / captions on navy */
+  --color-sky-100: #e6effc; /* pale cool panels, selection */
+  --color-mist-50: #f3f6fa; /* cool off-white section ground (never cream) */
 
-  --color-bone: #1e1812;       /* espresso near-black — primary text */
-  --color-bone-soft: #564a3d;  /* secondary text */
-  --color-muted: #8d8171;      /* warm taupe */
-  --color-line: #e7dcc8;       /* champagne hairline */
+  /* ---- Cool neutrals ---- */
+  --color-line-200: #dce3ed; /* hairlines, card borders */
+  --color-slate-500: #536279; /* secondary / muted text (AA on white) */
+  --color-slate-300: #b8c4d6; /* disclaimer text on navy */
 
-  /* Emerald — the primary accent (good contrast on ivory; white on it) */
-  --color-volt: #1c5a44;
-  --color-volt-deep: #134433;
-  --color-volt-ink: #ffffff;
+  /* ---- Gold (accent only, ≤5%) ---- */
+  --color-gold-300: #e9cf85; /* gold on dark */
+  --color-gold-500: #c9a43f; /* decorative gold, target markers, rings */
+  --color-gold-700: #8a6716; /* the ONLY gold for text on light */
 
-  /* Champagne gold — the luxe detail accent (rules, eyebrows, flourishes) */
-  --color-ember: #b4924f;
+  /* ---- Semantic (separate from accent hue) ---- */
+  --color-success-600: #12805c;
+  --color-warning-600: #b45309;
+  --color-danger-600: #c2334d;
 
-  --font-display: var(--font-display), 'Cormorant Garamond', Georgia, serif;
-  --font-sans: var(--font-sans), system-ui, sans-serif;
+  /* ---- Type ---- */
+  --font-display: var(--font-display), 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: var(--font-sans), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
 
-  --container-content: 76rem;
+  /* ---- Layout ---- */
+  --container-content: 80rem; /* 1280px */
 
-  --radius-xl2: 1.25rem;
+  /* ---- Radii (guide §9.3) ---- */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-xl2: 24px; /* legacy card radius, aligned to lg */
 
-  --animate-rise: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  /* ---- Elevation (cool, navy-tinted; never warm) ---- */
+  --shadow-xs: 0 1px 2px rgba(10, 26, 51, 0.06);
+  --shadow-card: 0 1px 2px rgba(10, 26, 51, 0.04), 0 8px 24px -8px rgba(10, 26, 51, 0.1);
+  --shadow-lift: 0 2px 4px rgba(10, 26, 51, 0.05), 0 20px 40px -12px rgba(10, 26, 51, 0.18);
+  --shadow-glow: 0 0 0 4px rgba(61, 134, 255, 0.25);
+  --shadow-gold: 0 0 0 1px rgba(201, 164, 63, 0.55), 0 12px 32px -12px rgba(201, 164, 63, 0.35);
+
+  /* ---- Motion (guide §6.1) ---- */
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-soft: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --animate-rise: rise 0.9s var(--ease-lux) both;
 
   @keyframes rise {
-    0% { opacity: 0; transform: translateY(14px); }
+    0% { opacity: 0; transform: translateY(24px); }
     100% { opacity: 1; transform: translateY(0); }
   }
 }
@@ -54,27 +83,32 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-line);
+    border-color: var(--color-line-200);
   }
 }
 
-/* Soft, warm luxe wash — champagne-gold light with an emerald whisper */
+/* Cool blue ambient wash — the "blue-glow" from the guide, with a gold whisper */
 @utility glow {
   background-image:
-    radial-gradient(56rem 32rem at 8% -12%, rgba(180, 146, 79, 0.16), transparent 60%),
-    radial-gradient(42rem 28rem at 100% -4%, rgba(28, 90, 68, 0.1), transparent 58%);
+    radial-gradient(60% 60% at 82% 16%, rgba(61, 134, 255, 0.16), transparent 70%),
+    radial-gradient(46rem 30rem at 4% -10%, rgba(10, 26, 51, 0.05), transparent 60%);
 }
 
-/* A fine gold rule under eyebrows / section heads */
+/* Deep ocean band (CTAs / membership) — navy → royal */
+@utility ocean {
+  background-image: linear-gradient(160deg, #0a1a33 0%, #11284d 55%, #1f4fd1 130%);
+}
+
+/* The gold hairline under eyebrows / section heads (accent, never structural) */
 @utility rule {
-  background-image: linear-gradient(90deg, var(--color-ember), rgba(28, 90, 68, 0.4), transparent);
+  background-image: linear-gradient(90deg, var(--color-gold-500), rgba(201, 164, 63, 0.25), transparent);
 }
 
-/* Faint grid texture (warm espresso lines on ivory) */
+/* Faint cool grid texture (navy lines on white) */
 @utility grid-texture {
   background-image:
-    linear-gradient(to right, rgba(30, 24, 18, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(30, 24, 18, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(10, 26, 51, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 26, 51, 0.04) 1px, transparent 1px);
   background-size: 3.5rem 3.5rem;
 }
 
@@ -90,10 +124,10 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-ink text-bone antialiased font-sans;
+    @apply bg-white text-navy-950 antialiased font-sans;
   }
   :focus-visible {
-    @apply outline-hidden ring-2 ring-volt ring-offset-2 ring-offset-ink rounded-xs;
+    @apply outline-hidden ring-2 ring-electric-500 ring-offset-2 ring-offset-white rounded-xs;
   }
   h1, h2, h3, h4 {
     @apply font-display tracking-tight text-balance;
@@ -101,8 +135,8 @@
   }
   p { text-wrap: pretty; }
   ::selection {
-    background: var(--color-volt);
-    color: var(--color-volt-ink);
+    background: var(--color-sky-100);
+    color: var(--color-navy-950);
   }
 }
 

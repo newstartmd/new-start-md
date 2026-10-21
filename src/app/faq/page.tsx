@@ -31,7 +31,7 @@ export default function FaqPage() {
 
   return (
     <>
-      <section className="border-b border-line glow">
+      <section className="border-b border-line-200 glow">
         <Container className="py-16">
           <Eyebrow>FAQ</Eyebrow>
           <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">Questions, answered.</h1>
@@ -39,20 +39,20 @@ export default function FaqPage() {
       </section>
 
       <Section>
-        <div className="divide-y divide-line border-y border-line">
+        <div className="divide-y divide-line border-y border-line-200">
           {FAQ.map((item) => (
             <details key={item.q} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-bone [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-navy-950 [&::-webkit-details-marker]:hidden">
                 {item.q}
-                <span className="text-volt transition group-open:rotate-45" aria-hidden>
+                <span className="text-royal-600 transition group-open:rotate-45" aria-hidden>
                   +
                 </span>
               </summary>
-              <p className="mt-3 max-w-2xl text-sm text-bone-soft">{item.a}</p>
+              <p className="mt-3 max-w-2xl text-sm text-slate-500">{item.a}</p>
             </details>
           ))}
         </div>
-        <p className="mt-8 max-w-3xl text-xs text-muted">{MEDICAL_DISCLAIMER}</p>
+        <p className="mt-8 max-w-3xl text-xs text-slate-500">{MEDICAL_DISCLAIMER}</p>
         <div className="mt-8">
           <Button href="/start">Start now</Button>
         </div>

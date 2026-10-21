@@ -41,7 +41,7 @@ const FAQ = [
 export default function PartnersPage() {
   return (
     <>
-      <section className="border-b border-line glow">
+      <section className="border-b border-line-200 glow">
         <Container className="py-20">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
@@ -49,9 +49,9 @@ export default function PartnersPage() {
               <h1 className="mt-5 text-5xl font-semibold leading-[0.95] sm:text-6xl">
                 You built the trust.
                 <br />
-                <span className="text-ember">Get the credit.</span>
+                <span className="text-gold-700">Get the credit.</span>
               </h1>
-              <p className="mt-6 max-w-lg text-lg text-bone-soft">
+              <p className="mt-6 max-w-lg text-lg text-slate-500">
                 New Start MD gives your people a real medical path to the results they
                 train for — and gives you a clean, simple way to be recognized for sending
                 them. You bring the audience. We bring the providers, the pharmacy, and the
@@ -75,20 +75,20 @@ export default function PartnersPage() {
         <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Four steps, start to paid.</h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((s) => (
-            <div key={s.n} className="rounded-xl2 border border-line bg-surface p-6">
-              <div className="font-display text-3xl font-semibold text-volt">{s.n}</div>
+            <div key={s.n} className="rounded-xl2 border border-line-200 bg-white p-6">
+              <div className="font-display text-3xl font-semibold text-royal-600">{s.n}</div>
               <h3 className="mt-4 text-base font-bold">{s.h}</h3>
-              <p className="mt-2 text-sm text-muted">{s.p}</p>
+              <p className="mt-2 text-sm text-slate-500">{s.p}</p>
             </div>
           ))}
         </div>
-        <p className="mt-8 max-w-2xl rounded-lg border border-line bg-surface p-4 text-xs text-muted">
+        <p className="mt-8 max-w-2xl rounded-lg border border-line-200 bg-white p-4 text-xs text-slate-500">
           {PARTNER_DISCLAIMER}
         </p>
       </Section>
 
       {/* Why partners choose us */}
-      <section className="border-y border-line bg-surface">
+      <section className="border-y border-line-200 bg-white">
         <Container className="py-16 sm:py-20">
           <div className="grid gap-8 md:grid-cols-3">
             {[
@@ -97,8 +97,8 @@ export default function PartnersPage() {
               { h: "Set-and-forget tracking", p: "Your code is captured on first click and credited even if they book weeks later." },
             ].map((c) => (
               <div key={c.h}>
-                <h3 className="text-xl font-bold text-volt">{c.h}</h3>
-                <p className="mt-2 text-sm text-bone-soft">{c.p}</p>
+                <h3 className="text-xl font-bold text-royal-600">{c.h}</h3>
+                <p className="mt-2 text-sm text-slate-500">{c.p}</p>
               </div>
             ))}
           </div>
@@ -109,16 +109,16 @@ export default function PartnersPage() {
       <Section id="faq">
         <Eyebrow>Partner FAQ</Eyebrow>
         <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Straight answers.</h2>
-        <div className="mt-8 divide-y divide-line border-y border-line">
+        <div className="mt-8 divide-y divide-line border-y border-line-200">
           {FAQ.map((item) => (
             <details key={item.q} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-bone [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-navy-950 [&::-webkit-details-marker]:hidden">
                 {item.q}
-                <span className="text-volt transition group-open:rotate-45" aria-hidden>
+                <span className="text-royal-600 transition group-open:rotate-45" aria-hidden>
                   +
                 </span>
               </summary>
-              <p className="mt-3 max-w-2xl text-sm text-bone-soft">{item.a}</p>
+              <p className="mt-3 max-w-2xl text-sm text-slate-500">{item.a}</p>
             </details>
           ))}
         </div>
