@@ -13,15 +13,15 @@ export default function HomePage() {
         <Container className="relative py-20 sm:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <Eyebrow>Peptides · Weight loss · Hormones · Recovery</Eyebrow>
-              <h1 className="mt-6 text-5xl font-extrabold leading-[0.95] sm:text-7xl">
+              <Eyebrow>Health · Beauty · Longevity · Performance</Eyebrow>
+              <h1 className="mt-6 text-6xl font-medium leading-[0.98] sm:text-8xl">
                 Get this
                 <br />
-                <span className="text-volt">life.</span>
+                <span className="italic text-volt">life.</span>
               </h1>
               <p className="mt-6 max-w-md text-lg text-bone-soft">
-                Leaner, stronger, sharper, back in the game. Physician-guided therapy —
-                prescribed by licensed providers and delivered to your door.
+                The life you want — looking and feeling your best, with the energy to live it.
+                It all starts with your health: physician-guided care, discreetly delivered.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Button href={signupUrl}>Start now</Button>
@@ -40,9 +40,9 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <ImageSlot mood="Powder day" className="mt-8" />
-              <ImageSlot mood="Young & free" ratio="aspect-[4/5]" />
-              <ImageSlot mood="Family day" ratio="aspect-square" className="col-span-2" />
+              <ImageSlot mood="Radiance" className="mt-8" />
+              <ImageSlot mood="Effortless" ratio="aspect-[4/5]" />
+              <ImageSlot mood="The good life" ratio="aspect-square" className="col-span-2" />
             </div>
           </div>
         </Container>
@@ -53,7 +53,7 @@ export default function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <Eyebrow>Shop by goal</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">What are you here to change?</h2>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">What are you here to change?</h2>
           </div>
           <Link href="/products" className="text-sm font-semibold text-volt hover:text-volt-deep">
             See all products →
@@ -83,7 +83,7 @@ export default function HomePage() {
         <div className="grid items-start gap-12 lg:grid-cols-2">
           <div className="lg:sticky lg:top-24">
             <Eyebrow>Your portal</Eyebrow>
-            <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
               More than medicine — your whole plan in one place.
             </h2>
             <p className="mt-4 max-w-md text-bone-soft">
@@ -119,7 +119,7 @@ export default function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <Eyebrow>For gyms, trainers & affiliates</Eyebrow>
-              <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
                 Your people trust you. <span className="text-ember">Send them further.</span>
               </h2>
               <p className="mt-5 max-w-lg text-bone-soft">
@@ -155,7 +155,7 @@ export default function HomePage() {
       {/* ---------------------------------------------------------- How it works */}
       <Section>
         <Eyebrow>How it works</Eyebrow>
-        <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">Three steps to a new start.</h2>
+        <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Three steps to a new start.</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {[
             { n: "01", h: "Tell us your goal", p: "A quick intake — weight, hormones, recovery, or all three. No clinic waiting room." },
@@ -163,7 +163,7 @@ export default function HomePage() {
             { n: "03", h: "Delivered to your door", p: "Your therapy ships discreetly, with guidance every step of the way." },
           ].map((step) => (
             <div key={step.n} className="rounded-xl2 border border-line bg-surface p-7">
-              <div className="font-display text-3xl font-extrabold text-volt">{step.n}</div>
+              <div className="font-display text-3xl font-semibold text-volt">{step.n}</div>
               <h3 className="mt-4 text-lg font-bold">{step.h}</h3>
               <p className="mt-2 text-sm text-muted">{step.p}</p>
             </div>
@@ -180,7 +180,7 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-2">
             <div>
               <Eyebrow>Pricing &amp; what&apos;s included</Eyebrow>
-              <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
                 One plan, everything handled.
               </h2>
               <p className="mt-4 max-w-md text-bone-soft">
@@ -224,7 +224,7 @@ export default function HomePage() {
       {/* -------------------------------------------------------------- Closing */}
       <section className="border-t border-line glow">
         <Container className="py-20 text-center">
-          <h2 className="mx-auto max-w-2xl text-4xl font-extrabold sm:text-5xl">
+          <h2 className="mx-auto max-w-2xl text-4xl font-semibold sm:text-5xl">
             This is the version of you that <span className="text-volt">shows up.</span>
           </h2>
           <div className="mt-8 flex justify-center gap-3">

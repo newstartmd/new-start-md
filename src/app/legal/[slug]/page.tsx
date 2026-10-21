@@ -26,7 +26,7 @@ export default async function LegalPage({ params }: { params: Promise<{ slug: st
   return (
     <Section>
       <Eyebrow>Legal</Eyebrow>
-      <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">{doc.title}</h1>
+      <h1 className="mt-4 text-3xl font-semibold sm:text-4xl">{doc.title}</h1>
       <p className="mt-2 text-sm text-muted">Last updated: {doc.updated}</p>
 
       {doc.draft ? (

@@ -34,7 +34,7 @@ export default function FaqPage() {
       <section className="border-b border-line glow">
         <Container className="py-16">
           <Eyebrow>FAQ</Eyebrow>
-          <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">Questions, answered.</h1>
+          <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">Questions, answered.</h1>
         </Container>
       </section>
 

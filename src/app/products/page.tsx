@@ -26,7 +26,7 @@ export default async function ProductsPage({
       <section className="border-b border-line glow">
         <Container className="py-16">
           <Eyebrow>The full line</Eyebrow>
-          <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">Products</h1>
+          <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">Products</h1>
           <p className="mt-4 max-w-xl text-bone-soft">
             Everything we carry, grouped by what you want to change. A licensed provider
             decides what is right for you after a visit — nothing here is sold over the counter.
@@ -56,7 +56,7 @@ export default async function ProductsPage({
           <Section key={goal.slug} id={goal.slug}>
             <div className="flex items-end justify-between gap-4">
               <div>
-                <h2 className="text-2xl font-extrabold sm:text-3xl">{goal.label}</h2>
+                <h2 className="text-2xl font-semibold sm:text-3xl">{goal.label}</h2>
                 <p className="mt-1 text-sm text-muted">{goal.tagline}</p>
               </div>
             </div>
@@ -69,14 +69,7 @@ export default async function ProductsPage({
                   className="group rounded-xl2 border border-line bg-surface p-6 transition hover:border-volt"
                 >
                   <ProductImageSlot name={p.name} src={p.image} className="mb-4" />
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-lg font-bold text-bone">{p.name}</h3>
-                    {p.legitScript ? (
-                      <span className="rounded-full border border-line px-2 py-0.5 text-[0.6rem] uppercase tracking-wide text-muted">
-                        Also on FitClinicMD
-                      </span>
-                    ) : null}
-                  </div>
+                  <h3 className="text-lg font-bold text-bone">{p.name}</h3>
                   {p.aka?.length ? (
                     <p className="mt-1 text-xs text-muted">{p.aka.join(" · ")}</p>
                   ) : null}
@@ -108,7 +101,7 @@ export default async function ProductsPage({
       <section className="border-t border-line">
         <Container className="py-16">
           <div className="rounded-xl2 border border-line bg-surface p-8 text-center">
-            <h2 className="text-2xl font-extrabold">Not sure where to start?</h2>
+            <h2 className="text-2xl font-semibold">Not sure where to start?</h2>
             <p className="mx-auto mt-3 max-w-md text-sm text-muted">
               Tell us your goal and a licensed provider will point you to the right plan.
             </p>

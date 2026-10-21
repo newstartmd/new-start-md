@@ -48,7 +48,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </>
             ) : null}
           </nav>
-          <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">{product.name}</h1>
+          <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">{product.name}</h1>
           {product.aka?.length ? (
             <p className="mt-2 text-muted">Also known as {product.aka.join(", ")}</p>
           ) : null}
@@ -90,11 +90,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <div className="rounded-xl2 border border-line bg-surface p-6">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">Category</h2>
               <p className="mt-2 font-bold text-bone">{goal?.label ?? "—"}</p>
-              {product.legitScript ? (
-                <p className="mt-4 text-xs text-muted">
-                  Also available on our LegitScript-certified sister clinic, FitClinicMD.
-                </p>
-              ) : null}
             </div>
           </aside>
         </div>

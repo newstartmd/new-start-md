@@ -15,7 +15,7 @@ export default function ContactPage() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <Eyebrow>Contact</Eyebrow>
-            <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">Talk to us.</h1>
+            <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">Talk to us.</h1>
             <p className="mt-5 max-w-md text-bone-soft">
               Product questions, help with your visit, or interested in the partner
               program — we read everything.

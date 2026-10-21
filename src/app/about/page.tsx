@@ -14,7 +14,7 @@ export default function AboutPage() {
       <section className="border-b border-line glow">
         <Container className="py-16">
           <Eyebrow>About {SITE.name}</Eyebrow>
-          <h1 className="mt-4 max-w-3xl text-4xl font-extrabold sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl text-4xl font-semibold sm:text-5xl">
             Medicine that meets you where you&apos;re <span className="text-volt">going.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-bone-soft">
@@ -30,7 +30,7 @@ export default function AboutPage() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <ImageSlot mood="Alive" ratio="aspect-[5/4]" />
           <div className="space-y-5 text-bone-soft">
-            <h2 className="text-2xl font-extrabold text-bone">What we believe</h2>
+            <h2 className="text-2xl font-semibold text-bone">What we believe</h2>
             <p>
               Feeling strong, sharp and in control isn&apos;t vanity — it&apos;s the
               foundation everything else is built on. The science to support it has moved

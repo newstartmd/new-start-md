@@ -74,7 +74,7 @@ export function Button({ href, children, variant = "primary", className = "" }: 
 export function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <div className="font-display text-4xl font-extrabold text-volt tabular-nums">{value}</div>
+      <div className="font-display text-4xl font-semibold text-volt tabular-nums">{value}</div>
       <div className="mt-1 text-sm text-muted">{label}</div>
     </div>
   );
@@ -120,7 +120,7 @@ export function ImageSlot({
       <div className="absolute inset-0 grid-texture opacity-60" aria-hidden />
       {mood ? (
         <div className="absolute bottom-4 left-4 right-4">
-          <span className="font-display text-2xl font-extrabold uppercase tracking-tight text-bone/70">
+          <span className="font-display text-2xl font-semibold uppercase tracking-tight text-bone/70">
             {mood}
           </span>
           <span className="mt-1 block text-[0.65rem] uppercase tracking-[0.2em] text-muted">
@@ -159,7 +159,7 @@ export function PriceBand({ className = "" }: { className?: string }) {
     <div className={`rounded-xl2 border border-line bg-surface p-6 ${className}`}>
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">Programs</span>
-        <span className="font-display text-3xl font-extrabold text-volt tabular-nums">
+        <span className="font-display text-3xl font-semibold text-volt tabular-nums">
           {priceRange()}
         </span>
         <IndicativeTag />

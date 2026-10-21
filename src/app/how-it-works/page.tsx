@@ -22,7 +22,7 @@ export default function HowItWorksPage() {
       <section className="border-b border-line glow">
         <Container className="py-16">
           <Eyebrow>How it works</Eyebrow>
-          <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">
+          <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">
             From &ldquo;someday&rdquo; to <span className="text-volt">shipped.</span>
           </h1>
           <p className="mt-5 max-w-xl text-bone-soft">
@@ -37,7 +37,7 @@ export default function HowItWorksPage() {
           <ol className="space-y-5">
             {STEPS.map((s) => (
               <li key={s.n} className="flex gap-5 rounded-xl2 border border-line bg-surface p-6">
-                <div className="font-display text-2xl font-extrabold text-volt">{s.n}</div>
+                <div className="font-display text-2xl font-semibold text-volt">{s.n}</div>
                 <div>
                   <h2 className="text-lg font-bold">{s.h}</h2>
                   <p className="mt-2 text-sm text-muted">{s.p}</p>

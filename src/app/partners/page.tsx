@@ -46,7 +46,7 @@ export default function PartnersPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <Eyebrow>For gyms, trainers & affiliates</Eyebrow>
-              <h1 className="mt-5 text-5xl font-extrabold leading-[0.95] sm:text-6xl">
+              <h1 className="mt-5 text-5xl font-semibold leading-[0.95] sm:text-6xl">
                 You built the trust.
                 <br />
                 <span className="text-ember">Get the credit.</span>
@@ -72,11 +72,11 @@ export default function PartnersPage() {
       {/* How it works */}
       <Section id="how">
         <Eyebrow>How it works</Eyebrow>
-        <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">Four steps, start to paid.</h2>
+        <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Four steps, start to paid.</h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((s) => (
             <div key={s.n} className="rounded-xl2 border border-line bg-surface p-6">
-              <div className="font-display text-3xl font-extrabold text-volt">{s.n}</div>
+              <div className="font-display text-3xl font-semibold text-volt">{s.n}</div>
               <h3 className="mt-4 text-base font-bold">{s.h}</h3>
               <p className="mt-2 text-sm text-muted">{s.p}</p>
             </div>
@@ -108,7 +108,7 @@ export default function PartnersPage() {
       {/* FAQ */}
       <Section id="faq">
         <Eyebrow>Partner FAQ</Eyebrow>
-        <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">Straight answers.</h2>
+        <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Straight answers.</h2>
         <div className="mt-8 divide-y divide-line border-y border-line">
           {FAQ.map((item) => (
             <details key={item.q} className="group py-5">

@@ -4,10 +4,10 @@ import { NAV, showSignIn, loginUrl, signupUrl } from "@/lib/site";
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <Link href="/" className={`group inline-flex items-baseline gap-1 ${className}`} aria-label="New Start MD home">
-      <span className="font-display text-lg font-extrabold uppercase tracking-tight text-bone">
+      <span className="font-display text-lg font-semibold uppercase tracking-tight text-bone">
         New Start
       </span>
-      <span className="font-display text-lg font-extrabold uppercase tracking-tight text-volt">MD</span>
+      <span className="font-display text-lg font-semibold uppercase tracking-tight text-volt">MD</span>
     </Link>
   );
 }

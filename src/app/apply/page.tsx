@@ -17,7 +17,7 @@ export default function ApplyPage() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <Eyebrow>Partner program</Eyebrow>
-            <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">
+            <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">
               Apply to <span className="text-ember">refer.</span>
             </h1>
             <p className="mt-5 max-w-md text-bone-soft">
