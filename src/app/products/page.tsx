@@ -1,15 +1,42 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container, Section, Eyebrow, Button, Disclaimer, PriceBand, ProductImageSlot } from "@/components/ui";
+import { Container, Eyebrow, Button, Disclaimer, PriceInline, ProductImageSlot, RxBadge } from "@/components/ui";
 import { GOALS, PRODUCTS, BLENDS, getGoal } from "@/lib/products";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Products",
+  title: "Treatments",
   description:
-    "The full New Start MD line — weight loss, hormone therapy, recovery, longevity and more. Prescribed by licensed providers after a visit.",
+    "The full New Start MD line — weight loss, hormone therapy, recovery, longevity and more. Prescribed by licensed U.S. providers after a visit.",
 };
+
+type Item =
+  | { kind: "single"; slug: string; name: string; goal: string; usedFor: string; aka?: string[]; image?: string; href: string }
+  | { kind: "blend"; slug: string; name: string; goal: string; usedFor: string; components: string[]; image?: string };
+
+function itemsForGoals(slugs: string[]): Item[] {
+  const singles: Item[] = PRODUCTS.filter((p) => slugs.includes(p.goal)).map((p) => ({
+    kind: "single",
+    slug: p.slug,
+    name: p.name,
+    goal: p.goal,
+    usedFor: p.usedFor,
+    aka: p.aka,
+    image: p.image,
+    href: `/products/${p.slug}`,
+  }));
+  const blends: Item[] = BLENDS.filter((b) => slugs.includes(b.goal)).map((b) => ({
+    kind: "blend",
+    slug: b.slug,
+    name: b.name,
+    goal: b.goal,
+    usedFor: b.usedFor,
+    components: b.components,
+    image: b.image,
+  }));
+  return [...singles, ...blends];
+}
 
 export default async function ProductsPage({
   searchParams,
@@ -18,106 +45,147 @@ export default async function ProductsPage({
 }) {
   const { goal: goalParam } = await searchParams;
   const activeGoal = goalParam ? getGoal(goalParam) : undefined;
-
-  const goalsToShow = activeGoal ? [activeGoal] : GOALS;
+  const shownGoals = activeGoal ? [activeGoal.slug] : GOALS.map((g) => g.slug);
+  const items = itemsForGoals(shownGoals);
 
   return (
     <>
-      <section className="border-b border-line glow">
-        <Container className="py-16">
+      {/* Hero band */}
+      <section className="ocean">
+        <Container className="py-14">
           <Eyebrow>The full line</Eyebrow>
-          <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">Products</h1>
-          <p className="mt-4 max-w-xl text-bone-soft">
-            Everything we carry, grouped by what you want to change. A licensed provider
-            decides what is right for you after a visit — nothing here is sold over the counter.
+          <h1 className="mt-4 text-4xl font-semibold text-white sm:text-5xl">Treatments</h1>
+          <p className="mt-4 max-w-xl text-ice-300">
+            Everything we carry, prescribed by a licensed provider after a visit — nothing here
+            is sold over the counter. Programs <PriceInlineLight />, set with your provider.
           </p>
-
-          <PriceBand className="mt-8 max-w-xl" />
-
-          {/* Goal filter */}
-          <div className="mt-8 flex flex-wrap gap-2">
-            <FilterPill href="/products" active={!activeGoal}>
-              All
-            </FilterPill>
-            {GOALS.map((g) => (
-              <FilterPill key={g.slug} href={`/products?goal=${g.slug}`} active={activeGoal?.slug === g.slug}>
-                {g.label}
-              </FilterPill>
-            ))}
-          </div>
         </Container>
       </section>
 
-      {goalsToShow.map((goal) => {
-        const singles = PRODUCTS.filter((p) => p.goal === goal.slug);
-        const blends = BLENDS.filter((b) => b.goal === goal.slug);
-        if (singles.length === 0 && blends.length === 0) return null;
-        return (
-          <Section key={goal.slug} id={goal.slug}>
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <h2 className="text-2xl font-semibold sm:text-3xl">{goal.label}</h2>
-                <p className="mt-1 text-sm text-muted">{goal.tagline}</p>
-              </div>
-            </div>
+      {/* Sticky filter bar */}
+      <div className="sticky top-16 z-30 border-b border-line-200 bg-white/90 backdrop-blur">
+        <Container className="flex gap-2 overflow-x-auto py-3">
+          <FilterPill href="/products" active={!activeGoal}>
+            All
+          </FilterPill>
+          {GOALS.map((g) => (
+            <FilterPill key={g.slug} href={`/products?goal=${g.slug}`} active={activeGoal?.slug === g.slug}>
+              {g.label}
+            </FilterPill>
+          ))}
+        </Container>
+      </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {singles.map((p) => (
-                <Link
-                  key={p.slug}
-                  href={`/products/${p.slug}`}
-                  className="group rounded-xl2 border border-line bg-surface p-6 transition hover:border-volt"
-                >
-                  <ProductImageSlot name={p.name} src={p.image} className="mb-4" />
-                  <h3 className="text-lg font-bold text-bone">{p.name}</h3>
-                  {p.aka?.length ? (
-                    <p className="mt-1 text-xs text-muted">{p.aka.join(" · ")}</p>
-                  ) : null}
-                  <p className="mt-3 text-sm text-bone-soft">{p.usedFor}</p>
-                  <span className="mt-4 inline-block text-sm font-semibold text-volt opacity-0 transition group-hover:opacity-100">
-                    Details →
-                  </span>
-                </Link>
-              ))}
-
-              {blends.map((b) => (
-                <div key={b.slug} className="rounded-xl2 border border-line bg-surface p-6">
-                  <ProductImageSlot name={b.name} src={b.image} className="mb-4" />
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-bold text-bone">{b.name}</h3>
-                    <span className="rounded-full bg-ember/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-wide text-ember">
-                      Blend
-                    </span>
-                  </div>
-                  <p className="mt-1 text-xs text-muted">{b.components.join(" + ")}</p>
-                  <p className="mt-3 text-sm text-bone-soft">{b.usedFor}</p>
-                </div>
-              ))}
-            </div>
-          </Section>
-        );
-      })}
-
-      <section className="border-t border-line">
-        <Container className="py-16">
-          <div className="rounded-xl2 border border-line bg-surface p-8 text-center">
-            <h2 className="text-2xl font-semibold">Not sure where to start?</h2>
-            <p className="mx-auto mt-3 max-w-md text-sm text-muted">
-              Tell us your goal and a licensed provider will point you to the right plan.
-            </p>
-            <div className="mt-6 flex justify-center gap-3">
-              <Button href={signupUrl}>Start now</Button>
-              <Button href="/contact" variant="ghost">
-                Ask a question
-              </Button>
-            </div>
+      <Container className="py-12 sm:py-16">
+        {activeGoal ? (
+          <div className="mb-8">
+            <h2 className="text-2xl font-semibold sm:text-3xl">{activeGoal.label}</h2>
+            <p className="mt-1 text-sm text-slate-500">{activeGoal.tagline}</p>
           </div>
-          <div className="mx-auto mt-10 max-w-3xl">
+        ) : null}
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((item, i) => (
+            <RenderCell key={`${item.kind}-${item.slug}`} item={item} index={i} total={items.length} />
+          ))}
+        </div>
+
+        <p className="mt-10 text-xs text-slate-500">
+          Every therapy requires a visit and a licensed provider&apos;s approval. Some are
+          FDA-approved medications; compounded medications are not FDA-approved and are prepared
+          by licensed U.S. pharmacies. Your provider determines what is appropriate and the
+          correct dosing.
+        </p>
+      </Container>
+
+      <section className="border-t border-line-200 bg-mist-50">
+        <Container className="py-14">
+          <div className="mx-auto max-w-3xl">
             <Disclaimer>{MEDICAL_DISCLAIMER}</Disclaimer>
           </div>
         </Container>
       </section>
     </>
+  );
+}
+
+/** Insert the "not sure where to start" dark card after every 6 product cells. */
+function RenderCell({ item, index, total }: { item: Item; index: number; total: number }) {
+  const showInterstitial = (index + 1) % 6 === 0 && index + 1 < total;
+  return (
+    <>
+      <ProductCard item={item} />
+      {showInterstitial ? <Interstitial /> : null}
+    </>
+  );
+}
+
+function ProductCard({ item }: { item: Item }) {
+  const goal = getGoal(item.goal);
+  const inner = (
+    <>
+      <ProductImageSlot name={item.name} src={item.image} ratio="aspect-[4/3]" className="mb-4" />
+      <div className="flex items-center gap-2">
+        <span className="font-mono text-xs uppercase tracking-wide text-slate-500">{goal?.label}</span>
+        {item.kind === "blend" ? (
+          <span className="rounded-full bg-gold-700/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-wide text-gold-700">
+            Blend
+          </span>
+        ) : null}
+      </div>
+      <h3 className="mt-1 text-lg font-bold text-navy-950">{item.name}</h3>
+      {item.kind === "single" && item.aka?.length ? (
+        <p className="mt-0.5 text-xs text-slate-500">{item.aka.join(" · ")}</p>
+      ) : null}
+      {item.kind === "blend" ? (
+        <p className="mt-0.5 text-xs text-slate-500">{item.components.join(" + ")}</p>
+      ) : null}
+      <p className="mt-2 text-sm text-slate-500">{item.usedFor}</p>
+      <div className="mt-4 flex items-center justify-between">
+        <span className="font-mono text-sm font-medium text-navy-950">
+          <PriceInline />
+        </span>
+        <RxBadge />
+      </div>
+    </>
+  );
+
+  if (item.kind === "single") {
+    return (
+      <Link
+        href={item.href}
+        className="group flex flex-col rounded-xl2 border border-line-200 bg-white p-5 shadow-card transition hover:shadow-lift"
+      >
+        {inner}
+      </Link>
+    );
+  }
+  // Blends don't have a detail page yet — render as a non-link card.
+  return <div className="flex flex-col rounded-xl2 border border-line-200 bg-white p-5 shadow-card">{inner}</div>;
+}
+
+function Interstitial() {
+  return (
+    <div className="flex flex-col justify-center rounded-xl2 bg-navy-800 p-6 ring-1 ring-gold-500/25">
+      <h3 className="font-display text-xl font-semibold text-white">Not sure where to start?</h3>
+      <p className="mt-2 text-sm text-ice-300">
+        Take the 5-minute assessment and a licensed provider will point you to the right plan.
+      </p>
+      <div className="mt-5">
+        <Button href={signupUrl} variant="light">
+          Take the assessment
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function PriceInlineLight() {
+  // Inline price rendered for the dark hero band (white numerals).
+  return (
+    <span className="font-mono font-medium text-white">
+      <PriceInline className="!text-white" />
+    </span>
   );
 }
 
@@ -133,10 +201,10 @@ function FilterPill({
   return (
     <Link
       href={href}
-      className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
+      className={`shrink-0 rounded-full border px-4 py-1.5 text-sm font-medium transition ${
         active
-          ? "border-volt bg-volt text-volt-ink"
-          : "border-line text-bone-soft hover:border-volt hover:text-volt"
+          ? "border-royal-600 bg-royal-600 text-white"
+          : "border-line-200 text-slate-500 hover:border-royal-600 hover:text-royal-600"
       }`}
     >
       {children}

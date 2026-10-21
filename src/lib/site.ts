@@ -6,15 +6,18 @@
 // convert: shop/consult for patients, and a referral program for gyms,
 // trainers, and affiliates who send us their people.
 
+import { brand } from "@/config/brand";
+
 export const SITE = {
-  name: "New Start MD",
-  legalName: "New Start, LLC",
-  tagline: "Get this life.",
+  name: brand.name,
+  legalName: brand.legalEntity,
+  tagline: brand.tagline,
+  shortTagline: brand.shortTagline,
   blurb:
     "Physician-guided peptides, weight loss, hormone therapy and recovery — prescribed by licensed providers and delivered to your door.",
   // Primary domain (Gomega SEO confirming). newstartco.com is also owned and
   // 301s here. Override per-environment with NEXT_PUBLIC_SITE_URL.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://newstartmd.com",
+  url: brand.url,
   // The patient app / checkout — a separate zone on a separate host, backed by
   // GEN Health. CTAs hand off here and never carry health context in the URL.
   appUrl: process.env.NEXT_PUBLIC_APP_URL ?? "https://app.newstartmd.com",
@@ -51,11 +54,11 @@ export const GOAL_OPTIONS = [
 ] as const;
 
 export const NAV = [
-  { href: "/products", label: "Products" },
+  { href: "/products", label: "Treatments" },
   { href: "/how-it-works", label: "How it works" },
+  { href: "/membership", label: "Membership" },
   { href: "/partners", label: "Partners" },
   { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
 ] as const;
 
 export const FOOTER_NAV = [

@@ -4,17 +4,17 @@ import { useActionState } from "react";
 import { contactAction, type ContactState } from "./actions";
 
 const field =
-  "w-full rounded-lg border border-line bg-surface px-4 py-3 text-sm text-bone placeholder:text-muted focus:border-volt focus:outline-none";
-const label = "block text-sm font-medium text-bone-soft";
+  "w-full rounded-lg border border-line-200 bg-white px-4 py-3 text-sm text-navy-950 placeholder:text-slate-500 focus:border-royal-600 focus:outline-none";
+const label = "block text-sm font-medium text-slate-500";
 
 export default function ContactForm() {
   const [state, action, pending] = useActionState<ContactState, FormData>(contactAction, null);
 
   if (state?.ok) {
     return (
-      <div className="rounded-xl2 border border-volt/40 bg-surface p-8 text-center">
-        <p className="font-display text-xl font-bold text-volt">Message sent.</p>
-        <p className="mt-2 text-sm text-muted">{state.message}</p>
+      <div className="rounded-xl2 border border-royal-600/40 bg-white p-8 text-center">
+        <p className="font-display text-xl font-bold text-royal-600">Message sent.</p>
+        <p className="mt-2 text-sm text-slate-500">{state.message}</p>
       </div>
     );
   }
@@ -34,11 +34,11 @@ export default function ContactForm() {
         <label className={label} htmlFor="message">Message</label>
         <textarea id="message" name="message" rows={5} required className={`mt-1.5 ${field}`} placeholder="How can we help?" />
       </div>
-      {state?.ok === false ? <p className="text-sm text-ember">{state.message}</p> : null}
+      {state?.ok === false ? <p className="text-sm text-gold-700">{state.message}</p> : null}
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex w-full items-center justify-center rounded-full bg-volt px-6 py-3 text-sm font-semibold text-volt-ink transition hover:bg-volt-deep disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center rounded-full bg-royal-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-royal-700 disabled:opacity-60 sm:w-auto"
       >
         {pending ? "Sending…" : "Send message"}
       </button>
