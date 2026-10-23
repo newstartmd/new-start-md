@@ -5,14 +5,16 @@
 // plan and price are always set with the patient's provider, so every price on
 // the site carries the care-team caveat below.
 //
-// Figures are Todd's v16 final pricing (2026-10-23), retail (Dirx-Hub based):
-//   enclomiphene $129.99/mo · TRT Core $149.99 · TRT Complete $199.99 ·
-//   semaglutide $169–$299/mo · tirzepatide $199–$479/mo.
-//   Peptides & blends are priced PER VIAL (not monthly) — do not show a monthly
-//   single-peptide price (Todd's instruction), and keep mg strengths off the site.
+// This is the headline MONTHLY-program range (GLP-1 + TRT). Per-product prices
+// (per-vial peptides/blends, GLP-1 dose-step ladders, on-hold items) live in
+// lib/catalogPricing.ts. Figures are Todd's v16 pricing (2026-10-23), retail.
+//   Lowest active monthly program: semaglutide $169/mo (TRT $149.99 and
+//   enclomiphene $109 are on hold — not at Dirx-Hub yet). Top single step:
+//   tirzepatide $479/mo. Peptides/blends are per vial (from $99), not monthly.
+//   Keep mg strengths off the site (Todd's instruction).
 // Override per-environment with NEXT_PUBLIC_PRICE_LOW/HIGH if these change.
 
-export const PRICE_LOW = Number(process.env.NEXT_PUBLIC_PRICE_LOW ?? 129.99);
+export const PRICE_LOW = Number(process.env.NEXT_PUBLIC_PRICE_LOW ?? 169);
 export const PRICE_HIGH = Number(process.env.NEXT_PUBLIC_PRICE_HIGH ?? 479);
 export const PRICE_PERIOD = "/mo";
 

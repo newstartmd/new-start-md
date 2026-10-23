@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container, Section, Eyebrow, Button, Stat, ImageSlot, ProductImageSlot, Disclaimer, PriceBand, PriceInline } from "@/components/ui";
 import { BiomarkerRangeBar, TrendSparkline } from "@/components/graphics";
 import { GOALS, productsByGoal, getProduct } from "@/lib/products";
+import { priceFor } from "@/lib/catalogPricing";
 import { CHAPTERS, TIERS, STANDARDS, TESTIMONIALS, COMPARE, HOME_FAQ } from "@/lib/home";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
@@ -350,9 +351,7 @@ export default function HomePage() {
                     <h3 className="mt-1 text-xl font-semibold">{p.name}</h3>
                     <p className="mt-1 text-sm text-slate-500">{p.usedFor}</p>
                     <div className="mt-3 flex items-center justify-between">
-                      <span className="font-mono text-sm font-medium text-navy-950">
-                        <PriceInline />
-                      </span>
+                      <span className="font-mono text-sm font-medium text-navy-950">{priceFor(p.slug).short}</span>
                       <span className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-medium text-royal-700">
                         Rx · Clinician approval
                       </span>

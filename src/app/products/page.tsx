@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container, Eyebrow, Button, Disclaimer, PriceInline, ProductImageSlot, RxBadge } from "@/components/ui";
 import { GOALS, PRODUCTS, BLENDS, getGoal } from "@/lib/products";
+import { priceFor } from "@/lib/catalogPricing";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
@@ -142,9 +143,7 @@ function ProductCard({ item }: { item: Item }) {
       ) : null}
       <p className="mt-2 text-sm text-slate-500">{item.usedFor}</p>
       <div className="mt-4 flex items-center justify-between">
-        <span className="font-mono text-sm font-medium text-navy-950">
-          <PriceInline />
-        </span>
+        <span className="font-mono text-sm font-medium text-navy-950">{priceFor(item.slug).short}</span>
         <RxBadge />
       </div>
     </>
