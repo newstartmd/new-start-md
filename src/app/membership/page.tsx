@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container, Section, Eyebrow, Button, Disclaimer, PriceInline } from "@/components/ui";
 import { ProgressRing } from "@/components/graphics";
+import {
+  SHIPPING_FLAT,
+  SHIPPING_MONTHLY_YEAR,
+  SHIPPING_QUARTERLY_YEAR,
+  SHIPPING_QUARTERLY_SAVINGS,
+  money,
+} from "@/lib/pricing";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
@@ -73,7 +80,8 @@ const MATRIX: { feature: string; tiers: [boolean, boolean, boolean] }[] = [
 const FAQ = [
   { q: "What's included in the price?", a: "Every membership includes your provider visit, your plan and your prescribed therapy — the care and the medicine together. Your exact plan and price are set with your provider." },
   { q: "Can I change tiers later?", a: "Yes. You can move up or down with your care team as your goals change, and changes take effect on your next cycle." },
-  { q: "Do I have to commit?", a: "No long contracts — you can cancel anytime. Annual billing simply saves you more if you know you're staying." },
+  { q: "Do I have to commit?", a: "No long contracts — you can cancel anytime. The savings come from how you ship: bundling your therapies into one box and moving to 90-day boxes lowers your shipping, since it's a flat fee per order." },
+  { q: "How does shipping work?", a: "Shipping is a flat $40 per order, no matter how many therapies are in the box. That's why stacking everything into one shipment and ordering quarterly saves you the most." },
   { q: "Are labs included?", a: "Signature includes quarterly labs. On other tiers, your provider orders labs where they're clinically helpful." },
 ];
 
@@ -95,9 +103,12 @@ export default function MembershipPage() {
             <span className="font-mono text-sm font-medium text-navy-950">
               Programs <PriceInline />
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-royal-700">
-              Save ~15% billed annually
-            </span>
+            <a
+              href="#savings"
+              className="inline-flex items-center gap-2 rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-royal-700 transition hover:bg-sky-100/70"
+            >
+              Save ~{money(SHIPPING_QUARTERLY_SAVINGS)}/yr with quarterly boxes →
+            </a>
             <span className="text-xs text-slate-500">Your exact plan &amp; price are set with your provider.</span>
           </div>
         </Container>
@@ -159,6 +170,83 @@ export default function MembershipPage() {
           and monitored by a licensed provider. Exact tier pricing is set with your provider.
         </p>
       </Section>
+
+      {/* How it saves you */}
+      <section id="savings" className="scroll-mt-24">
+        <Container className="py-14 sm:py-20">
+          <div className="max-w-2xl">
+            <Eyebrow>How it saves you</Eyebrow>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+              Smart by design, <span className="italic text-royal-600">not by coupon.</span>
+            </h2>
+            <p className="mt-4 text-slate-500">
+              No gimmick discounts. The savings are built into how we ship and dose — real money,
+              every month you&apos;re with us.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+            {/* Levers */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl2 border border-line-200 bg-white p-6">
+                <div className="font-mono text-sm font-medium text-royal-600">01</div>
+                <h3 className="mt-3 text-base font-bold text-navy-950">One box, one shipping</h3>
+                <p className="mt-2 text-sm text-slate-500">
+                  Shipping is a flat {money(SHIPPING_FLAT)} per order — not per item. Stack your
+                  therapies into a single box and you pay it once, not every time.
+                </p>
+              </div>
+              <div className="rounded-xl2 border border-line-200 bg-white p-6">
+                <div className="font-mono text-sm font-medium text-royal-600">02</div>
+                <h3 className="mt-3 text-base font-bold text-navy-950">Quarterly boxes</h3>
+                <p className="mt-2 text-sm text-slate-500">
+                  Move to 90-day boxes and your shipping drops from {money(SHIPPING_MONTHLY_YEAR)} a
+                  year to {money(SHIPPING_QUARTERLY_YEAR)} — about {money(SHIPPING_QUARTERLY_SAVINGS)}{" "}
+                  saved, every year.
+                </p>
+              </div>
+              <div className="rounded-xl2 border border-line-200 bg-white p-6 sm:col-span-2">
+                <div className="font-mono text-sm font-medium text-royal-600">03</div>
+                <h3 className="mt-3 text-base font-bold text-navy-950">Start low, pay low</h3>
+                <p className="mt-2 text-sm text-slate-500">
+                  GLP-1 programs are priced by dose step, so while you titrate up you only pay for
+                  the dose you&apos;re on — never the top price before you&apos;re there.
+                </p>
+              </div>
+            </div>
+
+            {/* Shipping math */}
+            <div className="flex flex-col justify-center rounded-xl2 ocean p-7 text-white">
+              <span className="font-mono text-xs uppercase tracking-[0.18em] text-ice-300">The shipping math</span>
+              <div className="mt-5 space-y-3">
+                <div className="flex items-baseline justify-between border-b border-white/15 pb-3">
+                  <span className="text-sm text-ice-300">Ship monthly (12 × {money(SHIPPING_FLAT)})</span>
+                  <span className="font-mono text-lg font-medium tabular-nums">{money(SHIPPING_MONTHLY_YEAR)}/yr</span>
+                </div>
+                <div className="flex items-baseline justify-between border-b border-white/15 pb-3">
+                  <span className="text-sm text-ice-300">Ship quarterly (4 × {money(SHIPPING_FLAT)})</span>
+                  <span className="font-mono text-lg font-medium tabular-nums">{money(SHIPPING_QUARTERLY_YEAR)}/yr</span>
+                </div>
+                <div className="flex items-baseline justify-between pt-1">
+                  <span className="text-sm font-semibold text-white">You save</span>
+                  <span className="font-mono text-2xl font-semibold tabular-nums text-gold-300">
+                    ~{money(SHIPPING_QUARTERLY_SAVINGS)}/yr
+                  </span>
+                </div>
+              </div>
+              <div className="mt-6">
+                <Button href={signupUrl} variant="light" className="w-full">Build my plan</Button>
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-6 text-xs leading-relaxed text-slate-500">
+            Shipping is a flat {money(SHIPPING_FLAT)} per order. Figures shown are program prices and
+            don&apos;t include any labs your provider orders. Your exact plan, cadence and price are
+            set with your licensed provider.
+          </p>
+        </Container>
+      </section>
 
       {/* Plan at a glance */}
       <section className="bg-mist-50">
