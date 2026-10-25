@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container, Section, Eyebrow, Disclaimer } from "@/components/ui";
 import { SAMPLE_CHAIN, SAMPLE_CODES, verifyChain } from "@/lib/provenance";
+import { getProvenanceStore } from "@/lib/provenanceStore";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 import VerifyLookup from "./VerifyLookup";
 
@@ -9,6 +10,11 @@ export const metadata: Metadata = {
   description:
     "Every New Start MD order is compounded and dispensed by a licensed U.S. pharmacy and recorded in a tamper-evident, hash-chained provenance log you can verify.",
 };
+
+// Read the provenance store on every request — otherwise Next prerenders this
+// page at build time (frozen to the sample chain) and never reflects new
+// webhook writes.
+export const dynamic = "force-dynamic";
 
 const STEPS = [
   {
@@ -28,8 +34,14 @@ const STEPS = [
   },
 ];
 
-export default function VerifyPage() {
-  const { ok } = verifyChain(SAMPLE_CHAIN);
+export default async function VerifyPage() {
+  // Live provenance entries once the webhook is receiving events; sample data
+  // (clearly labeled) until then so the page always demonstrates verification.
+  const live = await getProvenanceStore().all();
+  const isSample = live.length === 0;
+  const chain = isSample ? SAMPLE_CHAIN : live;
+  const codes = isSample ? SAMPLE_CODES : live.slice(-3).map((e) => e.code);
+  const { ok } = verifyChain(chain);
 
   return (
     <>
@@ -57,12 +69,14 @@ export default function VerifyPage() {
             Certificate of Analysis — and confirm the record hasn&apos;t been altered.
           </p>
           <div className="mt-6">
-            <VerifyLookup chain={SAMPLE_CHAIN} verified={ok} sampleCodes={SAMPLE_CODES} />
+            <VerifyLookup chain={chain} verified={ok} sampleCodes={codes} />
           </div>
-          <p className="mt-4 rounded-lg border border-line-200 bg-mist-50 p-3 text-xs text-slate-500">
-            Preview with sample records. Once you place an order, your own verification code appears
-            here, backed by the live provenance log.
-          </p>
+          {isSample ? (
+            <p className="mt-4 rounded-lg border border-line-200 bg-mist-50 p-3 text-xs text-slate-500">
+              Preview with sample records. Once you place an order, your own verification code appears
+              here, backed by the live provenance log.
+            </p>
+          ) : null}
         </div>
       </Section>
 
