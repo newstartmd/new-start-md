@@ -46,8 +46,18 @@ export function parseEvent(rawBody: string, eventName: string | null): GenHealth
   return { ...payload, type };
 }
 
-// Fulfillment events that carry provenance facts. // VERIFY exact names.
-const PROVENANCE_EVENTS = new Set(["order.shipped", "order.dispensed", "order.fulfilled"]);
+// Fulfillment events that carry provenance facts. Names are from GEN Health's
+// authoritative client event list (support ticket "API Onboarding
+// Configuration Items", 2026-10-20) — the earlier order.shipped/dispensed/
+// fulfilled guesses do NOT exist in their API. These are the real candidates
+// that fire when the pharmacy fills + ships; // VERIFY which one actually
+// carries pharmacy/batch/COA (and whether it carries them at all) against the
+// first real payload, then narrow this set.
+const PROVENANCE_EVENTS = new Set([
+  "recommendation.fulfillment_succeeded",
+  "prescription.sent",
+  "prescription.tracking_updated",
+]);
 
 function s(v: unknown): string | undefined {
   return typeof v === "string" && v.trim() ? v.trim() : undefined;
