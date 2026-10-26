@@ -17,8 +17,8 @@ export const brand = {
   tagline: "You too can have it all — but it all starts with your health.",
   shortTagline: "Your new start begins here.",
   supportEmail: "care@newstartmd.com",
-  // Placeholder — confirm with counsel before launch (guide §10).
-  legalEntity: "New Start, LLC",
+  // Formed 2026-10-26 as a New Mexico LLC (formation docs on file; Todd/Medvora).
+  legalEntity: "NewStartMD LLC",
 } as const;
 
 export type Brand = typeof brand;
