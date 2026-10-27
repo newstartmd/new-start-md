@@ -55,6 +55,7 @@ export const GOAL_OPTIONS = [
 
 export const NAV = [
   { href: "/products", label: "Treatments" },
+  { href: "/peptides", label: "Peptides" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/membership", label: "Membership" },
   { href: "/partners", label: "Partners" },
@@ -69,6 +70,7 @@ export const FOOTER_NAV = [
       { href: "/products?goal=hormone", label: "Hormone therapy" },
       { href: "/products?goal=recovery", label: "Recovery & performance" },
       { href: "/products?goal=wellness", label: "Longevity & wellness" },
+      { href: "/peptides", label: "Peptide library" },
       { href: "/products", label: "All products" },
     ],
   },
