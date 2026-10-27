@@ -66,9 +66,9 @@ export const PRODUCTS: Product[] = [
   { slug: "tirzepatide", name: "Tirzepatide", aka: ["GLP-1/GIP"], goal: "weight-loss", usedFor: "Appetite and weight management.", legitScript: true },
   { slug: "mots-c", name: "MOTS-c", goal: "weight-loss", usedFor: "Metabolic and energy support." },
 
-  // Hormone & vitality
+  // Hormone & vitality. Enclomiphene is offered ONLY inside the TRT program
+  // (Todd, 2026-10-27), so it is not a standalone product.
   { slug: "testosterone", name: "Testosterone", aka: ["TRT"], goal: "hormone", usedFor: "Hormone replacement for low testosterone.", legitScript: true },
-  { slug: "enclomiphene", name: "Enclomiphene", goal: "hormone", usedFor: "Natural testosterone production support.", legitScript: true },
   { slug: "pt-141", name: "PT-141", aka: ["Bremelanotide"], goal: "hormone", usedFor: "Libido and sexual-health support.", legitScript: true },
   { slug: "kisspeptin", name: "Kisspeptin", goal: "hormone", usedFor: "Reproductive-hormone support." },
 
@@ -101,10 +101,10 @@ export type Blend = {
   image?: string;
 };
 
-// Blends — Todd's real line-up and compositions from the v16 pricing sheet
-// (2026-10-23). Priced per vial in lib/catalogPricing.ts. Connect is on the
-// sheet but on hold (not at Dirx-Hub yet), so it shows "joining soon" via the
-// ON_HOLD map rather than a live price.
+// Blends — Todd's real line-up from the "peptides+ by site" breakdown
+// (2026-10-27): nine blends, no Connect. (Connect was on the v16 sheet but on
+// hold, and Todd's per-site list omits it, so it is not carried.) CJC-1295 and
+// Ipamorelin appear only here as blend components, never as standalone products.
 export const BLENDS: Blend[] = [
   { slug: "repair", name: "Repair", goal: "recovery", components: ["BPC-157", "TB-500"], usedFor: "Combined soft-tissue recovery support." },
   { slug: "glow", name: "Glow", goal: "recovery", components: ["BPC-157", "TB-500", "GHK-Cu"], usedFor: "Recovery with skin and tissue support." },
@@ -115,7 +115,6 @@ export const BLENDS: Blend[] = [
   { slug: "rest", name: "Rest", goal: "wellness", components: ["DSIP", "BPC-157", "CJC-1295"], usedFor: "Sleep and recovery support." },
   { slug: "calm", name: "Calm", goal: "mind", components: ["Semax", "Selank"], usedFor: "Calm and anti-anxiety support." },
   { slug: "focus", name: "Focus", goal: "mind", components: ["Pinealon", "PE-22-28", "Selank"], usedFor: "Focus and cognitive support." },
-  { slug: "connect", name: "Connect", goal: "hormone", components: ["Tadalafil", "Oxytocin", "PT-141"], usedFor: "Intimacy and sexual-wellness support." },
 ];
 
 export function productsByGoal(goal: string): Product[] {
