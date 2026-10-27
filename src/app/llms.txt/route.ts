@@ -32,6 +32,7 @@ ${goals}
 ## Primary pages
 - ${SITE.url}/ — overview
 - ${SITE.url}/products — full catalog
+- ${SITE.url}/peptides — peptide library, grouped by body system with FDA status
 - ${SITE.url}/how-it-works — the patient journey
 - ${SITE.url}/partners — partner program
 - ${SITE.url}/start — begin a visit
