@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container, Section, Eyebrow, Button, Stat, ImageSlot, ProductImageSlot, Disclaimer, PriceBand, PriceInline } from "@/components/ui";
 import { BiomarkerRangeBar, TrendSparkline } from "@/components/graphics";
 import { GOALS, productsByGoal, getProduct } from "@/lib/products";
+import { priceFor } from "@/lib/catalogPricing";
 import { CHAPTERS, TIERS, STANDARDS, TESTIMONIALS, COMPARE, HOME_FAQ } from "@/lib/home";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
@@ -350,9 +351,7 @@ export default function HomePage() {
                     <h3 className="mt-1 text-xl font-semibold">{p.name}</h3>
                     <p className="mt-1 text-sm text-slate-500">{p.usedFor}</p>
                     <div className="mt-3 flex items-center justify-between">
-                      <span className="font-mono text-sm font-medium text-navy-950">
-                        <PriceInline />
-                      </span>
+                      <span className="font-mono text-sm font-medium text-navy-950">{priceFor(p.slug).short}</span>
                       <span className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-medium text-royal-700">
                         Rx · Clinician approval
                       </span>
@@ -447,6 +446,47 @@ export default function HomePage() {
           availability varies by state.
         </p>
       </Section>
+
+      {/* -------------------------------------------------- Verified provenance */}
+      <section className="ocean">
+        <Container className="py-16 sm:py-20">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.3fr_0.7fr]">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-[0.18em] text-ice-300">Verified provenance</span>
+              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+                Compounded by licensed U.S. pharmacies. <span className="italic text-ice-300">Verify it yourself.</span>
+              </h2>
+              <p className="mt-4 max-w-xl text-ice-300">
+                Every order is recorded in a tamper-evident, cryptographically hash-chained log —
+                the pharmacy, batch and Certificate of Analysis. Enter the code on your order and
+                confirm exactly where your therapy came from. Proof, not promises.
+              </p>
+              <div className="mt-7">
+                <Button href="/verify" variant="light">Verify an order</Button>
+              </div>
+            </div>
+            <div className="rounded-xl2 border border-white/15 bg-white/5 p-6 backdrop-blur">
+              <div className="flex items-center gap-2 text-ice-300">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+                  <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em]">Tamper-evident</span>
+              </div>
+              <ul className="mt-4 space-y-2.5 text-sm text-white/90">
+                {["Licensed U.S. pharmacy", "Batch + Certificate of Analysis", "Append-only, hash-chained", "You can check it anytime"].map((t) => (
+                  <li key={t} className="flex gap-2.5">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden className="mt-0.5 shrink-0 text-gold-300">
+                      <path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       {/* -------------------------------------------------------- Testimonials */}
       <section className="bg-mist-50">

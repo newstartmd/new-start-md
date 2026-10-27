@@ -6,13 +6,13 @@ import {
   Button,
   Eyebrow,
   Disclaimer,
-  PriceInline,
   ProductImageSlot,
   RxBadge,
   Reassurance,
 } from "@/components/ui";
 import { BiomarkerRangeBar } from "@/components/graphics";
 import { PRODUCTS, getProduct, getGoal, productsByGoal } from "@/lib/products";
+import { priceFor } from "@/lib/catalogPricing";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 import { JsonLd, breadcrumbSchema } from "@/lib/schema";
@@ -68,6 +68,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const goal = getGoal(product.goal);
   const panel = PANELS[product.goal];
   const related = productsByGoal(product.goal).filter((p) => p.slug !== product.slug).slice(0, 3);
+  const price = priceFor(product.slug);
 
   return (
     <article className="pb-24 lg:pb-0">
@@ -116,48 +117,52 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <Pill>Free 2-day delivery</Pill>
             </div>
 
-            {/* Plan selector (visual — your clinician sets the actual plan) */}
-            <fieldset className="mt-7">
-              <legend className="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">Choose your plan</legend>
-              <div className="mt-3 grid gap-3 sm:grid-cols-3">
-                {[
-                  { id: "m", label: "Monthly", note: "Billed monthly", save: null, def: true },
-                  { id: "q", label: "3-month", note: "Billed every 3 mo", save: "Save 10%", def: false },
-                  { id: "h", label: "6-month", note: "Billed every 6 mo", save: "Save 15%", def: false },
-                ].map((plan) => (
-                  <label
-                    key={plan.id}
-                    className="group relative cursor-pointer rounded-md border border-line-200 bg-white p-4 transition has-[:checked]:border-royal-600 has-[:checked]:bg-sky-100/50"
-                  >
-                    <input type="radio" name="plan" defaultChecked={plan.def} className="sr-only" />
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-navy-950">{plan.label}</span>
-                      {plan.save ? (
-                        <span className="rounded-full bg-gold-700/15 px-2 py-0.5 text-[0.6rem] font-medium uppercase tracking-wide text-gold-700">
-                          {plan.save}
-                        </span>
-                      ) : null}
-                    </div>
-                    <p className="mt-1 text-xs text-slate-500">{plan.note}</p>
-                  </label>
-                ))}
-              </div>
-              <p className="mt-2 text-xs text-slate-500">
-                Your clinician determines the right therapy, format and final dosing for you.
-              </p>
-            </fieldset>
+            {/* Delivery cadence — monthly programs only (GLP-1). The savings is
+                on shipping (flat $40/order), not a product discount. */}
+            {price.kind === "month" ? (
+              <fieldset className="mt-7">
+                <legend className="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">How often it ships</legend>
+                <div className="mt-3 grid gap-3 sm:grid-cols-3">
+                  {[
+                    { id: "m", label: "Monthly", note: "Ships every month", save: null, def: true },
+                    { id: "q", label: "Quarterly", note: "One box every 90 days", save: "Save on shipping", def: false },
+                    { id: "h", label: "6-month", note: "One box every 6 months", save: "Fewer shipments", def: false },
+                  ].map((plan) => (
+                    <label
+                      key={plan.id}
+                      className="group relative cursor-pointer rounded-md border border-line-200 bg-white p-4 transition has-[:checked]:border-royal-600 has-[:checked]:bg-sky-100/50"
+                    >
+                      <input type="radio" name="plan" defaultChecked={plan.def} className="sr-only" />
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-navy-950">{plan.label}</span>
+                        {plan.save ? (
+                          <span className="rounded-full bg-gold-700/15 px-2 py-0.5 text-[0.6rem] font-medium uppercase tracking-wide text-gold-700">
+                            {plan.save}
+                          </span>
+                        ) : null}
+                      </div>
+                      <p className="mt-1 text-xs text-slate-500">{plan.note}</p>
+                    </label>
+                  ))}
+                </div>
+                <p className="mt-2 text-xs text-slate-500">
+                  Shipping is a flat $40 per order, so fewer, larger boxes cost you less. Your
+                  clinician determines the right therapy, format and final dosing.
+                </p>
+              </fieldset>
+            ) : null}
 
             {/* Price + CTA */}
             <div className="mt-6 rounded-xl2 border border-line-200 bg-white p-5">
-              <div className="flex items-baseline gap-2">
-                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Programs</span>
-                <span className="font-mono text-2xl font-medium text-navy-950">
-                  <PriceInline />
-                </span>
-              </div>
-              <p className="mt-1 text-xs text-slate-500">Your exact price is set with your provider. Cancel anytime.</p>
+              <div className="font-mono text-2xl font-medium text-navy-950">{price.short}</div>
+              <p className="mt-1 text-xs text-slate-500">
+                {price.label}
+                {price.kind === "vial" || price.kind === "month"
+                  ? " · plus flat $40 shipping per order. Your plan and final price are set with your provider."
+                  : ""}
+              </p>
               <div className="mt-4 flex flex-wrap gap-3">
-                <Button href={signupUrl}>Start my assessment</Button>
+                <Button href={signupUrl}>{price.kind === "hold" ? "Join the waitlist" : "Start my assessment"}</Button>
                 <Button href="/contact" variant="ghost">Talk to a clinician</Button>
               </div>
             </div>
@@ -346,7 +351,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   <h3 className="text-lg font-bold text-navy-950">{p.name}</h3>
                   <p className="mt-2 text-sm text-slate-500">{p.usedFor}</p>
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="font-mono text-sm font-medium text-navy-950"><PriceInline /></span>
+                    <span className="font-mono text-sm font-medium text-navy-950">{priceFor(p.slug).short}</span>
                     <RxBadge />
                   </div>
                 </Link>
@@ -366,10 +371,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line-200 bg-white/95 backdrop-blur lg:hidden">
         <div className="mx-auto flex max-w-[var(--container-content)] items-center justify-between gap-4 px-5 py-3">
           <div>
-            <div className="font-mono text-sm font-medium text-navy-950"><PriceInline /></div>
+            <div className="font-mono text-sm font-medium text-navy-950">{price.short}</div>
             <div className="text-[0.65rem] text-slate-500">Set with your provider</div>
           </div>
-          <Button href={signupUrl} className="shrink-0">Start my assessment</Button>
+          <Button href={signupUrl} className="shrink-0">{price.kind === "hold" ? "Join the waitlist" : "Start my assessment"}</Button>
         </div>
       </div>
 

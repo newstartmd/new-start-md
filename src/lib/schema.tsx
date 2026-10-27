@@ -1,4 +1,4 @@
-// Structured data (JSON-LD). New Start MD is its own entity — New Start, LLC —
+// Structured data (JSON-LD). New Start MD is its own entity — NewStartMD LLC —
 // distinct from FitClinicMD and the Roth network. Schema reflects a single
 // brand; it does not cross-link other properties (that would read as a network
 // footprint). sameAs is reserved for New Start's own public profiles.

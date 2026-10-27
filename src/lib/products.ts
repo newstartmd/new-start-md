@@ -106,16 +106,20 @@ export type Blend = {
   image?: string;
 };
 
-// Blends — a representative set. The full line (per Todd, ~48 blends) is added
-// here as each is approved. Only the Oxytocin+PT-141 blend is also on
-// FitClinicMD.
+// Blends — Todd's real line-up and compositions from the v16 pricing sheet
+// (2026-10-23). Priced per vial in lib/catalogPricing.ts. (Connect is on the
+// sheet but on hold — not at Dirx-Hub yet — so it's omitted from the active
+// grid for now.)
 export const BLENDS: Blend[] = [
-  { slug: "connect", name: "Connect", goal: "hormone", components: ["Oxytocin", "PT-141"], usedFor: "Libido and intimacy support.", legitScript: true },
-  { slug: "repair", name: "Repair", goal: "recovery", components: ["BPC-157", "TB-500"], usedFor: "Combined tissue-recovery support." },
-  { slug: "rise", name: "Rise", goal: "wellness", components: ["CJC-1295", "Ipamorelin"], usedFor: "Growth-hormone and recovery support." },
-  { slug: "lean", name: "Lean", goal: "weight-loss", components: ["Tirzepatide", "Cagrilintide"], usedFor: "Appetite and metabolic support." },
-  { slug: "glow", name: "Glow", goal: "wellness", components: ["GHK-Cu", "Glutathione"], usedFor: "Skin and antioxidant support." },
-  { slug: "focus", name: "Focus", goal: "mind", components: ["Semax", "Selank"], usedFor: "Focus and calm support." },
+  { slug: "repair", name: "Repair", goal: "recovery", components: ["BPC-157", "TB-500"], usedFor: "Combined soft-tissue recovery support." },
+  { slug: "glow", name: "Glow", goal: "recovery", components: ["BPC-157", "TB-500", "GHK-Cu"], usedFor: "Recovery with skin and tissue support." },
+  { slug: "klow", name: "Klow", goal: "recovery", components: ["BPC-157", "GHK-Cu", "KPV", "TB-500"], usedFor: "Full tissue-recovery and gut support." },
+  { slug: "build", name: "Build", goal: "wellness", components: ["CJC-1295", "Ipamorelin"], usedFor: "Growth-hormone and recovery support." },
+  { slug: "sculpt", name: "Sculpt", goal: "wellness", components: ["Tesamorelin", "Ipamorelin"], usedFor: "Growth-hormone and body-composition support." },
+  { slug: "renew", name: "Renew", goal: "wellness", components: ["GHK-Cu", "Epithalon"], usedFor: "Skin and longevity support." },
+  { slug: "rest", name: "Rest", goal: "wellness", components: ["DSIP", "BPC-157", "CJC-1295"], usedFor: "Sleep and recovery support." },
+  { slug: "calm", name: "Calm", goal: "mind", components: ["Semax", "Selank"], usedFor: "Calm and anti-anxiety support." },
+  { slug: "focus", name: "Focus", goal: "mind", components: ["Pinealon", "PE-22-28", "Selank"], usedFor: "Focus and cognitive support." },
 ];
 
 export function productsByGoal(goal: string): Product[] {
