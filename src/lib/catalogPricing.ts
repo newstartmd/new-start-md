@@ -24,6 +24,12 @@ export const PEPTIDE_VIAL: Record<string, Vial> = {
   "bpc-157": { price: 199, lasts: "about 5 weeks" },
   tesamorelin: { price: 229, lasts: "about 3 weeks" },
   glutathione: { price: 99, lasts: "about 3 weeks" },
+  // Added from the v16 Final Pricing tab (NewStartMD carries everything on the
+  // sheet). No vial-duration given on the sheet for these, so `lasts` is omitted
+  // rather than fabricated (per the no-invented-dosing rule).
+  "ll-37": { price: 149 },
+  "igf-1-lr3": { price: 179 },
+  dsip: { price: 149 },
 };
 
 /** Blends — per vial (slug → price). */
