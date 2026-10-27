@@ -9,6 +9,15 @@ import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
 const FEATURED = ["semaglutide", "testosterone", "bpc-157", "sermorelin", "nad", "pt-141"];
 
+// Treatment-chapter imagery, keyed by goal (real Grok-generated, cool-graded).
+const CHAPTER_IMG: Record<string, string> = {
+  "weight-loss": "/images/chapter-weight.jpg",
+  hormone: "/images/chapter-hormone.jpg",
+  recovery: "/images/chapter-recovery.jpg",
+  wellness: "/images/chapter-longevity.jpg",
+  mind: "/images/chapter-mind.jpg",
+};
+
 const TRUST = [
   "Board-certified clinicians",
   "Licensed U.S. pharmacies",
@@ -56,9 +65,9 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <ImageSlot mood="Radiance" className="mt-8" />
-              <ImageSlot mood="Effortless" ratio="aspect-[4/5]" />
-              <ImageSlot mood="The good life" ratio="aspect-square" className="col-span-2" />
+              <ImageSlot src="/images/hero.jpg" alt="A couple walking a sunlit coastal path together" mood="Radiance" className="mt-8" />
+              <ImageSlot src="/images/lux-penthouse.jpg" alt="A confident woman on a city terrace at golden hour" mood="Effortless" ratio="aspect-[4/5]" />
+              <ImageSlot src="/images/pool-lounge.jpg" alt="A relaxed couple enjoying a poolside afternoon" mood="The good life" ratio="aspect-square" className="col-span-2" />
             </div>
           </div>
         </Container>
@@ -94,12 +103,12 @@ export default function HomePage() {
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
-            { k: "Where you are", mood: "Everyday · real life", p: "A good life already — just a little tired, a little stretched." },
-            { k: "Your new start", mood: "The turn · first steps", p: "A provider, a plan, and the first steps that actually fit your week." },
-            { k: "All you can be", mood: "Elevated · full energy", p: "The same life, with the energy and drive to meet all of it." },
+            { k: "Where you are", mood: "Everyday · real life", img: "/images/journey-2.jpg", p: "A good life already — just a little tired, a little stretched." },
+            { k: "Your new start", mood: "The turn · first steps", img: "/images/journey-1.jpg", p: "A provider, a plan, and the first steps that actually fit your week." },
+            { k: "All you can be", mood: "Elevated · full energy", img: "/images/journey-3.jpg", p: "The same life, with the energy and drive to meet all of it." },
           ].map((f, i) => (
             <div key={f.k} className="relative overflow-hidden rounded-xl2 border border-line-200">
-              <ImageSlot mood={f.mood} ratio="aspect-[4/3]" />
+              <ImageSlot src={f.img} alt={f.k} mood={f.mood} ratio="aspect-[4/3]" />
               <div className="p-5">
                 <span className="font-mono text-xs uppercase tracking-[0.18em] text-gold-700">
                   {String(i + 1).padStart(2, "0")} · {f.k}
@@ -214,7 +223,7 @@ export default function HomePage() {
                     </div>
                   </div>
                   <div className={flip ? "lg:order-1" : ""}>
-                    <ImageSlot mood={ch.mood} ratio="aspect-[5/4]" />
+                    <ImageSlot src={CHAPTER_IMG[ch.goal]} alt={`${ch.headline} ${ch.accent}`} mood={ch.mood} ratio="aspect-[5/4]" />
                   </div>
                 </div>
               </Container>
@@ -292,7 +301,7 @@ export default function HomePage() {
                 </Button>
               </div>
             </div>
-            <ImageSlot mood="The gym floor" ratio="aspect-[5/4]" />
+            <ImageSlot src="/images/partners.jpg" alt="A coach working with a client in a bright modern gym" mood="The gym floor" ratio="aspect-[5/4]" />
           </div>
         </Container>
       </section>
@@ -343,7 +352,7 @@ export default function HomePage() {
                   href={`/products/${p.slug}`}
                   className="group overflow-hidden rounded-xl2 border border-line-200 bg-white shadow-card transition hover:shadow-lift"
                 >
-                  <ProductImageSlot name={p.name} ratio="aspect-[4/3]" />
+                  <ProductImageSlot name={p.name} src={p.image} ratio="aspect-[4/3]" />
                   <div className="p-5">
                     <span className="font-mono text-xs uppercase tracking-wide text-slate-500">
                       {goal?.label}

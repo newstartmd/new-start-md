@@ -62,8 +62,8 @@ export type Product = {
 // deliberately plain and usage-framed.
 export const PRODUCTS: Product[] = [
   // Weight loss / metabolic
-  { slug: "semaglutide", name: "Semaglutide", aka: ["GLP-1"], goal: "weight-loss", usedFor: "Appetite and weight management.", legitScript: true },
-  { slug: "tirzepatide", name: "Tirzepatide", aka: ["GLP-1/GIP"], goal: "weight-loss", usedFor: "Appetite and weight management.", legitScript: true },
+  { slug: "semaglutide", name: "Semaglutide", aka: ["GLP-1"], goal: "weight-loss", usedFor: "Appetite and weight management.", legitScript: true, image: "/images/products/vial-semaglutide.jpg" },
+  { slug: "tirzepatide", name: "Tirzepatide", aka: ["GLP-1/GIP"], goal: "weight-loss", usedFor: "Appetite and weight management.", legitScript: true, image: "/images/products/vial-tirzepatide.jpg" },
   { slug: "mots-c", name: "MOTS-c", goal: "weight-loss", usedFor: "Metabolic and energy support." },
 
   // Hormone & vitality. Enclomiphene is offered ONLY inside the TRT program
@@ -81,9 +81,9 @@ export const PRODUCTS: Product[] = [
   { slug: "igf-1-lr3", name: "IGF-1 LR3", goal: "recovery", usedFor: "Muscle and tissue-growth support." },
 
   // Longevity & wellness
-  { slug: "sermorelin", name: "Sermorelin", goal: "wellness", usedFor: "Growth-hormone and sleep support.", legitScript: true },
+  { slug: "sermorelin", name: "Sermorelin", goal: "wellness", usedFor: "Growth-hormone and sleep support.", legitScript: true, image: "/images/products/vial-sermorelin.jpg" },
   { slug: "tesamorelin", name: "Tesamorelin", goal: "wellness", usedFor: "Growth-hormone and body-composition support.", legitScript: true },
-  { slug: "nad", name: "NAD+", goal: "wellness", usedFor: "Cellular energy and longevity support.", legitScript: true },
+  { slug: "nad", name: "NAD+", goal: "wellness", usedFor: "Cellular energy and longevity support.", legitScript: true, image: "/images/products/vial-nad.jpg" },
   { slug: "glutathione", name: "Glutathione", goal: "wellness", usedFor: "Antioxidant and detox support.", legitScript: true },
   { slug: "ss-31", name: "SS-31", aka: ["Elamipretide"], goal: "wellness", usedFor: "Mitochondrial support.", legitScript: true },
   { slug: "epitalon", name: "Epitalon", goal: "wellness", usedFor: "Longevity and sleep-cycle support." },
