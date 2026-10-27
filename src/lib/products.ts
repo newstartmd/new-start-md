@@ -15,10 +15,12 @@
 //     come from Todd's approved source document + clinical sign-off and are
 //     populated into `detail` later — never invented here.
 //
-// `legitScript: true` marks the products that ALSO appear on FitClinicMD, so
-// the two sites stay consistent where they overlap. The authoritative
-// full-catalog list (38 singles + 48 blends) is Todd's to confirm; add the
-// remainder here as it is approved.
+// `legitScript: true` marks the products that ALSO appear on FitClinicMD (the
+// "blue" items on Todd's sheet, plus TRT/semaglutide/tirzepatide which go on
+// both), so the two sites stay consistent where they overlap. The authoritative
+// product list is the Final Pricing tab of Todd's v16 sheet (2026-10-23); this
+// catalog is kept in sync with it. Reta/cagrilintide are intentionally excluded
+// (Michael: "we will not be providing them," 2026-10-27).
 
 export type Goal = {
   slug: string;
@@ -51,48 +53,41 @@ export type Product = {
   image?: string;
 };
 
-// Singles. Descriptors are deliberately plain and usage-framed.
+// Singles. The catalog shows ONLY what is on Todd's v16 Final Pricing tab
+// (2026-10-23) — "NewStartMD gets everything on the sheet." Compounds the sheet
+// sells only inside a blend (CJC-1295, Ipamorelin, Semax, Selank, KPV, Oxytocin,
+// Pinealon, PE-22-28) are NOT listed as standalone products; they live in their
+// blends. Off-sheet compounds are not carried. The educational /peptides body
+// map stays broad on purpose — it teaches, it does not sell. Descriptors are
+// deliberately plain and usage-framed.
 export const PRODUCTS: Product[] = [
   // Weight loss / metabolic
   { slug: "semaglutide", name: "Semaglutide", aka: ["GLP-1"], goal: "weight-loss", usedFor: "Appetite and weight management.", legitScript: true },
   { slug: "tirzepatide", name: "Tirzepatide", aka: ["GLP-1/GIP"], goal: "weight-loss", usedFor: "Appetite and weight management.", legitScript: true },
-  { slug: "retatrutide", name: "Retatrutide", goal: "weight-loss", usedFor: "Investigational metabolic and weight support." },
-  { slug: "cagrilintide", name: "Cagrilintide", goal: "weight-loss", usedFor: "Appetite support, often paired with a GLP-1." },
-  { slug: "aod-9604", name: "AOD-9604", goal: "weight-loss", usedFor: "Fat-metabolism support." },
   { slug: "mots-c", name: "MOTS-c", goal: "weight-loss", usedFor: "Metabolic and energy support." },
-  { slug: "5-amino-1mq", name: "5-Amino-1MQ", goal: "weight-loss", usedFor: "Metabolic support." },
 
   // Hormone & vitality
   { slug: "testosterone", name: "Testosterone", aka: ["TRT"], goal: "hormone", usedFor: "Hormone replacement for low testosterone.", legitScript: true },
-  { slug: "hcg", name: "HCG", goal: "hormone", usedFor: "Fertility and testosterone support.", legitScript: true },
-  { slug: "enclomiphene", name: "Enclomiphene", goal: "hormone", usedFor: "Natural testosterone production support." },
-  { slug: "gonadorelin", name: "Gonadorelin", goal: "hormone", usedFor: "Hormonal-axis support alongside TRT." },
+  { slug: "enclomiphene", name: "Enclomiphene", goal: "hormone", usedFor: "Natural testosterone production support.", legitScript: true },
   { slug: "pt-141", name: "PT-141", aka: ["Bremelanotide"], goal: "hormone", usedFor: "Libido and sexual-health support.", legitScript: true },
   { slug: "kisspeptin", name: "Kisspeptin", goal: "hormone", usedFor: "Reproductive-hormone support." },
-  { slug: "oxytocin", name: "Oxytocin", goal: "hormone", usedFor: "Mood, bonding and intimacy support.", legitScript: true },
 
   // Recovery & performance
   { slug: "bpc-157", name: "BPC-157", goal: "recovery", usedFor: "Soft-tissue and gut recovery support." },
   { slug: "tb-500", name: "TB-500", aka: ["Thymosin Beta-4"], goal: "recovery", usedFor: "Tissue recovery and flexibility support." },
-  { slug: "ghk-cu", name: "GHK-Cu", goal: "recovery", usedFor: "Skin and tissue support (topical).", legitScript: true },
-  { slug: "kpv", name: "KPV", goal: "recovery", usedFor: "Inflammation and gut support." },
+  { slug: "ghk-cu", name: "GHK-Cu", goal: "recovery", usedFor: "Skin and tissue support (topical)." },
+  { slug: "ll-37", name: "LL-37", goal: "recovery", usedFor: "Immune and antimicrobial support." },
   { slug: "thymosin-alpha-1", name: "Thymosin Alpha-1", goal: "recovery", usedFor: "Immune support." },
+  { slug: "igf-1-lr3", name: "IGF-1 LR3", goal: "recovery", usedFor: "Muscle and tissue-growth support." },
 
   // Longevity & wellness
   { slug: "sermorelin", name: "Sermorelin", goal: "wellness", usedFor: "Growth-hormone and sleep support.", legitScript: true },
   { slug: "tesamorelin", name: "Tesamorelin", goal: "wellness", usedFor: "Growth-hormone and body-composition support.", legitScript: true },
-  { slug: "ipamorelin", name: "Ipamorelin", goal: "wellness", usedFor: "Growth-hormone and recovery support." },
-  { slug: "cjc-1295", name: "CJC-1295", goal: "wellness", usedFor: "Growth-hormone support, often paired with Ipamorelin." },
-  { slug: "mk-677", name: "MK-677", aka: ["Ibutamoren"], goal: "wellness", usedFor: "Growth-hormone and appetite support." },
   { slug: "nad", name: "NAD+", goal: "wellness", usedFor: "Cellular energy and longevity support.", legitScript: true },
   { slug: "glutathione", name: "Glutathione", goal: "wellness", usedFor: "Antioxidant and detox support.", legitScript: true },
   { slug: "ss-31", name: "SS-31", aka: ["Elamipretide"], goal: "wellness", usedFor: "Mitochondrial support.", legitScript: true },
   { slug: "epitalon", name: "Epitalon", goal: "wellness", usedFor: "Longevity and sleep-cycle support." },
-
-  // Mind & mood
-  { slug: "selank", name: "Selank", goal: "mind", usedFor: "Calm and anti-anxiety support." },
-  { slug: "semax", name: "Semax", goal: "mind", usedFor: "Focus and cognitive support." },
-  { slug: "dihexa", name: "Dihexa", goal: "mind", usedFor: "Cognitive and memory support." },
+  { slug: "dsip", name: "DSIP", aka: ["Delta Sleep-Inducing Peptide"], goal: "wellness", usedFor: "Sleep-cycle support." },
 ];
 
 export type Blend = {
@@ -107,9 +102,9 @@ export type Blend = {
 };
 
 // Blends — Todd's real line-up and compositions from the v16 pricing sheet
-// (2026-10-23). Priced per vial in lib/catalogPricing.ts. (Connect is on the
-// sheet but on hold — not at Dirx-Hub yet — so it's omitted from the active
-// grid for now.)
+// (2026-10-23). Priced per vial in lib/catalogPricing.ts. Connect is on the
+// sheet but on hold (not at Dirx-Hub yet), so it shows "joining soon" via the
+// ON_HOLD map rather than a live price.
 export const BLENDS: Blend[] = [
   { slug: "repair", name: "Repair", goal: "recovery", components: ["BPC-157", "TB-500"], usedFor: "Combined soft-tissue recovery support." },
   { slug: "glow", name: "Glow", goal: "recovery", components: ["BPC-157", "TB-500", "GHK-Cu"], usedFor: "Recovery with skin and tissue support." },
@@ -120,6 +115,7 @@ export const BLENDS: Blend[] = [
   { slug: "rest", name: "Rest", goal: "wellness", components: ["DSIP", "BPC-157", "CJC-1295"], usedFor: "Sleep and recovery support." },
   { slug: "calm", name: "Calm", goal: "mind", components: ["Semax", "Selank"], usedFor: "Calm and anti-anxiety support." },
   { slug: "focus", name: "Focus", goal: "mind", components: ["Pinealon", "PE-22-28", "Selank"], usedFor: "Focus and cognitive support." },
+  { slug: "connect", name: "Connect", goal: "hormone", components: ["Tadalafil", "Oxytocin", "PT-141"], usedFor: "Intimacy and sexual-wellness support." },
 ];
 
 export function productsByGoal(goal: string): Product[] {

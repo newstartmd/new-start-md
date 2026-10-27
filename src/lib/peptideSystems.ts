@@ -103,8 +103,6 @@ export const SYSTEMS: Record<SystemKey, PeptideSystem> = {
     items: [
       { name: "Semaglutide", aka: "GLP-1", use: "Appetite and weight management; the molecule in Wegovy and Ozempic.", status: "ok" },
       { name: "Tirzepatide", aka: "GLP-1 / GIP", use: "Appetite and weight management; the molecule in Zepbound and Mounjaro.", status: "ok" },
-      { name: "Retatrutide", aka: "triple agonist", use: "Investigational weight loss; studied in phase 3, not approved or for sale.", status: "trial" },
-      { name: "Cagrilintide", aka: "amylin analog", use: "Appetite support, often studied alongside a GLP-1.", status: "trial" },
       { name: "AOD-9604", aka: "hGH fragment", use: "Promoted for fat metabolism; limited human evidence.", status: "research" },
       { name: "MOTS-c", aka: "mitochondrial", use: "Metabolic and energy support; early research.", status: "research", also: ["longevity"] },
       { name: "5-Amino-1MQ", use: "Metabolic support; early research.", status: "research" },
