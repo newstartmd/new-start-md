@@ -53,9 +53,9 @@ export const GLP1: Record<string, { from: number; to: number; steps: number[] }>
 
 /** Not at Dirx-Hub yet — shown as "joining soon" with no live price. */
 export const ON_HOLD: Record<string, string> = {
-  testosterone: "TRT programs ($149.99 Core / $199.99 Complete) are joining soon.",
-  enclomiphene: "Enclomiphene ($109/mo) is joining soon.",
-  connect: "Connect is joining soon.",
+  // Enclomiphene is offered only within the TRT program (Todd, 2026-10-27), not
+  // as its own product. Connect is not carried on the site.
+  testosterone: "TRT programs ($149.99 Core / $199.99 Complete, with an enclomiphene option) are joining soon.",
 };
 
 export type PriceDisplay =
