@@ -241,6 +241,32 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </Container>
 
+      {/* Verified provenance — the tamper-evident chain; links to /verify. */}
+      <section className="bg-navy-950">
+        <Container className="py-14 sm:py-16">
+          <div className="mx-auto max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-electric-500">
+              Verified provenance
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+              Know exactly where your {product.name} comes from.
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-white/75">
+              Most telehealth brands can&apos;t tell you where your medication actually came from. We
+              can: after your order ships, see the exact licensed U.S. pharmacy that compounded it,
+              its batch and Certificate of Analysis — on a tamper-evident record you can check
+              yourself.
+            </p>
+            <Link
+              href="/verify"
+              className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-white transition hover:text-electric-500"
+            >
+              Verify an order <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
       {/* Biomarkers we monitor */}
       {panel ? (
         <section className="border-t border-line-200 bg-mist-50">
