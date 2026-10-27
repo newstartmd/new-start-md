@@ -81,7 +81,7 @@ export default function PartnersPage() {
                 </Button>
               </div>
             </div>
-            <ImageSlot mood="Your crew" ratio="aspect-[5/4]" />
+            <ImageSlot src="/images/family-outdoors.jpg" alt="An active family enjoying the outdoors together" mood="Your crew" ratio="aspect-[5/4]" />
           </div>
         </Container>
       </section>

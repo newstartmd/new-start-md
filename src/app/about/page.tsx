@@ -39,7 +39,7 @@ export default function AboutPage() {
       {/* What we believe */}
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <ImageSlot mood="Alive" ratio="aspect-[5/4]" />
+          <ImageSlot src="/images/about.jpg" alt="A vibrant, healthy person living well" mood="Alive" ratio="aspect-[5/4]" />
           <div className="space-y-5 text-slate-500">
             <Eyebrow>What we believe</Eyebrow>
             <p>

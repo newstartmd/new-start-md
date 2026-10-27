@@ -117,7 +117,7 @@ export default function HowItWorksPage() {
               Every step is online, guided, and handled by licensed professionals — so starting
               is simple and staying on track is simpler.
             </p>
-            <ImageSlot mood="The win" ratio="aspect-[4/5]" className="mt-8 max-w-sm" />
+            <ImageSlot src="/images/how-it-works.jpg" alt="A person completing a telehealth visit easily from home" mood="The win" ratio="aspect-[4/5]" className="mt-8 max-w-sm" />
           </div>
 
           <ol className="relative space-y-6 before:absolute before:left-[1.35rem] before:top-4 before:bottom-4 before:w-px before:bg-line-200">

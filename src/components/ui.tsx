@@ -233,9 +233,12 @@ export function ProductImageSlot({
   className?: string;
   ratio?: string;
 }) {
-  if (src) {
+  // Products without a specific vial photo fall back to the branded blank vial,
+  // so every product renders a real image rather than a placeholder slot.
+  const resolved = src ?? "/images/products/vial-blank-brand.jpg";
+  if (resolved) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={name} className={`${ratio} w-full rounded-xl object-cover ${className}`} />;
+    return <img src={resolved} alt={name} className={`${ratio} w-full rounded-xl object-cover ${className}`} />;
   }
   return (
     <div
