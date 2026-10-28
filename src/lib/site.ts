@@ -56,6 +56,7 @@ export const GOAL_OPTIONS = [
 export const NAV = [
   { href: "/products", label: "Treatments" },
   { href: "/peptides", label: "Peptides" },
+  { href: "/evidence", label: "Evidence" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/membership", label: "Membership" },
   { href: "/partners", label: "Partners" },
@@ -88,6 +89,7 @@ export const FOOTER_NAV = [
     links: [
       { href: "/about", label: "About" },
       { href: "/how-it-works", label: "How it works" },
+      { href: "/evidence", label: "The evidence" },
       { href: "/verify", label: "Verify an order" },
       { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Contact" },
