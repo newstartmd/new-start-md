@@ -10,6 +10,7 @@ import {
   RxBadge,
   Reassurance,
 } from "@/components/ui";
+import CompoundSystems from "@/components/CompoundSystems";
 import { BiomarkerRangeBar } from "@/components/graphics";
 import { PRODUCTS, getProduct, getGoal, productsByGoal } from "@/lib/products";
 import { priceFor } from "@/lib/catalogPricing";
@@ -198,6 +199,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </p>
         </Container>
       </section>
+
+      {/* Where it works in the body — per-compound figure (education; null for
+          blends / unmapped compounds) */}
+      <Container>
+        <CompoundSystems name={product.name} />
+      </Container>
 
       {/* How it works + what to expect */}
       <Container className="py-14 sm:py-20">
