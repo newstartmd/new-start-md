@@ -15,12 +15,10 @@
 //     come from Todd's approved source document + clinical sign-off and are
 //     populated into `detail` later — never invented here.
 //
-// `legitScript: true` marks the products that ALSO appear on FitClinicMD (the
-// "blue" items on Todd's sheet, plus TRT/semaglutide/tirzepatide which go on
-// both), so the two sites stay consistent where they overlap. The authoritative
-// product list is the Final Pricing tab of Todd's v16 sheet (2026-10-23); this
-// catalog is kept in sync with it. Reta/cagrilintide are intentionally excluded
-// (Michael: "we will not be providing them," 2026-10-27).
+// The authoritative product list is the Final Pricing tab of Todd's v16 sheet
+// (2026-10-23); this catalog is kept in sync with it. Reta/cagrilintide are
+// intentionally excluded (Michael: "we will not be providing them," 2026-10-27).
+// New Start is fully standalone — no links to, or shared data with, FitClinicMD.
 
 export type Goal = {
   slug: string;
@@ -44,8 +42,6 @@ export type Product = {
   goal: Goal["slug"];
   /** Usage-based one-liner. What people USE it for — never an outcome claim. */
   usedFor: string;
-  /** Also carried on FitClinicMD (LegitScript-cleared). */
-  legitScript?: boolean;
   /** Long-form copy, populated from the approved source + clinical sign-off. */
   detail?: string;
   /** Product photo (vial/packaging). Real photos only — supplied by the team;
@@ -62,14 +58,14 @@ export type Product = {
 // deliberately plain and usage-framed.
 export const PRODUCTS: Product[] = [
   // Weight loss / metabolic
-  { slug: "semaglutide", name: "Semaglutide", aka: ["GLP-1"], goal: "weight-loss", usedFor: "Appetite and weight management.", legitScript: true, image: "/images/products/vial-semaglutide.jpg" },
-  { slug: "tirzepatide", name: "Tirzepatide", aka: ["GLP-1/GIP"], goal: "weight-loss", usedFor: "Appetite and weight management.", legitScript: true, image: "/images/products/vial-tirzepatide.jpg" },
+  { slug: "semaglutide", name: "Semaglutide", aka: ["GLP-1"], goal: "weight-loss", usedFor: "Appetite and weight management.", image: "/images/products/vial-semaglutide.jpg" },
+  { slug: "tirzepatide", name: "Tirzepatide", aka: ["GLP-1/GIP"], goal: "weight-loss", usedFor: "Appetite and weight management.", image: "/images/products/vial-tirzepatide.jpg" },
   { slug: "mots-c", name: "MOTS-c", goal: "weight-loss", usedFor: "Metabolic and energy support." },
 
   // Hormone & vitality. Enclomiphene is offered ONLY inside the TRT program
   // (Todd, 2026-10-27), so it is not a standalone product.
-  { slug: "testosterone", name: "Testosterone", aka: ["TRT"], goal: "hormone", usedFor: "Hormone replacement for low testosterone.", legitScript: true },
-  { slug: "pt-141", name: "PT-141", aka: ["Bremelanotide"], goal: "hormone", usedFor: "Libido and sexual-health support.", legitScript: true },
+  { slug: "testosterone", name: "Testosterone", aka: ["TRT"], goal: "hormone", usedFor: "Hormone replacement for low testosterone." },
+  { slug: "pt-141", name: "PT-141", aka: ["Bremelanotide"], goal: "hormone", usedFor: "Libido and sexual-health support." },
   { slug: "kisspeptin", name: "Kisspeptin", goal: "hormone", usedFor: "Reproductive-hormone support." },
 
   // Recovery & performance
@@ -81,11 +77,11 @@ export const PRODUCTS: Product[] = [
   { slug: "igf-1-lr3", name: "IGF-1 LR3", goal: "recovery", usedFor: "Muscle and tissue-growth support." },
 
   // Longevity & wellness
-  { slug: "sermorelin", name: "Sermorelin", goal: "wellness", usedFor: "Growth-hormone and sleep support.", legitScript: true, image: "/images/products/vial-sermorelin.jpg" },
-  { slug: "tesamorelin", name: "Tesamorelin", goal: "wellness", usedFor: "Growth-hormone and body-composition support.", legitScript: true },
-  { slug: "nad", name: "NAD+", goal: "wellness", usedFor: "Cellular energy and longevity support.", legitScript: true, image: "/images/products/vial-nad.jpg" },
-  { slug: "glutathione", name: "Glutathione", goal: "wellness", usedFor: "Antioxidant and detox support.", legitScript: true },
-  { slug: "ss-31", name: "SS-31", aka: ["Elamipretide"], goal: "wellness", usedFor: "Mitochondrial support.", legitScript: true },
+  { slug: "sermorelin", name: "Sermorelin", goal: "wellness", usedFor: "Growth-hormone and sleep support.", image: "/images/products/vial-sermorelin.jpg" },
+  { slug: "tesamorelin", name: "Tesamorelin", goal: "wellness", usedFor: "Growth-hormone and body-composition support." },
+  { slug: "nad", name: "NAD+", goal: "wellness", usedFor: "Cellular energy and longevity support.", image: "/images/products/vial-nad.jpg" },
+  { slug: "glutathione", name: "Glutathione", goal: "wellness", usedFor: "Antioxidant and detox support." },
+  { slug: "ss-31", name: "SS-31", aka: ["Elamipretide"], goal: "wellness", usedFor: "Mitochondrial support." },
   { slug: "epitalon", name: "Epitalon", goal: "wellness", usedFor: "Longevity and sleep-cycle support." },
   { slug: "dsip", name: "DSIP", aka: ["Delta Sleep-Inducing Peptide"], goal: "wellness", usedFor: "Sleep-cycle support." },
 ];
@@ -96,7 +92,6 @@ export type Blend = {
   goal: Goal["slug"];
   components: string[];
   usedFor: string;
-  legitScript?: boolean;
   /** Product photo. Real photos only; a branded slot renders until set. */
   image?: string;
 };

@@ -9,6 +9,18 @@ import {
   type SystemKey,
   type PeptideStatus,
 } from "@/lib/peptideSystems";
+import { COMPOUNDS, citationHref, citationLabel, type Compound } from "@/lib/evidence";
+
+// Match a body-map peptide (by display name) to its evidence entry, if one
+// exists. Normalizes spacing/case/+/- so "Kisspeptin-10" ↔ "kisspeptin" etc.
+function evidenceFor(name: string): Compound | undefined {
+  const norm = (s: string) => s.toLowerCase().replace(/[\s+\-–]/g, "");
+  const t = norm(name);
+  return COMPOUNDS.find((c) => {
+    const n = norm(c.name);
+    return n === t || n.startsWith(t) || t.startsWith(n);
+  });
+}
 
 // Status → chip colors. Kept inline (not Tailwind classes) so the four states
 // read as one consistent legend wherever they appear, and so the meaning is
@@ -36,6 +48,7 @@ function StatusChip({ status }: { status: PeptideStatus }) {
 
 export default function SystemMap() {
   const [active, setActive] = useState<SystemKey>("weight");
+  const [openStudies, setOpenStudies] = useState<string | null>(null);
   const system = SYSTEMS[active];
 
   return (
@@ -157,6 +170,55 @@ export default function SystemMap() {
                   </span>
                 </div>
                 <p className="mt-1.5 text-sm text-slate-500">{p.use}</p>
+
+                {/* Studies & evidence — expands to the real citations, matched
+                    to this compound's evidence file. */}
+                {(() => {
+                  const ev = evidenceFor(p.name);
+                  if (!ev) return null;
+                  const key = `${active}:${p.name}`;
+                  const open = openStudies === key;
+                  return (
+                    <div className="mt-2.5">
+                      <button
+                        type="button"
+                        onClick={() => setOpenStudies(open ? null : key)}
+                        aria-expanded={open}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-royal-600 hover:text-royal-700"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden className={`transition ${open ? "rotate-90" : ""}`}>
+                          <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        Studies &amp; evidence ({ev.evidence.length})
+                        <span className="rounded-full bg-sky-100 px-1.5 py-0.5 text-[0.6rem] font-semibold text-royal-700">Grade {ev.grade}</span>
+                      </button>
+                      {open && (
+                        <div className="mt-2 space-y-2 border-l-2 border-line-200 pl-3">
+                          {ev.evidence.map((cite, i) => {
+                            const href = citationHref(cite);
+                            return (
+                              <p key={i} className="text-xs leading-relaxed text-slate-500">
+                                {cite.summary}{" "}
+                                {href ? (
+                                  <a href={href} target="_blank" rel="noopener noreferrer" className="font-medium text-royal-600 underline underline-offset-2">
+                                    {citationLabel(cite)} ↗
+                                  </a>
+                                ) : null}
+                              </p>
+                            );
+                          })}
+                          <Link
+                            href={`/evidence/${ev.slug}`}
+                            className="inline-block text-xs font-semibold text-royal-600 underline underline-offset-2 hover:text-royal-700"
+                          >
+                            Open the full evidence file →
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+
                 {p.also && p.also.length > 0 && (
                   <p className="mt-2 text-xs text-slate-500">
                     Also acts in:{" "}
