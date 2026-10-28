@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Container, Eyebrow, Disclaimer } from "@/components/ui";
+import { Container, Eyebrow, Disclaimer, ImageSlot } from "@/components/ui";
 import Assessment from "@/components/Assessment";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
@@ -38,6 +38,13 @@ export default function StartPage() {
                 </li>
               ))}
             </ul>
+            <ImageSlot
+              src="/images/journey-2.jpg"
+              alt="Someone starting their day with new energy"
+              mood="Your turn"
+              ratio="aspect-[5/4]"
+              className="mt-8 hidden max-w-sm lg:block"
+            />
             <div className="mt-8 max-w-md">
               <Disclaimer>{MEDICAL_DISCLAIMER}</Disclaimer>
             </div>

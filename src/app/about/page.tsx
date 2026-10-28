@@ -131,6 +131,30 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* Lifestyle band */}
+      <section className="bg-white">
+        <Container className="py-14 sm:py-20">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]">
+            <ImageSlot
+              src="/images/lifestyle-band.jpg"
+              alt="People living full, active lives outdoors"
+              mood="Why we do this"
+              ratio="aspect-[16/10]"
+            />
+            <div>
+              <Eyebrow>Why it matters</Eyebrow>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+                We measure success in <span className="italic text-royal-600">lives lived</span>, not vials shipped.
+              </h2>
+              <p className="mt-4 max-w-md text-slate-500">
+                The medicine is the means. The point is the morning you wake up ready, the
+                afternoon you keep up, and the evening you still have something left.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Closing */}
       <section className="ocean">
         <Container className="py-20 text-center">

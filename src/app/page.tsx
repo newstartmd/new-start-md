@@ -581,6 +581,27 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* ------------------------------------------- Built for a real schedule */}
+      <section className="border-t border-line-200 bg-mist-50">
+        <Container className="py-14 sm:py-20">
+          <div className="max-w-2xl">
+            <Eyebrow>Built for a real schedule</Eyebrow>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+              Whatever your day looks like, <span className="italic text-royal-600">it fits.</span>
+            </h2>
+            <p className="mt-4 text-slate-500">
+              The early commute, the late night, the moment you finally get out the door —
+              New Start is built around the life you already have, not a schedule you don&apos;t.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <ImageSlot src="/images/everyday-commute.jpg" alt="The early commute" mood="The early start" ratio="aspect-[4/3]" />
+            <ImageSlot src="/images/everyday-latenight.jpg" alt="Still going after a long day" mood="The long day" ratio="aspect-[4/3]" />
+            <ImageSlot src="/images/valet-door.jpg" alt="Arriving, ready for whatever's next" mood="The arrival" ratio="aspect-[4/3]" />
+          </div>
+        </Container>
+      </section>
+
       {/* --------------------------------------------- Pricing & what's included */}
       <section className="border-t border-line-200 bg-white">
         <Container className="py-16 sm:py-24">
