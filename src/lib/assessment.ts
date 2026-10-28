@@ -21,6 +21,8 @@ export type Step =
       question: string;
       sub?: string;
       choices: Choice[];
+      /** If set, this step only shows when the named function is opted into. */
+      gatedBy?: string;
     }
   | {
       id: string;
@@ -29,6 +31,14 @@ export type Step =
       question: string;
       sub?: string;
       choices: Choice[];
+      gatedBy?: string;
+    }
+  | {
+      id: "functions";
+      kind: "functions";
+      eyebrow: string;
+      question: string;
+      sub?: string;
     };
 
 export type IconKey =
@@ -120,3 +130,173 @@ export const STEPS: Step[] = [
     ],
   },
 ];
+
+// ---------------------------------------------------------------------------
+// MODULAR SYSTEM — "build your protocol"
+// ---------------------------------------------------------------------------
+// A protocol is more than a compound. After the core questions, the visitor
+// chooses which parts of the system they want. The prescribed compound is the
+// CORE and is always included; diet, training, wearable tracking and coaching
+// are OPT-IN. Each part a visitor turns on reveals a few extra preference
+// questions so the plan can be shaped to them.
+//
+// PHI STAYS OUT. These follow-ups collect PREFERENCES only (what you like, how
+// you train, which watch you own). Clinical history — food and drug allergies,
+// conditions, medications — is taken in the secure portal with your provider,
+// never on this marketing form. The diet step says so in plain language.
+
+export type SystemFunction = {
+  value: string;
+  title: string;
+  blurb: string;
+  icon: IconKey;
+  /** The compound is always included and cannot be turned off. */
+  core?: boolean;
+};
+
+export const FUNCTIONS: SystemFunction[] = [
+  {
+    value: "medical",
+    title: "Prescribed compound",
+    blurb: "The peptide, GLP-1 or hormone your provider prescribes. The core of every protocol.",
+    icon: "shield",
+    core: true,
+  },
+  {
+    value: "diet",
+    title: "Diet & nutrition",
+    blurb: "A plan shaped to your food preferences and routine.",
+    icon: "flame",
+  },
+  {
+    value: "training",
+    title: "Training",
+    blurb: "Workouts matched to your goal, space and schedule.",
+    icon: "muscle",
+  },
+  {
+    value: "device",
+    title: "Wearable tracking",
+    blurb: "Sync your watch or ring so progress shows up automatically.",
+    icon: "bolt",
+  },
+  {
+    value: "coaching",
+    title: "Coaching",
+    blurb: "A human in your corner, checking in and adjusting as you go.",
+    icon: "heart",
+  },
+];
+
+// The opt-in selection step itself. Rendered specially from FUNCTIONS.
+export const FUNCTIONS_STEP: Step = {
+  id: "functions",
+  kind: "functions",
+  eyebrow: "Build your system",
+  question: "Which parts do you want?",
+  sub: "Your compound is always included. Add any of the rest — only what you want, and you can change it later with your provider.",
+};
+
+// Per-function follow-up questions, shown ONLY when that function is opted in.
+export const FUNCTION_STEPS: Step[] = [
+  // Diet
+  {
+    id: "diet-style",
+    gatedBy: "diet",
+    kind: "single",
+    eyebrow: "Diet & nutrition",
+    question: "How do you prefer to eat?",
+    sub: "So your plan starts from the right place.",
+    choices: [
+      { value: "No preference", label: "No preference", hint: "I'll eat most things" },
+      { value: "High-protein", label: "High-protein" },
+      { value: "Low-carb / keto", label: "Low-carb / keto" },
+      { value: "Mediterranean", label: "Mediterranean" },
+      { value: "Vegetarian", label: "Vegetarian" },
+      { value: "Vegan", label: "Vegan" },
+      { value: "Pescatarian", label: "Pescatarian" },
+    ],
+  },
+  {
+    id: "diet-avoid",
+    gatedBy: "diet",
+    kind: "multi",
+    eyebrow: "Diet & nutrition",
+    question: "Anything you'd rather not eat?",
+    sub: "Preferences only — pick any that apply. Food and drug allergies are taken securely with your provider in the portal, not here.",
+    choices: [
+      { value: "Dairy", label: "Dairy" },
+      { value: "Red meat", label: "Red meat" },
+      { value: "Seafood", label: "Seafood" },
+      { value: "Eggs", label: "Eggs" },
+      { value: "Gluten / wheat", label: "Gluten / wheat" },
+      { value: "Soy", label: "Soy" },
+      { value: "Very spicy", label: "Very spicy" },
+      { value: "Nothing", label: "Nothing — I'm easy" },
+    ],
+  },
+  // Training
+  {
+    id: "training-where",
+    gatedBy: "training",
+    kind: "single",
+    eyebrow: "Training",
+    question: "Where will you train?",
+    choices: [
+      { value: "Home", label: "At home", hint: "Little or no equipment" },
+      { value: "Gym", label: "At a gym" },
+      { value: "Both", label: "Both" },
+      { value: "Outdoors", label: "Mostly outdoors" },
+    ],
+  },
+  {
+    id: "training-days",
+    gatedBy: "training",
+    kind: "single",
+    eyebrow: "Training",
+    question: "How many days a week can you train?",
+    choices: [
+      { value: "1-2", label: "1–2 days" },
+      { value: "3-4", label: "3–4 days" },
+      { value: "5+", label: "5 or more" },
+    ],
+  },
+  // Wearable tracking
+  {
+    id: "device-brand",
+    gatedBy: "device",
+    kind: "multi",
+    eyebrow: "Wearable tracking",
+    question: "What do you wear?",
+    sub: "We'll connect it so your progress updates on its own. Pick any you use.",
+    choices: [
+      { value: "Apple Watch", label: "Apple Watch" },
+      { value: "Fitbit", label: "Fitbit" },
+      { value: "Garmin", label: "Garmin" },
+      { value: "Oura", label: "Oura Ring" },
+      { value: "Whoop", label: "Whoop" },
+      { value: "Samsung / Android", label: "Samsung / Android" },
+      { value: "Google Fit", label: "Google Fit" },
+      { value: "None yet", label: "None yet — may get one" },
+    ],
+  },
+  // Coaching
+  {
+    id: "coaching-cadence",
+    gatedBy: "coaching",
+    kind: "single",
+    eyebrow: "Coaching",
+    question: "How often would you want to hear from your coach?",
+    choices: [
+      { value: "Weekly", label: "Weekly check-ins" },
+      { value: "Every other week", label: "Every other week" },
+      { value: "Monthly", label: "Monthly" },
+      { value: "As needed", label: "Just when I need it" },
+    ],
+  },
+];
+
+// Human-readable labels for the function keys, for the lead summary.
+export const FUNCTION_LABELS: Record<string, string> = Object.fromEntries(
+  FUNCTIONS.map((f) => [f.value, f.title]),
+);
