@@ -67,7 +67,7 @@ export default function HomePage() {
             <div className="grid grid-cols-2 gap-4">
               <ImageSlot src="/images/hero.jpg" alt="A couple walking a sunlit coastal path together" mood="Radiance" className="mt-8" />
               <ImageSlot src="/images/lux-penthouse.jpg" alt="A confident woman on a city terrace at golden hour" mood="Effortless" ratio="aspect-[4/5]" />
-              <ImageSlot src="/images/pool-lounge.jpg" alt="A relaxed couple enjoying a poolside afternoon" mood="The good life" ratio="aspect-square" className="col-span-2" />
+              <ImageSlot src="/images/lux-yacht.jpg" alt="A couple relaxing on a yacht on a clear day" mood="The good life" ratio="aspect-square" className="col-span-2" />
             </div>
           </div>
         </Container>
@@ -103,9 +103,9 @@ export default function HomePage() {
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
-            { k: "Where you are", mood: "Everyday · real life", img: "/images/journey-2.jpg", p: "A good life already — just a little tired, a little stretched." },
+            { k: "Where you are", mood: "Everyday · real life", img: "/images/everyday-juggle.jpg", p: "A good life already — just a little tired, a little stretched." },
             { k: "Your new start", mood: "The turn · first steps", img: "/images/journey-1.jpg", p: "A provider, a plan, and the first steps that actually fit your week." },
-            { k: "All you can be", mood: "Elevated · full energy", img: "/images/journey-3.jpg", p: "The same life, with the energy and drive to meet all of it." },
+            { k: "All you can be", mood: "Elevated · full energy", img: "/images/valet-arrival.jpg", p: "The same life, with the energy and drive to meet all of it." },
           ].map((f, i) => (
             <div key={f.k} className="relative overflow-hidden rounded-xl2 border border-line-200">
               <ImageSlot src={f.img} alt={f.k} mood={f.mood} ratio="aspect-[4/3]" />
