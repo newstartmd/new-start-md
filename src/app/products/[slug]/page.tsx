@@ -312,14 +312,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </Container>
       </section>
 
-      {/* Biomarkers we monitor */}
+      {/* Biomarkers your provider may monitor */}
       {panel ? (
         <section className="border-t border-line-200 bg-mist-50">
           <Container className="py-14 sm:py-20">
             <div className="flex items-end justify-between gap-4">
               <div>
                 <Eyebrow>Lab-informed</Eyebrow>
-                <h2 className="mt-4 text-3xl font-semibold">Biomarkers we may monitor.</h2>
+                <h2 className="mt-4 text-3xl font-semibold">Biomarkers your provider may monitor.</h2>
               </div>
               <span className="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">Sample data</span>
             </div>
