@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container, Section, Eyebrow, Button, Disclaimer, PriceInline } from "@/components/ui";
+import { Container, Section, Eyebrow, Button, Disclaimer, PriceInline, ImageSlot } from "@/components/ui";
 import { ProgressRing } from "@/components/graphics";
 import {
   SHIPPING_FLAT,
@@ -90,27 +90,35 @@ export default function MembershipPage() {
     <>
       {/* Hero */}
       <section className="border-b border-line-200 glow">
-        <Container className="py-16 sm:py-20">
-          <Eyebrow>Membership</Eyebrow>
-          <h1 className="mt-5 max-w-3xl text-4xl font-medium leading-[1.02] sm:text-6xl">
-            Membership that <span className="italic text-royal-600">moves with your life.</span>
-          </h1>
-          <p className="mt-5 max-w-xl text-lg text-slate-500">
-            One simple plan that includes the care and the medicine — from an everyday start to a
-            concierge experience built around your labs.
-          </p>
-          <div className="mt-7 flex flex-wrap items-center gap-4">
-            <span className="font-mono text-sm font-medium text-navy-950">
-              Programs <PriceInline />
-            </span>
-            <a
-              href="#savings"
-              className="inline-flex items-center gap-2 rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-royal-700 transition hover:bg-sky-100/70"
-            >
-              Save ~{money(SHIPPING_QUARTERLY_SAVINGS)}/yr with quarterly boxes →
-            </a>
-            <span className="text-xs text-slate-500">Your exact plan &amp; price are set with your provider.</span>
+        <Container className="grid items-center gap-10 py-16 sm:py-20 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <Eyebrow>Membership</Eyebrow>
+            <h1 className="mt-5 max-w-3xl text-4xl font-medium leading-[1.02] sm:text-6xl">
+              Membership that <span className="italic text-royal-600">moves with your life.</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-lg text-slate-500">
+              One simple plan that includes the care and the medicine — from an everyday start to a
+              concierge experience built around your labs.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center gap-4">
+              <span className="font-mono text-sm font-medium text-navy-950">
+                Programs <PriceInline />
+              </span>
+              <a
+                href="#savings"
+                className="inline-flex items-center gap-2 rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-royal-700 transition hover:bg-sky-100/70"
+              >
+                Save ~{money(SHIPPING_QUARTERLY_SAVINGS)}/yr with quarterly boxes →
+              </a>
+              <span className="text-xs text-slate-500">Your exact plan &amp; price are set with your provider.</span>
+            </div>
           </div>
+          <ImageSlot
+            src="/images/pool-lounge.jpg"
+            alt="A person relaxing poolside, at ease"
+            mood="Membership life"
+            ratio="aspect-[4/5]"
+          />
         </Container>
       </section>
 
@@ -262,12 +270,22 @@ export default function MembershipPage() {
             </div>
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">Sample</span>
           </div>
-          <div className="mt-10 grid max-w-xl grid-cols-3 gap-6">
-            <ProgressRing value={82} label="Protocol adherence" />
-            <ProgressRing value={74} label="Energy score" />
-            <ProgressRing value={65} label="Goal progress" />
+          <div className="mt-10 grid items-center gap-10 lg:grid-cols-[1fr_0.8fr]">
+            <div>
+              <div className="grid max-w-xl grid-cols-3 gap-6">
+                <ProgressRing value={82} label="Protocol adherence" />
+                <ProgressRing value={74} label="Energy score" />
+                <ProgressRing value={65} label="Goal progress" />
+              </div>
+              <p className="mt-6 text-xs text-slate-500">Illustrative sample — your real dashboard reflects your own plan.</p>
+            </div>
+            <ImageSlot
+              src="/images/lux-office.jpg"
+              alt="Checking progress from a bright, modern space"
+              mood="In your corner"
+              ratio="aspect-[4/3]"
+            />
           </div>
-          <p className="mt-6 text-xs text-slate-500">Illustrative sample — your real dashboard reflects your own plan.</p>
         </Container>
       </section>
 
@@ -350,6 +368,21 @@ export default function MembershipPage() {
                 </details>
               ))}
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Lifestyle band — what membership is really for */}
+      <section className="border-t border-line-200 bg-white">
+        <Container className="py-14 sm:py-20">
+          <Eyebrow>What it&apos;s for</Eyebrow>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">
+            Not the plan. The life the plan is for.
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <ImageSlot src="/images/surf.jpg" alt="Catching a wave at sunrise" mood="Capable" ratio="aspect-[4/5]" />
+            <ImageSlot src="/images/family-soccer.jpg" alt="Keeping up with the kids on the field" mood="Present" ratio="aspect-[4/5]" />
+            <ImageSlot src="/images/ocean-bar.jpg" alt="An easy evening by the water" mood="Unhurried" ratio="aspect-[4/5]" />
           </div>
         </Container>
       </section>

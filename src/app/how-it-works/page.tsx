@@ -192,6 +192,21 @@ export default function HowItWorksPage() {
         </div>
       </Section>
 
+      {/* Lifestyle band — the point of making it easy */}
+      <section className="border-t border-line-200 bg-white">
+        <Container className="py-14 sm:py-20">
+          <Eyebrow>The payoff</Eyebrow>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">
+            The easy part is starting. The good part is everything after.
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <ImageSlot src="/images/journey-3.jpg" alt="Hitting a new stride" mood="Momentum" ratio="aspect-[4/3]" />
+            <ImageSlot src="/images/snowboard.jpg" alt="Back to doing what you love" mood="All in" ratio="aspect-[4/3]" />
+            <ImageSlot src="/images/lux-car.jpg" alt="Showing up as your best self" mood="Arrived" ratio="aspect-[4/3]" />
+          </div>
+        </Container>
+      </section>
+
       {/* Privacy */}
       <section className="bg-mist-50">
         <Container className="py-14 sm:py-20">

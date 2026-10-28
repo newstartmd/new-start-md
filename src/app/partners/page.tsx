@@ -168,6 +168,19 @@ export default function PartnersPage() {
         </Container>
       </section>
 
+      {/* Lifestyle band — your people, your results */}
+      <Section>
+        <Eyebrow>Your people</Eyebrow>
+        <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">
+          The members you send become the results you&apos;re known for.
+        </h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <ImageSlot src="/images/everyday-sideline.jpg" alt="A coach courtside with a client" mood="On the sideline" ratio="aspect-[4/3]" />
+          <ImageSlot src="/images/family-baseball.jpg" alt="A member back in the game with family" mood="Back in it" ratio="aspect-[4/3]" />
+          <ImageSlot src="/images/valet-group.jpg" alt="A community showing up strong together" mood="Your crew" ratio="aspect-[4/3]" />
+        </div>
+      </Section>
+
       {/* FAQ */}
       <Section id="faq">
         <Eyebrow>Partner FAQ</Eyebrow>
