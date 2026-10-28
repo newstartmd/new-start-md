@@ -54,7 +54,7 @@ export const GOAL_OPTIONS = [
 ] as const;
 
 export const NAV = [
-  { href: "/products", label: "Treatments" },
+  { href: "/products", label: "Protocols" },
   { href: "/peptides", label: "Peptides" },
   { href: "/evidence", label: "Evidence" },
   { href: "/how-it-works", label: "How it works" },

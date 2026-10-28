@@ -2,7 +2,15 @@
 
 import { useMemo, useState } from "react";
 import { useActionState } from "react";
-import { STEPS, type IconKey, type Step } from "@/lib/assessment";
+import {
+  STEPS,
+  FUNCTIONS,
+  FUNCTIONS_STEP,
+  FUNCTION_STEPS,
+  FUNCTION_LABELS,
+  type IconKey,
+  type Step,
+} from "@/lib/assessment";
 import { startAction, type StartState } from "@/app/start/actions";
 
 const US_STATES = [
@@ -37,9 +45,21 @@ export default function Assessment() {
   const [answers, setAnswers] = useState<Answers>({});
   const [state, action, pending] = useActionState<StartState, FormData>(startAction, null);
 
-  const total = STEPS.length + 1; // +1 for the contact step
-  const onContact = step === STEPS.length;
-  const progress = Math.round(((step + (onContact ? 1 : 0)) / total) * 100);
+  // The step list is dynamic: the base questions, the "build your system"
+  // picker, then a follow-up block for each function the visitor opted into.
+  const selectedFns = (answers.functions as string[] | undefined) ?? [];
+  const steps = useMemo<Step[]>(() => {
+    const follow = FUNCTION_STEPS.filter(
+      (s) => "gatedBy" in s && s.gatedBy && selectedFns.includes(s.gatedBy),
+    );
+    return [...STEPS, FUNCTIONS_STEP, ...follow];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedFns.join(",")]);
+
+  const safeStep = Math.min(step, steps.length);
+  const total = steps.length + 1; // +1 for the contact step
+  const onContact = safeStep === steps.length;
+  const progress = Math.round(((safeStep + (onContact ? 1 : 0)) / total) * 100);
 
   const note = useMemo(() => {
     const parts: string[] = [];
@@ -51,6 +71,32 @@ export default function Assessment() {
     if (age) parts.push(`Age: ${age}`);
     if (wins?.length) parts.push(`Wants: ${wins.join(", ")}`);
     if (activity) parts.push(`Activity: ${activity}`);
+
+    const fns = (answers.functions as string[] | undefined) ?? [];
+    parts.push(`System: ${["medical", ...fns].map((v) => FUNCTION_LABELS[v] ?? v).join(", ")}`);
+
+    if (fns.includes("diet")) {
+      const d: string[] = [];
+      const style = answers["diet-style"] as string;
+      const avoid = answers["diet-avoid"] as string[] | undefined;
+      if (style) d.push(style);
+      if (avoid?.length) d.push(`avoid ${avoid.join(", ")}`);
+      if (d.length) parts.push(`Diet: ${d.join("; ")}`);
+    }
+    if (fns.includes("training")) {
+      const where = answers["training-where"] as string;
+      const days = answers["training-days"] as string;
+      const t = [where, days ? `${days} days` : ""].filter(Boolean);
+      if (t.length) parts.push(`Training: ${t.join(", ")}`);
+    }
+    if (fns.includes("device")) {
+      const brands = answers["device-brand"] as string[] | undefined;
+      if (brands?.length) parts.push(`Wearables: ${brands.join(", ")}`);
+    }
+    if (fns.includes("coaching")) {
+      const c = answers["coaching-cadence"] as string;
+      if (c) parts.push(`Coaching: ${c}`);
+    }
     return parts.join(" · ");
   }, [answers]);
 
@@ -79,7 +125,7 @@ export default function Assessment() {
     );
   }
 
-  const current = STEPS[step] as Step | undefined;
+  const current = onContact ? undefined : (steps[safeStep] as Step | undefined);
 
   function pickSingle(id: string, value: string) {
     setAnswers((a) => ({ ...a, [id]: value }));
@@ -89,6 +135,15 @@ export default function Assessment() {
     setAnswers((a) => {
       const cur = (a[id] as string[] | undefined) ?? [];
       return { ...a, [id]: cur.includes(value) ? cur.filter((v) => v !== value) : [...cur, value] };
+    });
+  }
+  function toggleFunction(value: string) {
+    setAnswers((a) => {
+      const cur = (a.functions as string[] | undefined) ?? [];
+      return {
+        ...a,
+        functions: cur.includes(value) ? cur.filter((v) => v !== value) : [...cur, value],
+      };
     });
   }
 
@@ -114,7 +169,7 @@ export default function Assessment() {
           <div className="h-full rounded-full bg-royal-600 transition-all duration-500" style={{ width: `${Math.max(8, progress)}%` }} />
         </div>
         <span className="font-mono text-xs tabular-nums text-slate-500">
-          {Math.min(step + 1, total)}/{total}
+          {Math.min(safeStep + 1, total)}/{total}
         </span>
       </div>
 
@@ -125,7 +180,60 @@ export default function Assessment() {
           <h2 className="mt-3 text-2xl font-semibold text-navy-950 sm:text-3xl">{current.question}</h2>
           {current.sub ? <p className="mt-2 text-sm text-slate-500">{current.sub}</p> : null}
 
-          {current.kind === "single" ? (
+          {current.kind === "functions" ? (
+            <>
+              <div className="mt-6 grid gap-3">
+                {FUNCTIONS.map((f) => {
+                  const on = f.core || selectedFns.includes(f.value);
+                  return (
+                    <button
+                      key={f.value}
+                      type="button"
+                      disabled={f.core}
+                      onClick={() => !f.core && toggleFunction(f.value)}
+                      aria-pressed={on}
+                      className={`flex items-center gap-4 rounded-xl border p-4 text-left transition ${
+                        on ? "border-royal-600 bg-sky-100/60 ring-1 ring-royal-600" : "border-line-200 bg-white hover:border-royal-600"
+                      } ${f.core ? "cursor-default opacity-95" : ""}`}
+                    >
+                      <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${on ? "bg-royal-600 text-white" : "bg-sky-100 text-royal-600"}`}>
+                        <Icon k={f.icon} />
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="flex items-center gap-2">
+                          <span className="font-medium text-navy-950">{f.title}</span>
+                          {f.core ? (
+                            <span className="rounded-full bg-royal-600/10 px-2 py-0.5 text-[0.6rem] font-medium uppercase tracking-wide text-royal-600">
+                              Included
+                            </span>
+                          ) : null}
+                        </span>
+                        <span className="mt-0.5 block text-xs text-slate-500">{f.blurb}</span>
+                      </span>
+                      {!f.core ? (
+                        <span
+                          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition ${
+                            on ? "border-royal-600 bg-royal-600 text-white" : "border-line-200 text-transparent"
+                          }`}
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                            <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
+                      ) : null}
+                    </button>
+                  );
+                })}
+              </div>
+              <button
+                type="button"
+                onClick={() => setStep((s) => s + 1)}
+                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-royal-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-royal-700 sm:w-auto"
+              >
+                Continue
+              </button>
+            </>
+          ) : current.kind === "single" ? (
             <div className="mt-6 grid gap-3">
               {current.choices.map((c) => (
                 <button

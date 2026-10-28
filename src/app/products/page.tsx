@@ -7,10 +7,21 @@ import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Treatments",
+  title: "Protocols",
   description:
-    "The full New Start MD line — weight loss, hormone therapy, recovery, longevity and more. Prescribed by licensed U.S. providers after a visit.",
+    "Protocols built around your goal — the prescribed compound plus the diet, training, monitoring and coaching you opt into. Set with a licensed U.S. provider after a visit.",
 };
+
+// The modular parts of a protocol — mirrors the opt-in functions in the
+// /start assessment (src/lib/assessment.ts). The compound is the required
+// core; everything else is opt-in.
+const PROTOCOL_PARTS: { title: string; blurb: string; core?: boolean }[] = [
+  { title: "Prescribed compound", blurb: "The peptide, GLP-1 or hormone your provider prescribes.", core: true },
+  { title: "Diet & nutrition", blurb: "A plan shaped to your food preferences and routine." },
+  { title: "Training", blurb: "Workouts matched to your goal and schedule." },
+  { title: "Wearable tracking", blurb: "Sync Apple Watch, Fitbit, Garmin, Oura and more." },
+  { title: "Coaching", blurb: "A human in your corner, checking in and adjusting." },
+];
 
 type Item =
   | { kind: "single"; slug: string; name: string; goal: string; usedFor: string; aka?: string[]; image?: string; href: string }
@@ -54,11 +65,62 @@ export default async function ProductsPage({
       {/* Hero band */}
       <section className="ocean">
         <Container className="py-14">
-          <Eyebrow>The full line</Eyebrow>
-          <h1 className="mt-4 text-4xl font-semibold text-white sm:text-5xl">Treatments</h1>
-          <p className="mt-4 max-w-xl text-ice-300">
-            Everything we carry, prescribed by a licensed provider after a visit — nothing here
-            is sold over the counter. Programs <PriceInlineLight />, set with your provider.
+          <Eyebrow>Built around your goal</Eyebrow>
+          <h1 className="mt-4 text-4xl font-semibold text-white sm:text-5xl">Protocols</h1>
+          <p className="mt-4 max-w-2xl text-ice-300">
+            A protocol is more than a vial. Start with the prescribed compound below, then build
+            the rest of your system — diet, training, wearable tracking and coaching — around it,
+            only the parts you want. Everything is set with a licensed provider after a visit;
+            nothing here is sold over the counter. Programs <PriceInlineLight />.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button href={signupUrl} variant="light">
+              Build your protocol
+            </Button>
+            <Link
+              href="/how-it-works"
+              className="inline-flex items-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/60"
+            >
+              How it works
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* What a protocol includes — the modular system, honestly framed */}
+      <section className="border-b border-line-200 bg-mist-50">
+        <Container className="py-8">
+          <p className="font-mono text-xs uppercase tracking-wide text-slate-500">
+            What a protocol includes
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {PROTOCOL_PARTS.map((part) => (
+              <div
+                key={part.title}
+                className="rounded-xl2 border border-line-200 bg-white p-4"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-bold text-navy-950">{part.title}</span>
+                  {part.core ? (
+                    <span className="rounded-full bg-royal-600/10 px-2 py-0.5 text-[0.6rem] font-medium uppercase tracking-wide text-royal-600">
+                      Core
+                    </span>
+                  ) : (
+                    <span className="rounded-full bg-slate-500/10 px-2 py-0.5 text-[0.6rem] font-medium uppercase tracking-wide text-slate-500">
+                      Opt in
+                    </span>
+                  )}
+                </div>
+                <p className="mt-1.5 text-xs text-slate-500">{part.blurb}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-slate-500">
+            The compound is the core. Add diet, training, wearable tracking and coaching only if
+            you want them — your protocol is yours to shape.{" "}
+            <Link href={signupUrl} className="font-medium text-royal-600 hover:underline">
+              Build yours in 5 minutes →
+            </Link>
           </p>
         </Container>
       </section>
