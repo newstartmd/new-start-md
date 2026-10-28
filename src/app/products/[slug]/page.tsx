@@ -346,7 +346,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 q: "Overview",
                 a: product.detail
                   ? product.detail
-                  : `Full education for ${product.name} is being finalized with our medical team. Start a visit or message us and a licensed provider will walk you through whether it fits your goal.`,
+                  : `Full education for ${product.name} is being finalized. Start a visit or message us and a licensed provider will walk you through whether it fits your goal.`,
               },
               {
                 q: "Important safety information",
