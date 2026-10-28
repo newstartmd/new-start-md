@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Container, Eyebrow, Disclaimer } from "@/components/ui";
-import StartForm from "./StartForm";
-import { MEDICAL_DISCLAIMER, TELEHEALTH_NOTE } from "@/lib/legal";
-import { bookingConfigured } from "@/lib/site";
+import Assessment from "@/components/Assessment";
+import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Start now",
+  title: "Take the 5-minute assessment",
   description:
-    "Tell us your goal and a licensed New Start MD provider will reach out to schedule your visit.",
+    "Answer a few questions about your goals — right from your phone. A licensed New Start MD provider reviews your assessment and reaches out to schedule your visit.",
   robots: { index: true, follow: true },
 };
 
@@ -15,21 +14,23 @@ export default function StartPage() {
   return (
     <section className="glow">
       <Container className="py-16">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
-          <div>
-            <Eyebrow>Start now</Eyebrow>
-            <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">
-              One form. <span className="text-royal-600">New start.</span>
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+          <div className="lg:sticky lg:top-24">
+            <Eyebrow>Your new start</Eyebrow>
+            <h1 className="mt-4 text-4xl font-semibold leading-[1.05] sm:text-5xl">
+              Take the <span className="text-royal-600">5-minute assessment.</span>
             </h1>
-            <p className="mt-5 max-w-md text-slate-500">
-              Tell us where you want to go. A licensed provider reviews your request and
-              reaches out to schedule your visit — usually within two business days.
+            <p className="mt-5 max-w-md text-lg text-slate-500">
+              Answer a few questions about your goals and health history — right from your
+              phone. No clinic, no waiting room. If a trainer or coach sent you, their code
+              comes along automatically.
             </p>
             <ul className="mt-8 space-y-3 text-sm text-slate-500">
               {[
-                "No clinic waiting room — it's all telehealth.",
-                "A real provider decides what's right for you.",
+                "100% online — it's all telehealth.",
+                "A real licensed provider decides what's right for you.",
                 "Prescribed therapy delivered to your door.",
+                "Your detailed medical history is taken later, privately, in your secure portal.",
               ].map((l) => (
                 <li key={l} className="flex gap-3">
                   <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-royal-600" aria-hidden />
@@ -37,19 +38,12 @@ export default function StartPage() {
                 </li>
               ))}
             </ul>
-            {!bookingConfigured ? (
-              <p className="mt-8 rounded-lg border border-line-200 bg-white p-4 text-xs text-slate-500">
-                {TELEHEALTH_NOTE}
-              </p>
-            ) : null}
-          </div>
-
-          <div className="rounded-xl2 border border-line-200 bg-white/60 p-6 sm:p-8">
-            <StartForm />
-            <div className="mt-6">
+            <div className="mt-8 max-w-md">
               <Disclaimer>{MEDICAL_DISCLAIMER}</Disclaimer>
             </div>
           </div>
+
+          <Assessment />
         </div>
       </Container>
     </section>
