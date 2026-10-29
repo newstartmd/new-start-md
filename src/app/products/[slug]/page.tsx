@@ -116,7 +116,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <div className="mt-5 flex flex-wrap gap-2">
               <RxBadge full />
               <Pill>Licensed U.S. pharmacy</Pill>
-              <Pill>Free 2-day delivery</Pill>
+              <Pill>Flat $40 shipping</Pill>
             </div>
 
             {/* Delivery cadence — monthly programs only (GLP-1). The savings is
@@ -160,7 +160,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <p className="mt-1 text-xs text-slate-500">
                 {price.label}
                 {price.kind === "vial" || price.kind === "month"
-                  ? " · plus flat $40 shipping per order. Your plan and final price are set with your provider."
+                  ? " · plus flat $40 shipping per order. Your clinician determines what's medically appropriate for you."
                   : ""}
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
@@ -286,28 +286,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </Container>
 
-      {/* Verified provenance — the tamper-evident chain; links to /verify. */}
+      {/* How it's made — licensed 503A compounding, no verification/COA claims. */}
       <section className="bg-navy-950">
         <Container className="py-14 sm:py-16">
           <div className="mx-auto max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-electric-500">
-              Verified provenance
+              How it&apos;s made
             </p>
             <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
-              Know exactly where your {product.name} comes from.
+              Prepared for you by a licensed U.S. pharmacy.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-white/75">
-              Most telehealth brands can&apos;t tell you where your medication actually came from. We
-              can: after your order ships, see the exact licensed U.S. pharmacy that compounded it,
-              its batch and Certificate of Analysis — on a tamper-evident record you can check
-              yourself.
+              Your {product.name} is compounded by a licensed U.S. pharmacy from a prescription in
+              your name, under published sterile-compounding standards — not bought off a shelf or an
+              unverified website.
             </p>
-            <Link
-              href="/verify"
-              className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-white transition hover:text-electric-500"
-            >
-              Verify an order <span aria-hidden="true">→</span>
-            </Link>
           </div>
         </Container>
       </section>

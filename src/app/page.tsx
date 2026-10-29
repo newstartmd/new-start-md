@@ -456,22 +456,22 @@ export default function HomePage() {
         </p>
       </Section>
 
-      {/* -------------------------------------------------- Verified provenance */}
+      {/* ------------------------------------ Compounded by licensed pharmacies */}
       <section className="ocean">
         <Container className="py-16 sm:py-20">
           <div className="grid items-center gap-8 lg:grid-cols-[1.3fr_0.7fr]">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.18em] text-ice-300">Verified provenance</span>
+              <span className="font-mono text-xs uppercase tracking-[0.18em] text-ice-300">How it&apos;s made</span>
               <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-                Compounded by licensed U.S. pharmacies. <span className="italic text-ice-300">Verify it yourself.</span>
+                Compounded by licensed U.S. pharmacies. <span className="italic text-ice-300">Prescribed for you.</span>
               </h2>
               <p className="mt-4 max-w-xl text-ice-300">
-                Every order is recorded in a tamper-evident, cryptographically hash-chained log —
-                the pharmacy, batch and Certificate of Analysis. Enter the code on your order and
-                confirm exactly where your therapy came from. Proof, not promises.
+                Nothing here is bought off a shelf or an unverified website. Every therapy is prepared
+                by a licensed U.S. pharmacy from a prescription in your name, under published
+                sterile-compounding standards.
               </p>
               <div className="mt-7">
-                <Button href="/verify" variant="light">Verify an order</Button>
+                <Button href="/how-it-works" variant="light">How it works</Button>
               </div>
             </div>
             <div className="rounded-xl2 border border-white/15 bg-white/5 p-6 backdrop-blur">
@@ -480,10 +480,10 @@ export default function HomePage() {
                   <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
                   <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em]">Tamper-evident</span>
+                <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em]">Prescription-based</span>
               </div>
               <ul className="mt-4 space-y-2.5 text-sm text-white/90">
-                {["Licensed U.S. pharmacy", "Batch + Certificate of Analysis", "Append-only, hash-chained", "You can check it anytime"].map((t) => (
+                {["Licensed U.S. pharmacy", "Prescribed after a provider visit", "From a prescription in your name", "Sterile-compounding standards"].map((t) => (
                   <li key={t} className="flex gap-2.5">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden className="mt-0.5 shrink-0 text-gold-300">
                       <path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />

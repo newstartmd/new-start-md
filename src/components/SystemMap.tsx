@@ -243,12 +243,7 @@ export default function SystemMap() {
           <p className="mt-6 text-xs leading-relaxed text-slate-500">
             This map is education, not a recommendation. What a compound is studied
             for is not a promise it will work for you. A licensed provider decides
-            whether anything here is appropriate — and how every order is sourced is
-            recorded on our{" "}
-            <Link href="/verify" className="font-medium text-royal-600 underline underline-offset-2">
-              verification page
-            </Link>
-            .
+            whether anything here is appropriate for you.
           </p>
         </div>
       </div>
