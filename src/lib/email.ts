@@ -5,6 +5,8 @@
 // submission reaches you by whatever channel is wired — and is never dropped:
 //
 //   - RESEND_API_KEY     : email the notification via Resend (routed by kind).
+//     (Configured in production 2026-10-29: RESEND_API_KEY + NOTIFY_FROM +
+//      CONTACT_INBOX are set; newstartmd.com verified in Resend.)
 //   - CONTACT_WEBHOOK_URL : POST the JSON payload (Slack / Zapier / n8n / Make).
 //   - (neither)           : logged server-side so it stays recoverable.
 //
