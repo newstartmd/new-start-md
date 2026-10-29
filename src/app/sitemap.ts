@@ -3,6 +3,7 @@ import { SITE } from "@/lib/site";
 import { PRODUCTS } from "@/lib/products";
 import { COMPOUNDS } from "@/lib/evidence";
 import { reviewSlugs } from "@/lib/fullReviews";
+import { publishedArticles } from "@/lib/articles";
 import { LEGAL_DOCS } from "@/lib/legalDocs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/products",
     "/peptides",
     "/evidence",
+    "/learn",
     "/partners",
     "/apply",
     "/how-it-works",
@@ -47,6 +49,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     pages.push({
       url: `${base}/evidence/${slug}`,
       lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
+  }
+
+  for (const a of publishedArticles()) {
+    pages.push({
+      url: `${base}/learn/${a.slug}`,
+      lastModified: a.updated ? new Date(a.updated) : now,
       changeFrequency: "monthly",
       priority: 0.6,
     });
