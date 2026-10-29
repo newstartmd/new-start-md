@@ -220,29 +220,57 @@ export default function DashboardPage() {
 
       {/* Device sync */}
       <Section>
-        <div className="max-w-2xl">
-          <Eyebrow>Connect your world</Eyebrow>
-          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-            Wear what you already wear.
-          </h2>
-          <p className="mt-4 text-slate-500">
-            Link your watch or ring and your activity, sleep and recovery flow in automatically —
-            right next to your plan, with nothing to log by hand.
-          </p>
-        </div>
-        <div className="mt-8 flex flex-wrap gap-3">
-          {DEVICES.map((d) => (
-            <span
-              key={d}
-              className="inline-flex items-center gap-2 rounded-full border border-line-200 bg-white px-4 py-2 text-sm font-medium text-navy-950"
-            >
-              <span className="h-2 w-2 rounded-full bg-royal-600" aria-hidden />
-              {d}
-            </span>
-          ))}
-          <span className="inline-flex items-center rounded-full bg-sky-100 px-4 py-2 text-sm font-medium text-royal-700">
-            + more as you connect them
-          </span>
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <Eyebrow>Connect your world</Eyebrow>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+              Wear what you already wear.
+            </h2>
+            <p className="mt-4 max-w-lg text-slate-500">
+              Link your watch or ring and your activity, sleep and recovery flow in automatically —
+              right next to your plan, with nothing to log by hand.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {DEVICES.map((d) => (
+                <span
+                  key={d}
+                  className="inline-flex items-center gap-2 rounded-full border border-line-200 bg-white px-3.5 py-1.5 text-sm font-medium text-navy-950"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-royal-600" aria-hidden />
+                  {d}
+                </span>
+              ))}
+              <span className="inline-flex items-center rounded-full bg-sky-100 px-3.5 py-1.5 text-sm font-medium text-royal-700">
+                + more as you connect them
+              </span>
+            </div>
+          </div>
+
+          {/* Sample synced-today panel */}
+          <div>
+            <div className="rounded-xl2 border border-line-200 bg-white p-6 shadow-card">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-semibold text-navy-950">Today, synced</p>
+                <span className="font-mono text-[0.7rem] uppercase tracking-wide text-slate-500">from your Oura</span>
+              </div>
+              <div className="mt-5 grid grid-cols-[1fr_auto] items-center gap-6">
+                <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg bg-line-200">
+                  {[
+                    { k: "Steps", v: "8,420" },
+                    { k: "Sleep", v: "7h 12m" },
+                    { k: "Resting HR", v: "58 bpm" },
+                  ].map((m) => (
+                    <div key={m.k} className="flex items-baseline justify-between bg-white px-4 py-3">
+                      <span className="text-[0.7rem] uppercase tracking-wide text-slate-500">{m.k}</span>
+                      <span className="font-mono text-base font-semibold tabular-nums text-navy-950">{m.v}</span>
+                    </div>
+                  ))}
+                </div>
+                <ProgressRing value={84} label="Readiness" size={104} />
+              </div>
+            </div>
+            <p className="mt-3 text-center text-xs text-slate-400">Illustrative preview</p>
+          </div>
         </div>
       </Section>
 
