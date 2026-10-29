@@ -5,21 +5,23 @@ import { PARTNER_DISCLAIMER } from "@/lib/legal";
 export const metadata: Metadata = {
   title: "Partner program",
   description:
-    "Gyms, trainers and affiliates: partner with New Start MD. Stay connected to your clients in your own portal — upload workouts, diets and podcasts — on a simple, compliant model.",
+    "Gyms, trainers and affiliates: partner with New Start MD. It's more than a commission — a platform. Keep your clients in your own portal, hand them ready-made and AI-assisted programs, promote your own services, and get paid a simple flat rate.",
 };
 
 const STEPS = [
   { n: "01", h: "Apply & get approved", p: "Tell us about your business. Approved partners get a branded code, a link, and a portal in minutes." },
   { n: "02", h: "Share it", p: "Put your code on your site, your socials, your gym floor. Every visit it brings is tracked automatically." },
   { n: "03", h: "Coach them in your portal", p: "Stay in your clients' corner — push workouts, diets and content, and keep them motivated while we handle the medicine." },
-  { n: "04", h: "You're recognized", p: "A flat brand-and-content licensing arrangement, paid on a simple schedule. No per-patient math, ever." },
+  { n: "04", h: "You're on the platform", p: "A flat rate on a simple schedule — plus the platform itself: your portal, your programs, your audience. Never per patient, per order, or a cut of spend." },
 ];
 
 const PORTAL = [
   { h: "Stay in contact", p: "Message and check in with your clients, right where their plan lives." },
-  { h: "Upload workouts", p: "Push training programs to your clients and update them as they progress." },
+  { h: "Ready-made & AI-built programs", p: "Hand clients proven, pre-built programs — or generate workout and diet plans with AI in minutes, then make them your own." },
+  { h: "Upload your own workouts", p: "Push your training programs to your clients and update them as they progress." },
   { h: "Share diets & nutrition", p: "Meal plans and guidance that fit each client's goal." },
   { h: "Drop podcasts & content", p: "Your videos, your audio, your voice — keep them learning and motivated." },
+  { h: "Promote your own services", p: "Your gym, your classes, your coaching — put what you offer in front of the people you send." },
   { h: "Keep them motivated", p: "Milestones, nudges and encouragement that keep people showing up." },
   { h: "Share the wins — opt-in", p: "With a client's permission, celebrate their success with the wider community." },
 ];
@@ -35,15 +37,15 @@ const FAQ = [
   },
   {
     q: "How do I get paid?",
-    a: "Through a flat brand-and-content licensing arrangement — a set fee for the content and brand collaboration we build together, including the workouts, diets and podcasts you create for the portal. You are never paid per patient, per order, or as a cut of what someone spends.",
+    a: "It's much more than a commission — you're joining a platform. You're paid a flat rate on a simple schedule for the brand-and-content collaboration we build together: the workouts, diets and podcasts you bring, and your participation on the platform. On top of the pay, you get the platform itself — your portal, ready-made and AI-assisted programs to hand to clients, and a place to promote your own services. You are never paid per patient, per order, or as a cut of what someone spends.",
   },
   {
-    q: "Why is it structured that way?",
-    a: "Because it's the right way to do it. Federal law (EKRA) and state rules restrict paying for patient referrals in healthcare — even cash-pay. A licensing model keeps you, and us, clean while still rewarding the real value you bring: your audience and your content.",
+    q: "Why a flat rate instead of a commission?",
+    a: "Because it's the right way to do it — and the compliant one. Federal law (EKRA) and state rules restrict paying for patient referrals in healthcare, even cash-pay. A flat rate tied to your content, brand and platform participation keeps you, and us, clean — while rewarding the real value you bring: your audience, your coaching and your content.",
   },
   {
     q: "What do my people get?",
-    a: "Physician-guided care and therapy delivered to their door — plus you, still coaching them, and the local events and giveaways we run together. They start a visit, a licensed provider decides what's appropriate, and it ships.",
+    a: "Physician-guided care and therapy delivered to their door — plus you, still coaching them inside the platform, with your programs, your content and your encouragement. They start a visit, a licensed provider decides what's appropriate, and it ships.",
   },
   {
     q: "Who's a good fit?",
@@ -70,9 +72,11 @@ export default function PartnersPage() {
                 <span className="italic text-royal-600">Stay in their corner.</span>
               </h1>
               <p className="mt-6 max-w-lg text-lg text-slate-500">
-                New Start MD gives your people a real medical path to the results they train for —
-                and gives you a portal to keep coaching them the whole way. You bring the audience
-                and the content. We bring the providers, the pharmacy, and the delivery.
+                This is more than a commission — it&apos;s a platform. New Start MD gives your people a
+                real medical path to the results they train for, and gives you a portal to keep
+                coaching them: ready-made and AI-assisted programs, a place to promote your own
+                services, and a simple flat rate. You bring the audience and the content; we bring
+                the providers, the pharmacy, and the delivery.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button href="/apply">Apply to partner</Button>
