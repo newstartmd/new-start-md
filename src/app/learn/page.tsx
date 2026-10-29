@@ -24,6 +24,25 @@ type ArticleGroup = { heading: string; blurb: ReactNode; slugs: readonly string[
 
 const GROUPS: ArticleGroup[] = [
   {
+    heading: "Compare & decide",
+    blurb: (
+      <>
+        The guides most sites don&apos;t write: honest head-to-head comparisons, and how to judge
+        the evidence on any peptide yourself. Start from the{" "}
+        <Link href="/evidence" className="font-semibold text-royal-600 hover:text-royal-700">
+          graded evidence
+        </Link>{" "}
+        whenever you want the primary sources.
+      </>
+    ),
+    slugs: [
+      "semaglutide-vs-tirzepatide",
+      "growth-hormone-peptides-compared",
+      "bpc-157-vs-tb-500",
+      "how-to-read-peptide-evidence",
+    ],
+  },
+  {
     heading: "Start with weight & metabolic health",
     blurb: (
       <>
