@@ -58,6 +58,7 @@ export const NAV = [
   { href: "/peptides", label: "Peptides" },
   { href: "/evidence", label: "Evidence" },
   { href: "/how-it-works", label: "How it works" },
+  { href: "/dashboard", label: "Dashboard" },
   { href: "/membership", label: "Membership" },
   { href: "/partners", label: "Partners" },
   { href: "/about", label: "About" },
@@ -89,6 +90,7 @@ export const FOOTER_NAV = [
     links: [
       { href: "/about", label: "About" },
       { href: "/how-it-works", label: "How it works" },
+      { href: "/dashboard", label: "Your dashboard" },
       { href: "/evidence", label: "The evidence" },
       { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Contact" },
