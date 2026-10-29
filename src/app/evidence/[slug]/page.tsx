@@ -10,12 +10,15 @@ import {
   type Citation,
 } from "@/lib/evidence";
 import { getProduct } from "@/lib/products";
-import { getFullReview } from "@/lib/fullReviews";
+import { getReviewBySlug, reviewSlugs, reviewTitle, type FullReview } from "@/lib/fullReviews";
 import FullReviewBody from "@/components/FullReviewBody";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
 export function generateStaticParams() {
-  return COMPOUNDS.map((c) => ({ slug: c.slug }));
+  // A page for every graded compound AND every ported review (deduped). Reviews
+  // without a graded COMPOUND entry render as an educational overview.
+  const slugs = new Set<string>([...COMPOUNDS.map((c) => c.slug), ...reviewSlugs()]);
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -25,11 +28,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const c = getCompound(slug);
-  if (!c) return { title: "Evidence not found" };
-  return {
-    title: `${c.name} — the evidence`,
-    description: `What the research actually shows on ${c.name}: ${c.oneLiner} Primary sources, graded honestly.`,
-  };
+  if (c) {
+    return {
+      title: `${c.name} — the evidence`,
+      description: `What the research actually shows on ${c.name}: ${c.oneLiner} Primary sources, graded honestly.`,
+    };
+  }
+  const review = getReviewBySlug(slug);
+  if (review) {
+    const name = reviewTitle(review);
+    return {
+      title: `${name} — full review`,
+      description: `A plain-English overview of ${name}${review.standfirst ? ` (${review.standfirst})` : ""}: what it is, what people use it for, how it works, and who it is not for. Education only.`,
+    };
+  }
+  return { title: "Evidence not found" };
 }
 
 const GRADE_NOTE: Record<string, string> = {
@@ -63,9 +76,15 @@ export default async function EvidencePage({
 }) {
   const { slug } = await params;
   const c = getCompound(slug);
-  if (!c) notFound();
+  const review = getReviewBySlug(slug);
 
-  const review = getFullReview("peptide", slug);
+  // No graded compound entry, but we have a ported review: render it as an
+  // educational overview (no fabricated grade or study citations).
+  if (!c) {
+    if (review) return <ReviewOnlyPage slug={slug} review={review} />;
+    notFound();
+  }
+
   const product = getProduct(slug);
   const gradeLetter = c.grade[0]?.toUpperCase() ?? "";
 
@@ -216,6 +235,88 @@ export default async function EvidencePage({
             you.
           </p>
           <div className="mt-4">
+            <Disclaimer>{MEDICAL_DISCLAIMER}</Disclaimer>
+          </div>
+        </div>
+      </Container>
+    </article>
+  );
+}
+
+/**
+ * Educational overview for a ported review that has no graded COMPOUND entry
+ * (the extra single peptides and the blend formulas). It renders the approved
+ * review prose only — deliberately NO evidence grade and NO study-citation list,
+ * because we have no authoritative graded data for these and will not invent it.
+ */
+function ReviewOnlyPage({ slug, review }: { slug: string; review: FullReview }) {
+  const name = reviewTitle(review);
+  const product = getProduct(slug);
+
+  return (
+    <article>
+      {/* Header */}
+      <div className="glow border-b border-line-200">
+        <Container className="py-12">
+          <nav className="text-sm text-slate-500" aria-label="Breadcrumb">
+            <Link href="/evidence" className="hover:text-royal-600">Evidence</Link>
+            <span className="mx-2">/</span>
+            <span className="text-navy-950">{name}</span>
+          </nav>
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <Eyebrow>{review.kind === "blend" ? "Formula review" : "Full review"}</Eyebrow>
+            <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-royal-700">
+              Education only
+            </span>
+          </div>
+          <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">{name}</h1>
+          {review.standfirst ? (
+            <p className="mt-3 max-w-2xl text-lg text-slate-500">{review.standfirst}</p>
+          ) : null}
+          {product ? (
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e4f3ec] px-3 py-1 text-xs font-semibold text-[#12805c]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#12805c]" aria-hidden />
+                Available to order
+              </span>
+              <Button href={`/products/${product.slug}`} variant="ghost">
+                See {name} in the catalog
+              </Button>
+            </div>
+          ) : review.kind === "blend" ? (
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e4f3ec] px-3 py-1 text-xs font-semibold text-[#12805c]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#12805c]" aria-hidden />
+                Available as a blend
+              </span>
+              <Button href="/products" variant="ghost">
+                See the blends in the catalog
+              </Button>
+            </div>
+          ) : (
+            <div className="mt-6">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-mist-50 px-3 py-1 text-xs font-semibold text-slate-500 ring-1 ring-line-200">
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-400" aria-hidden />
+                Education only — not currently offered for sale
+              </span>
+            </div>
+          )}
+        </Container>
+      </div>
+
+      <Container className="py-12">
+        <div className="max-w-3xl">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-royal-600">The full picture</p>
+          <h2 className="mt-2 text-3xl font-semibold text-navy-950">
+            What {name} is — in plain English.
+          </h2>
+          <p className="mt-2 text-sm text-slate-500">
+            An educational overview: what it is, what people use it for, how it works, and who it is
+            not for. This is not a grade or a claim of effectiveness.
+          </p>
+          <FullReviewBody sections={review.sections} />
+
+          <div className="mt-12 border-t border-line-200 pt-6">
             <Disclaimer>{MEDICAL_DISCLAIMER}</Disclaimer>
           </div>
         </div>

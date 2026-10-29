@@ -3233,6 +3233,27 @@ export function getFullReview(kind: "peptide" | "blend", slug: string) {
   return FULL_REVIEWS.find((r) => r.kind === kind && r.slug === slug);
 }
 
+/** A review by slug regardless of kind (slugs are unique across peptides + blends). */
+export function getReviewBySlug(slug: string) {
+  return FULL_REVIEWS.find((r) => r.slug === slug);
+}
+
+/** Every review slug — used to generate a page for each ported review. */
+export function reviewSlugs() {
+  return FULL_REVIEWS.map((r) => r.slug);
+}
+
+/** Reviews that have no graded /evidence COMPOUND entry (surfaced as overviews). */
+export function reviewsWithoutCompound(hasCompound: (slug: string) => boolean) {
+  return FULL_REVIEWS.filter((r) => !hasCompound(r.slug));
+}
+
+/** Clean display title — source titles carry a "— Full Review" / "— the full
+ *  review" suffix (the casing is inconsistent across the generated set). */
+export function reviewTitle(r: FullReview) {
+  return r.title.replace(/\s*[—–-]\s*(the\s+)?full review\s*$/i, "").trim();
+}
+
 /** The approved PDF, still shipped and linked as a download from each page. */
 export function reviewPdfUrl(kind: "peptide" | "blend", slug: string) {
   return kind === "peptide"

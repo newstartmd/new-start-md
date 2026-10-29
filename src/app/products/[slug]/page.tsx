@@ -12,6 +12,7 @@ import {
 } from "@/components/ui";
 import CompoundSystems from "@/components/CompoundSystems";
 import { getCompound } from "@/lib/evidence";
+import { getReviewBySlug } from "@/lib/fullReviews";
 import { BiomarkerRangeBar } from "@/components/graphics";
 import { PRODUCTS, getProduct, getGoal, productsByGoal } from "@/lib/products";
 import { priceFor } from "@/lib/catalogPricing";
@@ -207,37 +208,46 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <CompoundSystems name={product.name} />
       </Container>
 
-      {/* THE PROOF — link to the compound's full evidence file (only when one
-          exists for this slug). */}
-      {getCompound(product.slug) ? (
-        <Container>
-          <div className="mt-12 overflow-hidden rounded-xl2 ocean px-6 py-10 sm:px-10 sm:py-12">
-            <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto]">
-              <div>
-                <span className="font-mono text-xs uppercase tracking-[0.18em] text-ice-300">
-                  Don&apos;t take our word for it
-                </span>
-                <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-                  See the proof behind {product.name}.
-                </h2>
-                <p className="mt-3 max-w-xl text-ice-300">
-                  The real studies, graded honestly — what the research actually found, with links
-                  to the primary sources. When the evidence is thin, we say so.
-                </p>
+      {/* THE PROOF — link to the compound's full evidence file when it is a
+          graded compound, or to the full plain-English review when it is a blend
+          formula / ungraded compound that still has a ported review. */}
+      {(() => {
+        const graded = Boolean(getCompound(product.slug));
+        const hasReview = Boolean(getReviewBySlug(product.slug));
+        if (!graded && !hasReview) return null;
+        return (
+          <Container>
+            <div className="mt-12 overflow-hidden rounded-xl2 ocean px-6 py-10 sm:px-10 sm:py-12">
+              <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto]">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-[0.18em] text-ice-300">
+                    {graded ? "Don't take our word for it" : "Go deeper"}
+                  </span>
+                  <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+                    {graded
+                      ? `See the proof behind ${product.name}.`
+                      : `The full breakdown of ${product.name}.`}
+                  </h2>
+                  <p className="mt-3 max-w-xl text-ice-300">
+                    {graded
+                      ? "The real studies, graded honestly — what the research actually found, with links to the primary sources. When the evidence is thin, we say so."
+                      : "A plain-English review — what it is, what people use it for, how it works, and who it is not for. Education, not a claim of effectiveness."}
+                  </p>
+                </div>
+                <Link
+                  href={`/evidence/${product.slug}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-navy-950 transition hover:bg-ice-300"
+                >
+                  {graded ? "THE PROOF" : "READ THE REVIEW"}
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
               </div>
-              <Link
-                href={`/evidence/${product.slug}`}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-navy-950 transition hover:bg-ice-300"
-              >
-                THE PROOF
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
             </div>
-          </div>
-        </Container>
-      ) : null}
+          </Container>
+        );
+      })()}
 
       {/* How it works + what to expect */}
       <Container className="py-14 sm:py-20">

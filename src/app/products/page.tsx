@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container, Eyebrow, Button, Disclaimer, PriceInline, ProductImageSlot, RxBadge } from "@/components/ui";
 import { GOALS, PRODUCTS, BLENDS, getGoal } from "@/lib/products";
+import { getReviewBySlug } from "@/lib/fullReviews";
 import { priceFor } from "@/lib/catalogPricing";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
@@ -221,7 +222,18 @@ function ProductCard({ item }: { item: Item }) {
       </Link>
     );
   }
-  // Blends don't have a detail page yet — render as a non-link card.
+  // Blends have no checkout page, but when a full review exists it is their
+  // detail page — link the card there so the breakdown is reachable from the shop.
+  if (getReviewBySlug(item.slug)) {
+    return (
+      <Link
+        href={`/evidence/${item.slug}`}
+        className="group flex flex-col rounded-xl2 border border-line-200 bg-white p-5 shadow-card transition hover:shadow-lift"
+      >
+        {inner}
+      </Link>
+    );
+  }
   return <div className="flex flex-col rounded-xl2 border border-line-200 bg-white p-5 shadow-card">{inner}</div>;
 }
 
