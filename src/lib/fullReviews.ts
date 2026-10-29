@@ -2766,6 +2766,94 @@ export const FULL_REVIEWS: FullReview[] = [
       },
     ],
   },
+  {
+    kind: "peptide",
+    slug: "testosterone",
+    category: "Hormone & Vitality",
+    title: "Testosterone (TRT)",
+    subtitle: "Testosterone replacement therapy",
+    standfirst:
+      "An FDA-approved hormone replacement for men with diagnosed low testosterone. It restores the body's own hormone to a normal range under lab monitoring — not a performance or anti-aging shortcut.",
+    sections: [
+      {
+        heading: "What it is",
+        blocks: [
+          { type: "para", text: "Testosterone is the primary male sex hormone. It drives the development of male characteristics and, in adults, supports libido, mood, energy, bone density, red-blood-cell production, and muscle mass. Levels fall gradually with age, and some men have levels low enough — with symptoms — to meet the definition of hypogonadism." },
+          { type: "para", text: "Testosterone replacement therapy (TRT) is the FDA-approved treatment for that condition: replacing the hormone to bring a man with a confirmed deficiency back into a normal physiologic range. It is a long-established therapy, prescribed and monitored by a licensed clinician, and it comes in several forms:" },
+          { type: "list", items: [
+            "Injectable esters — testosterone cypionate or enanthate, given weekly or every two weeks, the most common form.",
+            "Transdermal gels and solutions — applied daily to the skin.",
+            "Subcutaneous pellets — implanted and released slowly over months.",
+            "A nasal gel — dosed several times a day.",
+          ] },
+        ],
+      },
+      {
+        heading: "What people use it for",
+        blocks: [
+          { type: "para", text: "The approved use is male hypogonadism: a confirmed low testosterone level together with symptoms. When those two things line up, replacement can improve:" },
+          { type: "list", items: [
+            "Low libido and sexual function.",
+            "Fatigue and low energy.",
+            "Depressed or flat mood.",
+            "Loss of muscle mass and strength.",
+            "Reduced bone density.",
+          ] },
+          { type: "para", text: "The benefits are most reliable when the symptoms genuinely trace back to a measured deficiency. In men whose levels are already normal, adding testosterone does not reliably improve any of these — and carries the same risks without the upside." },
+        ],
+      },
+      {
+        heading: "How it works",
+        blocks: [
+          { type: "para", text: "Testosterone binds the androgen receptor throughout the body; restoring a deficient level brings those tissues back toward normal function. There is an important trade-off built into the biology: supplying testosterone from outside suppresses the brain's own LH and FSH signals, which tells the testes to make less of their own. Over time that can shrink testicular size and lower sperm production. This is the main reason TRT and trying to conceive do not mix well — and why a fertility-sparing alternative exists for men who want children." },
+        ],
+      },
+      {
+        heading: "What the research actually looked at",
+        blocks: [
+          { type: "para", text: "The TRAVERSE trial — 5,246 middle-aged and older men with low testosterone and high cardiovascular risk — found that testosterone gel was non-inferior to placebo for major adverse cardiovascular events, addressing a long-standing safety question. It studied safety, not a promise of benefit." },
+          { type: "para", text: "The Testosterone Trials — 790 men aged 65 and older with low levels — found small-to-moderate improvements in sexual function and mood, but no improvement in vitality or walking distance. The consistent theme across the good evidence: benefits are real but modest, and they track with correcting a true deficiency, not with pushing levels above normal." },
+        ],
+      },
+      {
+        heading: "Common misunderstandings",
+        blocks: [
+          { type: "list", items: [
+            "\"More is better.\" No — the goal is a normal physiologic range. Higher levels add risk (thickened blood, acne, mood swings) without added benefit.",
+            "\"It's an anti-aging drug.\" It is not approved for the normal decline that comes with age in men whose levels remain normal, and the evidence does not support that use.",
+            "\"You just start it.\" It is a Schedule III controlled substance, banned in sport, and prescribed only after an evaluation and lab confirmation.",
+            "\"One low reading means you need it.\" Diagnosis requires two separate low morning measurements plus symptoms — a single number is not enough.",
+          ] },
+        ],
+      },
+      {
+        heading: "Who it is not for",
+        blocks: [
+          { type: "list", items: [
+            "Men with untreated prostate or breast cancer.",
+            "Men with an elevated hematocrit (thickened blood) until that is addressed.",
+            "Men with severe untreated sleep apnea or uncontrolled heart failure.",
+            "Men actively trying to conceive — TRT suppresses fertility; a fertility-sparing option should be discussed first.",
+            "Men with normal testosterone levels and no diagnosed deficiency.",
+          ] },
+        ],
+      },
+      {
+        heading: "Where this stands",
+        blocks: [
+          { type: "para", text: "FDA-approved for male hypogonadism. A Schedule III controlled substance. On the WADA Prohibited List (S1, anabolic agents). It requires ongoing monitoring — testosterone level, hematocrit, PSA and symptoms — rather than a set-and-forget prescription." },
+        ],
+      },
+      {
+        heading: "Clinical detail",
+        blocks: [
+          { type: "para", text: "Diagnosis rests on two separate morning total-testosterone measurements below the reference range, together with consistent symptoms; a single reading is not enough. Your clinician chooses the form and dose, targets a physiologic range, and rechecks labs — commonly around 6 to 12 weeks after starting or adjusting, then periodically." },
+          { type: "para", text: "For men who want to preserve fertility, enclomiphene is offered inside the TRT program as an alternative: rather than replacing the hormone, it nudges the brain's own signaling so the body makes more of its own testosterone, which protects sperm production. Your clinician decides whether it fits your goals and your labs." },
+          { type: "para", text: "The information on this page is general education. It is not medical advice and not a recommendation for any treatment. Testosterone is FDA-approved for the use described above; it is not approved for men with normal levels or for anti-aging. Any prescription follows an individual evaluation by a licensed provider and is issued only where that provider judges it clinically appropriate. A prescription is never guaranteed." },
+        ],
+      },
+    ],
+  },
 ];
 
 export function getFullReview(kind: "peptide" | "blend", slug: string) {
