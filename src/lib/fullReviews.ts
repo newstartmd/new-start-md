@@ -2100,6 +2100,256 @@ export const FULL_REVIEWS: FullReview[] = [
   },
   {
     kind: "peptide",
+    slug: "pinealon",
+    category: "COGNITIVE FUNCTION & NEUROPROTECTION",
+    title: "Pinealon — the full review",
+    subtitle: "SHORT PEPTIDE BIOREGULATOR (Glu-Asp-Arg)",
+    standfirst: "An early-research peptide from the Russian 'bioregulator' tradition — what the laboratory work actually looked at, why almost none of it is human, and what that means for anyone considering it.",
+    sections: [
+      {
+        heading: "What it is",
+        blocks: [
+          { type: "para", text: "Pinealon is a synthetic short peptide — a chain of just three amino acids (glutamate, aspartate and arginine, written Glu-Asp-Arg, or EDR). It comes out of a Russian research tradition known as 'short peptide bioregulators,' developed largely at the St. Petersburg Institute of Bioregulation and Gerontology under Vladimir Khavinson, which proposes that very short peptides can influence gene activity in specific tissues. Pinealon is the one associated with the brain and the pineal gland." },
+          { type: "para", text: "It has never been reviewed by the FDA and is not an approved medicine in the United States in any form. In Russia it has circulated as a 'bioregulator' rather than as a conventionally approved drug. In the US it reaches people only through gray-market research-chemical sellers or, in a clinical setting, as a compounded preparation." },
+          { type: "para", text: "The evidence behind it is early and narrow. Almost everything published comes from cell-culture and animal work by the same small circle of affiliated Russian researchers who originated the bioregulator concept, with little independent replication and essentially no rigorous human trials." },
+        ],
+      },
+      {
+        heading: "What people use it for",
+        blocks: [
+          { type: "table", columns: ["USED FOR", "WHAT THAT MEANS"], rows: [
+            ["Cognitive support and mental clarity", "Some have used it for this. Not tested in people in any rigorous trial."],
+            ["Neuroprotection against stress, low oxygen, or aging", "Laboratory and animal work only. The protective effects described come from cell and rodent models, not from people."],
+            ["Sleep and circadian / melatonin regulation", "Proposed from the 'pineal' framing. Some have used it for this. Not tested in people."],
+            ["General anti-aging of the nervous system", "A marketing claim rooted in the bioregulator theory. Not established in humans."],
+          ] },
+        ],
+      },
+      {
+        heading: "How it works",
+        blocks: [
+          { type: "para", text: "The proposed mechanism is almost entirely theoretical and laboratory-based. The bioregulator hypothesis holds that a very short peptide like this can enter cells, reach DNA, and influence which genes are switched on in a given tissue — in Pinealon's case, genes tied to neuronal survival and antioxidant defense. Cell and animal studies from the originating group report that it lowers markers of oxidative stress and helps neurons survive low-oxygen or toxic conditions." },
+          { type: "para", text: "How well-established is this? Not well, by the standard a patient should expect elsewhere in this catalog. There is no confirmed human mechanism, no independent neuroimaging or receptor work, and the central 'short peptides regulate gene expression' theory sits outside the mainstream of molecular biology. Read this as an early hypothesis supported by a narrow body of laboratory work, not as settled pharmacology." },
+        ],
+      },
+      {
+        heading: "What the research actually looked at",
+        blocks: [
+          { type: "para", text: "Human data is essentially absent. The published record is dominated by in-vitro (cell culture) and rodent studies from the Khavinson group and affiliated Russian institutions, examining neuronal survival, oxidative-stress markers, and behavior in animal models of low oxygen or aging." },
+          { type: "para", text: "No independent Western clinical trial of Pinealon has been identified, and no major regulator (FDA, EMA) has reviewed efficacy data for it. Claims made for it in people are extrapolations from animal and laboratory findings, not the result of controlled human testing." },
+        ],
+      },
+      {
+        heading: "Common misunderstandings",
+        blocks: [
+          { type: "list", items: [
+            "'It's a natural peptide, so it's inherently safe.' Being short and built from natural amino acids does not exempt a synthetic compound from needing its own safety evaluation — and that evaluation, in humans, has largely not been done.",
+            "'Russian clinics have used bioregulators for decades, so it's proven.' Long use in one country's bioregulator tradition is not the same as controlled trials or regulatory approval, and the research is dominated by the group that originated the concept, without independent replication.",
+            "'It fixes your sleep because it's a pineal peptide.' The pineal framing is a theory about where it might act, not a demonstrated clinical effect on sleep in people.",
+          ] },
+        ],
+      },
+      {
+        heading: "Who it is not for",
+        blocks: [
+          { type: "list", items: [
+            "Anyone looking for a substitute for evaluated treatment of a cognitive, mood, or sleep condition.",
+            "Pregnancy or breastfeeding, or anyone trying to conceive.",
+            "Children and adolescents — no pediatric data exists.",
+            "Anyone who expects a proven, human-tested effect — that level of human evidence for Pinealon does not exist.",
+            "Competitive athletes subject to WADA or USADA testing, who should treat any non-approved substance as prohibited by default.",
+          ] },
+        ],
+      },
+      {
+        heading: "Who makes this, and under what rules",
+        blocks: [
+          { type: "para", text: "Everything dispensed here is prepared by a licensed 503A compounding pharmacy — not bought from a supplier and repackaged, and not sourced from an online seller. That designation carries specific, enforceable obligations:" },
+          { type: "list", items: [
+            "A prescription in your name. Compounded from a prescription for one identified patient, after an evaluation.",
+            "Licensed and inspected. A state license, subject to inspection by the state board of pharmacy.",
+            "Sterile preparation to a published standard. USP standards.",
+            "A paper trail. A lot number and beyond-use date on every preparation.",
+          ] },
+          { type: "para", text: "A compounded preparation is not an FDA-approved medicine. Because the human evidence for Pinealon is so limited, a licensed provider may reasonably decline to prescribe it at all." },
+        ],
+      },
+      {
+        heading: "Where this stands",
+        blocks: [
+          { type: "para", text: "Early research, not an approved medicine. Pinealon sits at the experimental end of this catalog: a short peptide with an interesting laboratory story and almost no human evidence, from a research tradition that has not been independently replicated or reviewed by a major regulator. It is included here for honest education, not because its benefits are established. Anyone considering it should understand they are considering a research-grade compound, not a proven therapy." },
+        ],
+      },
+      {
+        heading: "Clinical detail",
+        blocks: [
+          { type: "para", text: "Pinealon is the tripeptide Glu-Asp-Arg (EDR), one of the 'short peptide bioregulators' developed at the St. Petersburg Institute of Bioregulation and Gerontology. The bioregulator model proposes tissue-specific regulation of gene expression by very short peptides; supporting data is predominantly in-vitro and in animal models of oxidative stress, low oxygen, and aging, published largely by the originating group. It is not FDA-approved and has no recognized approved human indication in the United States." },
+          { type: "para", text: "The information on this page is general education. It is not medical advice and it is not a recommendation for any treatment. Pinealon is not an FDA-approved medicine for the uses described here, and it has not been tested in people in rigorous clinical trials. A compounded preparation is not an FDA-approved product and has not been reviewed by the FDA for safety, effectiveness or quality. Descriptions of what this is used for reflect how it is commonly used and discussed. They are not claims that it is effective for any purpose. Any prescription follows an individual evaluation by a licensed provider and is issued only where that provider judges it clinically appropriate. A prescription is never guaranteed." },
+        ],
+      },
+    ],
+  },
+  {
+    kind: "peptide",
+    slug: "pe-22-28",
+    category: "COGNITIVE FUNCTION & NEUROPROTECTION",
+    title: "PE-22-28 — the full review",
+    subtitle: "SYNTHETIC SPADIN ANALOGUE (TREK-1 BLOCKER)",
+    standfirst: "An experimental antidepressant peptide that has been studied only in animals — what the rodent research actually showed, and why 'promising in mice' is a very different claim than 'works in people.'",
+    sections: [
+      {
+        heading: "What it is",
+        blocks: [
+          { type: "para", text: "PE-22-28 is a synthetic peptide derived from spadin, a natural peptide the body produces when it processes a protein called sortilin. Spadin blocks a potassium channel in the brain called TREK-1, and blocking TREK-1 produces antidepressant-like effects in animals. PE-22-28 is a shortened, stabilized version designed to do the same thing with better drug-like properties." },
+          { type: "para", text: "It is an experimental research compound. It has never been tested in humans, is not FDA-approved, and is not an approved medicine anywhere. It reaches people only through research-chemical channels; any clinical use would be as an unproven compounded preparation." },
+          { type: "para", text: "All of the interest in it comes from preclinical research — animal and laboratory work, primarily from French academic groups studying TREK-1 as a target for faster-acting antidepressants." },
+        ],
+      },
+      {
+        heading: "What people use it for",
+        blocks: [
+          { type: "table", columns: ["USED FOR", "WHAT THAT MEANS"], rows: [
+            ["Depression or low mood", "Studied only in animal models of depression. Not tested in people. Any use for mood in humans is experimental."],
+            ["A faster-acting antidepressant effect", "The rodent rationale — TREK-1 blockade acts faster than SSRIs in animals. Not demonstrated in people."],
+            ["Neurogenesis and brain plasticity", "Animal and laboratory findings only. Not tested in people."],
+            ["Anxiety or stress", "Some have used it for this. Not tested in people."],
+          ] },
+        ],
+      },
+      {
+        heading: "How it works",
+        blocks: [
+          { type: "para", text: "PE-22-28 blocks the TREK-1 potassium channel. TREK-1 sits in brain regions involved in mood, and in animals, blocking it produces behavior that looks like a strong, fast antidepressant response — within days rather than the weeks typical of SSRIs — along with reported increases in new neuron growth and synapse formation in the hippocampus. PE-22-28 was engineered from spadin to hit this target while lasting longer in the body." },
+          { type: "para", text: "How established is this in people? It is not. The entire mechanistic story comes from animal and cell research. There is no human receptor, imaging, or clinical work confirming that blocking TREK-1 with this peptide is safe or effective in people. It is a well-defined target with an encouraging animal signal — which is exactly where many drugs look their best, right before human testing narrows or ends that promise." },
+        ],
+      },
+      {
+        heading: "What the research actually looked at",
+        blocks: [
+          { type: "para", text: "The research is preclinical. Published work examines spadin and PE-22-28 in rodent models — behavioral tests of depression, measures of hippocampal neurogenesis, and the speed of onset compared with conventional antidepressants — mostly from the French laboratories that identified spadin and the TREK-1 pathway." },
+          { type: "para", text: "There are no human trials of PE-22-28. No regulator has reviewed it, no safety database exists in people, and the doses, duration, and risks in humans are simply unknown." },
+        ],
+      },
+      {
+        heading: "Common misunderstandings",
+        blocks: [
+          { type: "list", items: [
+            "'It's a fast-acting antidepressant.' That describes rodents, not people. The fast onset is an animal finding; it has never been shown in a human being.",
+            "'It's basically a cleaner SSRI.' It works on a completely different target (a potassium channel, not serotonin reuptake), and unlike SSRIs it has no human safety or efficacy record at all.",
+            "'Promising research means it's close to proven.' Most compounds that look promising in animal models do not survive human testing. 'Studied in mice' is the beginning of the process, not the end.",
+          ] },
+        ],
+      },
+      {
+        heading: "Who it is not for",
+        blocks: [
+          { type: "list", items: [
+            "Anyone seeking treatment for depression, anxiety, or any mental-health condition — this is not a substitute for evaluated, human-tested care.",
+            "Anyone currently on antidepressants or other psychiatric medication, given the complete absence of human interaction or safety data.",
+            "Pregnancy or breastfeeding, or anyone trying to conceive.",
+            "Children and adolescents.",
+            "Honestly, anyone who is not comfortable using a compound that has never been tested in a human being.",
+            "Competitive athletes subject to WADA or USADA testing, who should treat any non-approved substance as prohibited by default.",
+          ] },
+          { type: "para", text: "If you are struggling with depression or another mood condition, the right step is an evaluation with a licensed clinician and treatments that have real human evidence behind them, not an experimental peptide. If you are in crisis, in the US you can call or text 988, the Suicide and Crisis Lifeline." },
+        ],
+      },
+      {
+        heading: "Who makes this, and under what rules",
+        blocks: [
+          { type: "para", text: "Everything dispensed here is prepared by a licensed 503A compounding pharmacy — not bought from a supplier and repackaged, and not sourced from an online seller. That designation carries specific, enforceable obligations:" },
+          { type: "list", items: [
+            "A prescription in your name. Compounded from a prescription for one identified patient, after an evaluation.",
+            "Licensed and inspected. A state license, subject to inspection by the state board of pharmacy.",
+            "Sterile preparation to a published standard. USP standards.",
+            "A paper trail. A lot number and beyond-use date on every preparation.",
+          ] },
+          { type: "para", text: "A compounded preparation is not an FDA-approved medicine. Because PE-22-28 has never been tested in humans, a licensed provider may well decline to prescribe it — and for a condition as serious as depression, human-tested options should come first." },
+        ],
+      },
+      {
+        heading: "Where this stands",
+        blocks: [
+          { type: "para", text: "Experimental, animal-only. PE-22-28 is one of the least-tested compounds you will find discussed anywhere: a well-reasoned drug target with a genuine rodent signal and zero human data. It is included here only for honest education. It is not a proven therapy, it is not approved, and for a condition as serious as depression there are human-tested options that should come first." },
+        ],
+      },
+      {
+        heading: "Clinical detail",
+        blocks: [
+          { type: "para", text: "PE-22-28 is a synthetic analogue of spadin, a peptide derived from the sortilin propeptide (neurotensin receptor 3 / NTSR3) that antagonizes the TREK-1 (KCNK2) two-pore potassium channel. TREK-1 blockade produces antidepressant-like effects with rapid onset and increased hippocampal neurogenesis in rodent models. All supporting data is preclinical; there are no human pharmacokinetic, safety, or efficacy studies. It is not FDA-approved and has no recognized human indication." },
+          { type: "para", text: "The information on this page is general education. It is not medical advice and it is not a recommendation for any treatment. PE-22-28 has not been tested in people; its safety and effects in humans are unknown. It is not an FDA-approved medicine. A compounded preparation is not an FDA-approved product and has not been reviewed by the FDA for safety, effectiveness or quality. Descriptions of what it is used for reflect how it is discussed in research and the peptide community, not claims that it is effective or safe for any purpose. Any prescription follows an individual evaluation by a licensed provider and is issued only where that provider judges it clinically appropriate. A prescription is never guaranteed." },
+        ],
+      },
+    ],
+  },
+  {
+    kind: "blend",
+    slug: "focus",
+    category: "COGNITIVE FUNCTION & NEUROPROTECTION",
+    title: "Focus — Full Review",
+    subtitle: "FORMULA",
+    standfirst: "Pinealon + PE-22-28 + Selank",
+    sections: [
+      {
+        heading: "What's in it",
+        blocks: [
+          { type: "table", columns: ["PEPTIDE", "ROLE IN THIS BLEND"], rows: [
+            ["Pinealon", "A short 'bioregulator' peptide proposed to support neuronal survival and resilience. Early research only — essentially no human data."],
+            ["PE-22-28", "An experimental TREK-1 blocker studied in animals for fast mood effects. Never tested in people."],
+            ["Selank", "A Russian-approved anti-anxiety peptide with small human trials, included to steady stress and mood. The most evidenced of the three."],
+          ] },
+          { type: "subhead", text: "The combination logic" },
+          { type: "para", text: "The idea behind Focus is to pair mental resilience with mood support: Selank to ease background anxiety, with Pinealon and PE-22-28 added for their proposed neuroprotective and mood effects. Be clear-eyed about the evidence, though. Of the three, only Selank has any human trials, and those are small and Russian. Pinealon's support is laboratory and animal work, and PE-22-28 has been studied only in animals. The rationale for combining them is mechanistic and theoretical, not the result of any trial of this blend." },
+          { type: "para", text: "Is there evidence for the combination, or only for the parts? Neither the blend nor two of its three components has been tested in people. This is among the most experimental formulas in the catalog, and it is presented honestly as such." },
+        ],
+      },
+      {
+        heading: "What it's used for",
+        blocks: [
+          { type: "table", columns: ["USED FOR", "IN SHORT"], rows: [
+            ["Focus and mental clarity", "The intended purpose, drawn mostly from the components' proposed effects rather than from any trial of the blend."],
+            ["Calm without sedation", "Selank's contribution, and the best-supported element of the formula."],
+            ["Neuroprotection and resilience", "A theoretical rationale from Pinealon and PE-22-28. Not established in people."],
+          ] },
+          { type: "subhead", text: "Overlaps & stacked risks" },
+          { type: "list", items: [
+            "Two of the three components have essentially no human safety data, so the blend's safety in people is largely unknown.",
+            "Combining three neuroactive peptides stacks their individual unknowns rather than cancelling them out.",
+            "Anyone with a mood disorder should not treat this as a substitute for evaluated care.",
+          ] },
+        ],
+      },
+      {
+        heading: "Who it is not for",
+        blocks: [
+          { type: "list", items: [
+            "Anyone seeking treatment for depression, anxiety, or another mental-health condition in place of evaluated, human-tested care.",
+            "Pregnant or breastfeeding patients, or anyone trying to conceive.",
+            "Children and adolescents.",
+            "Anyone on psychiatric medication, given the absence of human interaction data for two of the three peptides.",
+            "Competitive athletes subject to anti-doping testing.",
+          ] },
+          { type: "subhead", text: "Who it suits" },
+          { type: "para", text: "Realistically, this formula suits someone who understands they are considering a largely experimental, research-grade blend, who has no contraindicating history, and who has discussed the thin evidence base candidly with their provider. A provider may reasonably decline to prescribe it." },
+        ],
+      },
+      {
+        heading: "Who makes this, and under what rules",
+        blocks: [
+          { type: "para", text: "Everything dispensed here is prepared by a licensed 503A compounding pharmacy — not bought from a supplier and repackaged, and not sourced from an online seller. That designation carries specific, enforceable obligations:" },
+          { type: "list", items: [
+            "A prescription in your name. Compounded from a prescription for one identified patient, after an evaluation.",
+            "Licensed and inspected. A state license, subject to inspection by the state board of pharmacy.",
+            "Sterile preparation to a published standard. USP standards.",
+            "A paper trail. A lot number and beyond-use date on every preparation.",
+          ] },
+          { type: "para", text: "A compounded preparation is not an FDA-approved medicine. This page describes Focus for general educational purposes. It is not medical advice and does not replace a consultation with a licensed provider. Because two of the three components have no human testing, a licensed provider may decline to prescribe this formula; individual results vary, and a combination product carries the risks and the unknowns of each included peptide." },
+        ],
+      },
+    ],
+  },
+  {
+    kind: "peptide",
     slug: "semaglutide",
     category: "METABOLIC & FAT LOSS",
     title: "Semaglutide — the full review",
