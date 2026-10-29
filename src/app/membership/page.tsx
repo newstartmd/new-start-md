@@ -265,7 +265,10 @@ export default function MembershipPage() {
               <h2 className="mt-4 text-3xl font-semibold">Everything in one dashboard.</h2>
               <p className="mt-3 max-w-md text-slate-500">
                 Your membership lives in your portal — your plan, your progress and your care team,
-                right next to your training and goals.
+                right next to your training and goals.{" "}
+                <Link href="/dashboard" className="font-semibold text-royal-600 hover:text-royal-700">
+                  See the full dashboard →
+                </Link>
               </p>
             </div>
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">Sample</span>
