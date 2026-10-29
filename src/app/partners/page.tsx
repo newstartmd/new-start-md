@@ -5,7 +5,7 @@ import { PARTNER_DISCLAIMER } from "@/lib/legal";
 export const metadata: Metadata = {
   title: "Partner program",
   description:
-    "Gyms, trainers and affiliates: partner with New Start MD. Stay connected to your clients in your own portal — upload workouts, diets and podcasts — plus local events, giveaways, and a simple, compliant licensing model.",
+    "Gyms, trainers and affiliates: partner with New Start MD. Stay connected to your clients in your own portal — upload workouts, diets and podcasts — on a simple, compliant model.",
 };
 
 const STEPS = [
@@ -35,7 +35,7 @@ const FAQ = [
   },
   {
     q: "How do I get paid?",
-    a: "Through a flat brand-and-content licensing arrangement — a set fee for the content and brand collaboration we build together, including the workouts, diets and podcasts you create for the portal. On top of that, we invest in your community with local events and giveaways. You are never paid per patient, per order, or as a cut of what someone spends.",
+    a: "Through a flat brand-and-content licensing arrangement — a set fee for the content and brand collaboration we build together, including the workouts, diets and podcasts you create for the portal. You are never paid per patient, per order, or as a cut of what someone spends.",
   },
   {
     q: "Why is it structured that way?",

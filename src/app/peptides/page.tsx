@@ -66,22 +66,22 @@ export default function PeptidesPage() {
             </div>
           </div>
 
-          {/* Provenance / verify callout */}
+          {/* How it's made callout */}
           <div className="rounded-xl2 border border-line-200 bg-white p-6 shadow-card">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
               Where your medicine comes from
             </p>
-            <h3 className="mt-2 text-2xl text-navy-950">Every order, traceable.</h3>
+            <h3 className="mt-2 text-2xl text-navy-950">Licensed U.S. pharmacies.</h3>
             <p className="mt-3 text-sm text-slate-500">
-              When a prescription is filled, the pharmacy, lot, and ship date are written
-              to a tamper-evident record you can look up yourself — so you never have to
-              take &ldquo;it&apos;s legit&rdquo; on faith.
+              Nothing here is bought off a shelf or an unverified website. Every therapy is
+              compounded by a licensed U.S. pharmacy from a prescription in your name, under
+              published sterile-compounding standards.
             </p>
             <Link
-              href="/verify"
+              href="/how-it-works"
               className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-royal-600 hover:text-royal-700"
             >
-              Verify an order <span aria-hidden>→</span>
+              How care works <span aria-hidden>→</span>
             </Link>
           </div>
         </div>
