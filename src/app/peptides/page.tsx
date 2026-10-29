@@ -36,6 +36,14 @@ export default function PeptidesPage() {
               body you care about, and see which compounds are studied there, what
               people use each one for, and where it really stands with the FDA.
             </p>
+            <p className="mt-4 max-w-xl text-sm text-slate-500">
+              This library is education — it covers the whole field, including compounds we
+              don&apos;t sell. What a licensed provider can actually prescribe for you lives in{" "}
+              <Link href="/products" className="font-semibold text-royal-600 hover:text-royal-700">
+                Protocols
+              </Link>
+              .
+            </p>
           </div>
         </Container>
       </div>

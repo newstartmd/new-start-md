@@ -2854,6 +2854,379 @@ export const FULL_REVIEWS: FullReview[] = [
       },
     ],
   },
+  {
+    kind: "peptide",
+    slug: "glutathione",
+    category: "MITOCHONDRIAL & CELLULAR ENERGY",
+    title: "Glutathione — the full review",
+    subtitle: "ENDOGENOUS TRIPEPTIDE ANTIOXIDANT",
+    standfirst: "This is the deeper look behind the short version — what glutathione does in the body, why the oral form is a poor route, what the skin-lightening and Parkinson's studies actually measured, the safety record in detail, who it is not for in full, and what your consultation covers.",
+    sections: [
+      {
+        heading: "What it is",
+        blocks: [
+          { type: "para", text: "Glutathione is a tiny protein of three amino acids that every cell in the body manufactures for itself. It is the body's main internal antioxidant and its principal tool for neutralizing reactive by-products of metabolism, including in the liver. Levels fall with illness and with age, which is part of why it is used for skin tone, oxidative stress, and general recovery. Swallowed glutathione is broken down before it can be absorbed intact, which is the reason it is given by injection, IV, or nebulizer instead of as an oral supplement." },
+        ],
+      },
+      {
+        heading: "What people use it for",
+        blocks: [
+          { type: "table", columns: ["USED FOR", "WHAT THAT MEANS"], rows: [
+            ["General antioxidant and oxidative stress", "Small human studies measured blood markers rather than outcomes."],
+            ["Skin tone and brightening", "The most-marketed use; the trials behind it are small and mixed."],
+            ["Chemotherapy side effects and neuropathy", "Studied as an add-on in oncology, with results that need an oncologist's input."],
+          ] },
+        ],
+      },
+      {
+        heading: "How it works",
+        blocks: [
+          { type: "para", text: "As the body's primary intracellular antioxidant, glutathione works by donating electrons to neutralize reactive oxygen species and other reactive by-products of normal metabolism, and it plays a central role in liver detoxification pathways. Because oral glutathione is largely broken down by digestion before it can be absorbed intact, routes that bypass the digestive system — injection, intravenous infusion, or nebulized inhalation — are used instead." },
+          { type: "para", text: "The proposed skin-brightening effect is thought to work through glutathione's influence on melanin production, shifting pigment production toward a lighter form of melanin, though the underlying biochemistry is better established in laboratory settings than confirmed in controlled human skin studies." },
+        ],
+      },
+      {
+        heading: "What the research actually looked at",
+        blocks: [
+          { type: "para", text: "Small human studies of glutathione have generally measured blood markers of oxidative stress rather than direct clinical outcomes. Skin tone and brightening is the most heavily marketed use, but the trials behind it are small and their results are mixed." },
+          { type: "para", text: "Glutathione has also been studied as an add-on therapy for chemotherapy side effects and chemotherapy-induced neuropathy in oncology settings, where results require interpretation" },
+          { type: "para", text: "alongside a patient's oncologist. Across all these uses, the human evidence base is limited in size and consistency relative to how widely the compound is marketed." },
+        ],
+      },
+      {
+        heading: "Common misunderstandings",
+        blocks: [
+          { type: "list", items: [
+            "“Oral glutathione supplements raise your levels the way an infusion does.” Swallowed glutathione is largely broken down during digestion before it can be absorbed intact, which is why injectable, IV, and nebulized forms are used instead.",
+            "“It's a proven skin-lightening treatment.” The trials behind the skin-brightening use are small and their results are mixed, not a settled, consistent finding.",
+            "“It's approved for detoxification or wellness use.” No form of glutathione is FDA-approved for skin brightening, detoxification, or general wellness use.",
+            "“It's risk-free because it's a substance the body already makes.” Naturally occurring does not mean risk-free by injection; reactions, and contamination in compounded product, are real considerations.",
+          ] },
+        ],
+      },
+      {
+        heading: "Who it is not for",
+        blocks: [
+          { type: "list", items: [
+            "Anyone with asthma or reactive airways, where an inhaled or nebulised form is proposed.",
+            "Anyone with a history of anaphylaxis or severe drug allergy.",
+            "Anyone with liver disease or abnormal liver tests.",
+            "Pregnant or breastfeeding patients, and anyone on chemotherapy without involving their oncologist.",
+          ] },
+          { type: "para", text: "Competitive athletes: Glutathione itself is not prohibited by WADA. Athletes in tested sport should be aware that WADA's M2 category restricts large-volume intravenous infusions (generally above 100 mL within a 12-hour period) except under specific permitted circumstances, which can affect how an infusion is administered rather than whether glutathione itself is allowed." },
+        ],
+      },
+      {
+        heading: "Who makes this, and under what rules",
+        blocks: [
+          { type: "para", text: "Everything dispensed here is prepared by a licensed 503A compounding pharmacy — not bought from a supplier and repackaged, and not sourced from an online seller. That designation carries specific, enforceable obligations:" },
+          { type: "list", items: [
+            "A prescription in your name. Compounded from a prescription for one identified patient, after an evaluation.",
+            "Licensed and inspected. A state license, subject to inspection by the state board of pharmacy.",
+            "Sterile preparation to a published standard. USP standards.",
+            "A paper trail. A lot number and beyond-use date on every preparation.",
+          ] },
+          { type: "para", text: "A compounded preparation is not an FDA-approved medicine — but it is the difference between a licensed pharmacy working to a standard and an unregulated website." },
+        ],
+      },
+      {
+        heading: "Where this stands",
+        blocks: [
+          { type: "para", text: "Not approved for the uses it is marketed for. Injectable and IV glutathione is widely offered for skin brightening, detoxification and wellness. None is an FDA-approved use. Human outcome evidence is limited. Regulators in several countries have warned about injectable skin-lightening products specifically. Well tolerated is not the same as effective. Both need to be true." },
+        ],
+      },
+      {
+        heading: "Clinical detail",
+        blocks: [
+          { type: "para", text: "A tripeptide (glutamate-cysteine-glycine) synthesized endogenously in every human cell; the body's principal intracellular antioxidant. Levels decline with illness and age. Oral bioavailability is poor; clinical and wellness use relies on injection, IV infusion, or nebulization. Studied as an oncology add-on for chemotherapy-induced neuropathy and other side effects. Contamination and sterility issues have been a recurring problem in compounded glutathione products." },
+          { type: "para", text: "The information on this page is general education. It is not medical advice and it is not a recommendation for any treatment. Glutathione is not an FDA-approved medicine for the uses described here. A compounded preparation is not an FDA-approved product and has not been reviewed by the FDA for safety, effectiveness or quality. Descriptions of what this is used for reflect how it is commonly used and discussed. They are not claims that it is effective for any purpose. Any prescription follows an individual evaluation by a licensed provider and is issued only where that provider judges it clinically appropriate. A prescription is never guaranteed." },
+        ],
+      },
+    ],
+  },
+  {
+    kind: "peptide",
+    slug: "mots-c",
+    category: "MITOCHONDRIAL & CELLULAR ENERGY",
+    title: "MOTS-c — the full review",
+    subtitle: "MITOCHONDRIAL-DERIVED PEPTIDE",
+    standfirst: "This is the deeper look behind the short version — where this peptide's blueprint actually comes from, what the exercise study found and what it didn't, the difference between the peptide itself and the analog that was actually tested in people, and what your consultation covers.",
+    sections: [
+      {
+        heading: "What it is",
+        blocks: [
+          { type: "para", text: "MOTS-c is a small, lab-synthesized chain of 16 amino acids. What makes it scientifically unusual is where its blueprint comes from: almost everything a cell makes is encoded by nuclear DNA, but MOTS-c's instructions sit inside a short stretch of the mitochondrial genome — the DNA carried by mitochondria, the structures inside cells that generate energy. For decades, mitochondrial DNA was assumed to code only for a handful of energy-machinery proteins; MOTS-c is one of a small, only recently recognized family of \"mitochondrial-derived peptides\" that appear to let mitochondria send signals elsewhere in the cell and body. It was discovered in 2015 by researchers at the USC Leonard Davis School of Gerontology, through a bioinformatic screen of previously overlooked mitochondrial coding regions, published in Cell Metabolism. It is sold today as a subcutaneous injectable, through compounding pharmacies and online research-chemical vendors, marketed for metabolic health, weight loss, exercise performance, and general longevity — none of which is an FDA-recognized indication, and almost none of which has actually been tested by giving the peptide to a person." },
+        ],
+      },
+      {
+        heading: "What people use it for",
+        blocks: [
+          { type: "table", columns: ["USED FOR", "WHAT THAT MEANS"], rows: [
+            ["Metabolic health and insulin sensitivity", "Some have used it for this. Not tested in people."],
+            ["Weight loss and fat metabolism", "Some have used it for this. Not tested in people."],
+            ["Exercise performance", "Some have used it for this. Not tested in people."],
+            ["Longevity and anti-aging", "Based on aging-laboratory research; human data is limited to correlational studies, which does not establish that supplementing it affects human aging or lifespan."],
+            ["Mitochondrial health generally", "A plausible extension of MOTS-c's role as a mitochondrial-signaling molecule, but not a validated clinical endpoint tested in any human trial of this peptide."],
+          ] },
+        ],
+      },
+      {
+        heading: "How it works",
+        blocks: [
+          { type: "para", text: "The leading proposed mechanism is that MOTS-c activates AMPK (AMP-activated protein kinase), a master cellular fuel-sensing enzyme that also switches on with exercise, calorie restriction, and drugs like metformin. In laboratory studies, MOTS-c-driven AMPK activation is linked to increased glucose uptake into muscle, increased fat burning, and suppressed glucose output from the liver. A second, AMPK-independent pathway has also been proposed, in which MOTS-c moves into the cell nucleus under metabolic stress and interacts with stress-response genes." },
+          { type: "para", text: "The \"exercise mimetic\" reputation comes from a 2021 laboratory study in which giving MOTS-c to Laboratory research reported roughly doubled treadmill running duration versus untreated controls. The same paper found that a bout of exercise raises a person's own MOTS-c — roughly twelve-fold in skeletal muscle tissue and about 1.5 to 1.6-fold in circulating blood, in a small ten-person sample. That is a different kind of evidence than an injection working: it shows exercise triggers a rise in the body's own MOTS-c, not that injecting MOTS-c reproduces what exercise does. No human study has tested whether administering the peptide improves running capacity, VO2 max, strength, or any other performance measure." },
+        ],
+      },
+      {
+        heading: "What the research actually looked at",
+        blocks: [
+          { type: "para", text: "Two very different bodies of research exist for MOTS-c, and marketing routinely blurs them together. The first is observational human research measuring people's own natural circulating" },
+          { type: "para", text: "MOTS-c: several published cohort studies have linked lower blood MOTS-c to higher fasting insulin and worse insulin resistance, reported reduced levels in type 2 diabetes, and correlated levels with muscle mass and physical performance in older adults. A 2025 study of 169 people testing MOTS-c as a brain-aging biomarker found at best a weak, inconsistent signal, explicitly describing \"poor discriminatory power.\" None of this involves giving anyone MOTS-c — it is blood-level correlation research, not evidence that adding more of it produces a benefit. The second body of research — actually administering MOTS-c to people — is extremely thin, bordering on nonexistent for the peptide people are being sold. FDA's own review states it has \"not identified any human exposure data on drug products containing MOTs-C administered via any route of administration.\" The only related interventional human data comes from CB4211, a chemically modified analog of MOTS-c — a different molecule, not MOTS-c itself — which went through a Phase 1a/1b randomized, placebo-controlled trial of roughly 88 people. It was reasonably well tolerated but was temporarily paused for injection-site reactions, showed modest liver-enzyme reductions but no significant difference in liver fat versus placebo, and the company developing it subsequently dissolved and discontinued the program." },
+          { type: "para", text: "For the actual native peptide, the first real controlled human efficacy trial — a Phase 2a randomized, double-blind, placebo-controlled study testing MOTS-c by subcutaneous injection in roughly 120 adults with prediabetes and overweight or obesity — only began recruiting in February 2026, with an estimated completion date of May 2028. It has reported nothing yet, which means interventional human evidence for the peptide actually sold under this name is, as of now, essentially zero completed studies." },
+        ],
+      },
+      {
+        heading: "Common misunderstandings",
+        blocks: [
+          { type: "list", items: [
+            "“It's an exercise-in-a-shot, proven in humans.” The dramatic exercise-capacity finding is a laboratory result. The human data runs the opposite direction: exercising raises a person's own MOTS-c — it does not show that injecting it gives you the effects of exercise.",
+            "“Because the body makes it naturally, it must be safe to inject at any dose.” FDA's own conclusion is the opposite: it has not identified any human exposure data on drug products containing MOTS-c administered by any route.",
+            "“There's a ton of research on this, it's well established.” The overwhelming majority is laboratory mechanism work, plus human studies that only measure existing blood MOTS-c levels — essentially none involves administering MOTS-c to a person.",
+            "“The 2026 advisory vote means MOTS-c is basically approved now.” That vote was non-binding, passed narrowly over FDA staff's explicit objection, and only concerned whether pharmacies may compound with it — not whether it works or is safe.",
+          ] },
+        ],
+      },
+      {
+        heading: "Who it is not for",
+        blocks: [
+          { type: "list", items: [
+            "Anyone expecting an established human safety profile — none exists at any dose.",
+            "Pregnant or breastfeeding patients, or anyone trying to conceive.",
+            "Anyone with active cancer, a cancer history, or an undiagnosed mass — the mechanism touches cell-growth signaling pathways not fully characterized in humans, and no carcinogenicity studies exist.",
+            "Anyone on metformin or another AMPK-pathway-active medication — a shared mechanism raises an unstudied interaction concern.",
+            "Anyone sourcing product from an unverified research-use-only vendor.",
+            "Competitive athletes subject to WADA-code testing.",
+          ] },
+          { type: "para", text: "Competitive athletes: MOTS-c is prohibited at all times, in and out of competition, under WADA category S4 (Hormone and Metabolic Modulators), listed as an AMPK activator. A therapeutic use exemption is not a realistic path around this, since a TUE requires an approved therapeutic use and MOTS-c has none. Anti-doping operates on strict liability regardless of a clinician's recommendation or the fact that the substance is naturally produced by the body." },
+        ],
+      },
+      {
+        heading: "Who makes this, and under what rules",
+        blocks: [
+          { type: "para", text: "Everything dispensed here is prepared by a licensed 503A compounding pharmacy — not bought from a supplier and repackaged, and not sourced from an online seller. That designation carries specific, enforceable obligations:" },
+          { type: "list", items: [
+            "A prescription in your name. Compounded from a prescription for one identified patient, after an evaluation.",
+            "Licensed and inspected. A state license, subject to inspection by the state board of pharmacy.",
+            "Sterile preparation to a published standard. USP standards.",
+            "A paper trail. A lot number and beyond-use date on every preparation.",
+          ] },
+          { type: "para", text: "A compounded preparation is not an FDA-approved medicine — but it is the difference between a licensed pharmacy working to a standard and an unregulated website." },
+        ],
+      },
+      {
+        heading: "Where this stands",
+        blocks: [
+          { type: "para", text: "Never approved, and the human record is essentially empty. FDA states it has no human exposure data for MOTS-c administered by any route. An advisory committee voted narrowly (7-5, two abstentions) in July 2026 to recommend it for a compounding list, for obesity and osteoporosis — advisory, not acted on, not approval. The one real human trial just started. A controlled trial of the actual peptide began enrolling in February 2026 and has not reported. Everything else is laboratory work, or blood-level correlation studies that never administered the peptide at all. The exercise-mimetic story is usually told backwards — the human finding is that exercise raises your own MOTS-c, not that injecting it replicates exercise." },
+        ],
+      },
+      {
+        heading: "Clinical detail",
+        blocks: [
+          { type: "para", text: "A 16-amino-acid peptide encoded within the mitochondrial genome, discovered in 2015 through a bioinformatic screen of overlooked mitochondrial coding regions, published in Cell Metabolism. Proposed mechanism centers on AMPK activation, the same fuel-sensing pathway engaged by exercise, calorie restriction, and metformin. FDA states it has not identified any human exposure data on drug products containing MOTS-c administered via any route of administration. The only related interventional human data comes from CB4211, a chemically distinct analog, not native MOTS-c; its Phase 1a/1b trial found no significant difference in liver fat versus placebo, and the program was discontinued. The first controlled human efficacy trial of the native peptide (NCT07505745, ~120 adults with prediabetes/overweight-obesity) began recruiting February 2026, with results not expected before 2028." },
+          { type: "para", text: "The information on this page is general education. It is not medical advice and it is not a recommendation for any treatment. MOTS-c is not an FDA-approved medicine for the uses described here. A compounded preparation is not an FDA-approved product and has not been reviewed by the FDA for safety, effectiveness or quality. Descriptions of what this is used for reflect how it is commonly used and discussed. They are not claims that it is effective for any purpose. Any prescription follows an individual evaluation by a licensed provider and is issued only where that provider judges it clinically appropriate. A prescription is never guaranteed." },
+        ],
+      },
+    ],
+  },
+  {
+    kind: "peptide",
+    slug: "pt-141",
+    category: "SEXUAL & REPRODUCTIVE HEALTH",
+    title: "PT-141 — the full review",
+    subtitle: "MELANOCORTIN RECEPTOR AGONIST (BREMELANOTIDE)",
+    standfirst: "This is the deeper look behind the short version — the real numbers behind the approved trials, how the approved product and a compounded preparation differ, and what your consultation covers.",
+    sections: [
+      {
+        heading: "What it is",
+        blocks: [
+          { type: "para", text: "PT-141, also known by its chemical name bremelanotide, is a lab-made, seven-amino-acid cyclic peptide built to mimic a natural hormone called alpha-melanocyte-stimulating hormone (α-MSH). As Vyleesi, it is FDA-approved for one specific population: premenopausal women with hypoactive sexual desire disorder (HSDD), where low desire causes marked distress and isn't better explained by another medical or psychiatric condition, a relationship problem, or a medication. Separately from Vyleesi, the same molecule is available as a compounded preparation, sold under its research name PT-141, used off-label for other patients — notably men, for whom no FDA-approved option currently exists for this purpose." },
+          { type: "para", text: "It is most often described alongside PDE5 inhibitors like sildenafil, but the two work in essentially different places in the body. PDE5 inhibitors act locally, relaxing blood vessels in the penis, and only amplify arousal that is already present. Bremelanotide acts further upstream, on receptors in the brain and central nervous system involved in the desire and arousal pathway itself, independent of local blood flow — which is why it is taken as a single as-needed injection well before activity rather than \"on demand,\" and why its side-effect pattern looks nothing like a PDE5 inhibitor's." },
+          { type: "para", text: "The approved product and the compounded product are not interchangeable. Vyleesi is a single, standardized 1.75 mg subcutaneous auto-injector dose with FDA-reviewed manufacturing controls. Compounded or gray-market \"PT-141\" — including nasal sprays and higher-dose vials — is not reviewed by FDA for identity, purity, potency, or sterility, and the nasal route it commonly uses is the same route an earlier FDA safety review flagged strongly enough to end that entire development program in 2007." },
+        ],
+      },
+      {
+        heading: "What people use it for",
+        blocks: [
+          { type: "table", columns: ["USED FOR", "WHAT THAT MEANS"], rows: [
+            ["Low sexual desire in premenopausal women (the approved use)", "Two large trials showed a real, statistically significant but modest benefit on desire and distress scores; no significant improvement was seen in satisfying sexual events. Nausea and flushing are common side effects."],
+            ["Male erectile dysfunction, off-label", "Based on an older, FDA safety-halted program; its largest supporting trial (342 men) carries an unresolved 2023 journal integrity notice."],
+            ["Male low libido without diagnosed ED", "The male trials that exist measured erectile response, not a validated low-desire outcome; any libido-specific benefit is extrapolated rather than directly demonstrated."],
+            ["Female use outside the approved population", "The label explicitly excludes postmenopausal women; the pivotal trials enrolled premenopausal women only, and no dedicated trial for other populations was identified."],
+            ["Higher-dose or intranasal protocols sold online", "This is the specific route an earlier FDA review flagged for a blood-pressure signal strong enough to end the intranasal development program; no modern trial of these doses exists."],
+            ["General desire or performance enhancement", "Not tested in any population without a diagnosed condition; extrapolated from the drug's proposed brain mechanism, not a demonstrated human effect."],
+          ] },
+        ],
+      },
+      {
+        heading: "How it works",
+        blocks: [
+          { type: "para", text: "Bremelanotide is a melanocortin receptor (MCR) agonist — it nonselectively activates several receptor subtypes, most consequentially MC4R, found on central-nervous-system neurons implicated in laboratory research of sexual desire and arousal circuits, and MC1R, found on melanocytes, activation of which is the mechanistic explanation for the drug's hyperpigmentation side effect. The FDA label is direct that the underlying story stops there: \"The mechanism of action of bremelanotide for the treatment of hypoactive sexual desire disorder is unknown.\" What is documented is receptor pharmacology and the downstream effects — blood pressure and heart rate changes, nausea, pigmentation — that follow from activating multiple melanocortin receptor subtypes at once, not a validated causal chain explaining exactly how that translates into increased desire in a given patient." },
+        ],
+      },
+      {
+        heading: "What the research actually looked at",
+        blocks: [
+          { type: "para", text: "The approved indication rests on two identical Phase 3, randomized, placebo-controlled trials (the RECONNECT program) enrolling 1,247 premenopausal women over 24 weeks. Both co-primary endpoints — a validated desire-domain score and a distress score — showed statistically significant improvement over placebo, though the effect sizes were modest by conventional standards (roughly 0.27 to 0.39 on the standard scale). On the secondary endpoint that arguably matters most to a patient — the number of satisfying sexual events — there was no statistically significant difference from placebo. Nausea occurred in 40% of participants (versus 1.3% on placebo) and flushing in 20% (versus 0.3%); 18% of the treatment group discontinued the trial, 8% specifically for nausea. The off-label male-use literature is considerably thinner and older, tracing almost entirely to the original 1990s–2000s intranasal PT-141 program that FDA safety concerns ended in 2007– 2008, before it reached approval. The most-cited controlled study — 342 men who had not responded to sildenafil — reported a \"positive clinical response\" in 33.5% of the bremelanotide group versus 8.5% on placebo, but this specific paper carries a formal, unresolved 2023 journal Expression of Concern. No trial has tested the doses or routes sold today, and no dedicated trial exists for postmenopausal women or for general enhancement use in people without a diagnosed condition." },
+        ],
+      },
+      {
+        heading: "Common misunderstandings",
+        blocks: [
+          { type: "list", items: [
+            "“It's basically like Viagra.” Mechanistically these work in close to opposite places. PDE5 inhibitors act peripherally on blood vessels and only amplify arousal already present; bremelanotide acts centrally, in brain pathways linked to desire, independent of local blood flow — which is also why the side-effect profiles look nothing alike.",
+          ] },
+          { type: "list", items: [
+            "“It's approved for everyone — women, men, general enhancement.” The label is narrow and explicit: approved only for premenopausal women with a specific diagnosed form of low desire. It states outright that it is not indicated for postmenopausal women, not indicated for men, and not indicated for sexual performance enhancement.",
+            "“Nausea and flushing are rare side effects.” They are the opposite of rare. Nausea occurred in 40% of trial participants (versus 1.3% on placebo) and flushing in 20% (versus 0.3%) — common enough that 18% of the treatment group left the trial early.",
+            "“The PT-141 sold online or through a compounding pharmacy is the same product, at the same dose, as Vyleesi.” It generally is not. Vyleesi is a single, standardized, FDA-reviewed dose; compounded or gray-market \"PT-141\" — including nasal sprays and higher-dose vials — is unregulated for identity, purity, potency, and sterility.",
+          ] },
+        ],
+      },
+      {
+        heading: "Who it is not for",
+        blocks: [
+          { type: "list", items: [
+            "Uncontrolled hypertension or known cardiovascular disease — an explicit label contraindication, since bremelanotide causes transient blood pressure and heart rate changes after each dose.",
+            "Pregnancy, or trying to conceive without reliable contraception — animal studies showed fetal harm at exposures well above the maximum recommended human dose. Animal findings are the earliest stage of research and no human study has confirmed them; where the possible harm is to a pregnancy, that signal is reason enough to exclude rather than wait.",
+            "Low desire caused by another medical condition, psychiatric condition, relationship problem, or medication — the approved trials specifically excluded these causes.",
+            "Postmenopausal women — excluded from the pivotal trials and explicitly outside the label's indication.",
+            "Repeated or frequent dosing beyond label guidance, particularly for anyone at higher risk of visible pigmentation change.",
+            "Anyone sourcing \"PT-141\" from an unregulated online vendor.",
+            "More than one dose in 24 hours, or more than about 8 doses a month — both exceed the tested and labeled regimen.",
+          ] },
+          { type: "para", text: "Competitive athletes: The terms \"melanocortin,\" \"bremelanotide,\" \"PT-141,\" and \"melanotan\" do not appear on the current WADA Prohibited List, and no anti-doping sanction case involving it was identified — likely reflecting that bremelanotide's FDA approval (Vyleesi) keeps it out of WADA's catch-all category for substances with no approval anywhere. This should be read as \"not found,\" not as a guaranteed clearance; a competing athlete should independently confirm current status through Global DRO or their national anti-doping agency, and should know that an unregulated compounded or gray-market vial carries its own contamination risk that could trigger a positive test for an unrelated substance." },
+          { type: "para", text: "Approved product, or a compounded preparation — and the difference matters" },
+          { type: "para", text: "This is an FDA-approved medicine. It is available as the manufacturer's own approved product, and — separately — as a compounded preparation. Which one is being offered is always stated plainly. If the approved product is right, that is what gets prescribed:" },
+          { type: "list", items: [
+            "The manufacturer's pen or vial. Reviewed by the FDA for safety, effectiveness and quality, exactly as labeled.",
+            "Filled at a licensed pharmacy. Dispensed from your prescription like any other approved medicine. If a compounded preparation is clinically appropriate instead, it is prepared by a licensed 503A compounding pharmacy:",
+            "A prescription in your name. Compounded from a prescription for one identified patient, after an evaluation.",
+            "Licensed and inspected. A state license, subject to inspection by the state board of pharmacy.",
+            "A paper trail. A lot number and beyond-use date on every preparation.",
+          ] },
+          { type: "para", text: "A compounded preparation is not itself an FDA-approved product — but it is still made under a licensed pharmacy's enforceable standards, not an unregulated website." },
+        ],
+      },
+      {
+        heading: "Where this stands",
+        blocks: [
+          { type: "para", text: "There is an approved product, for one specific use. Bremelanotide approved as VYLEESI for acquired generalised hypoactive sexual desire disorder in premenopausal women — a real, statistically significant but modest benefit, with nausea (40%) and flushing (20%) common. Use outside that group is off-label. That includes men, postmenopausal women, and general enhancement — all resting on an older program FDA safety-halted in 2007, whose largest supporting trial carries an unresolved 2023 journal integrity notice. An approval for one population, on one outcome measure, is not evidence for another population or a different claim." },
+        ],
+      },
+      {
+        heading: "Clinical detail",
+        blocks: [
+          { type: "para", text: "Bremelanotide descends from melanotan II, a 1980s University of Arizona sunless-tanning candidate; an unplanned erection during self-experimentation redirected research toward sexual-dysfunction use. FDA halted the original intranasal PT-141 development program in 2007 over blood-pressure increases; the subsequently reformulated subcutaneous version, focused on premenopausal HSDD, became Vyleesi, approved June 21, 2019 (NDA 210557). Vyleesi was only the second female-libido medication FDA has ever approved, after flibanserin (Addyi) in 2015. Neither \"bremelanotide\" nor \"PT-141\" currently appears on FDA's active 503A Bulks List, the nominated-but-withdrawn table, or the Category 2 significant-safety-risk table. A 2020 FDA warning letter to a compounding pharmacy named \"Bremelanotide (PT-141)\" directly among substances used outside the exemptions available to 503A compounders." },
+          { type: "para", text: "The information on this page is general education. It is not medical advice and it is not a recommendation for any treatment. PT-141 is FDA-approved for the uses described as approved above. Off-label uses discussed here are not FDA-approved uses. A compounded preparation, where used instead of the approved product, is not itself an FDA-approved product and has not been reviewed by the FDA for safety, effectiveness or quality. Descriptions of what this is used for reflect how it is commonly used and discussed. They are not claims that it is effective for any unapproved purpose. Any prescription follows an individual evaluation by a licensed provider and is issued only where that provider judges it clinically appropriate. A prescription is never guaranteed." },
+        ],
+      },
+    ],
+  },
+  {
+    kind: "peptide",
+    slug: "ss-31",
+    category: "MITOCHONDRIAL & CELLULAR ENERGY",
+    title: "SS-31 — the full review",
+    subtitle: "CARDIOLIPIN-TARGETING TETRAPEPTIDE (ELAMIPRETIDE)",
+    standfirst: "This is the deeper look behind the short version — the approval history, including an earlier rejection, the two large trials that failed to hit their main goals, why the one approval that exists is a narrow, conditional one, and what your consultation covers.",
+    sections: [
+      {
+        heading: "What it is",
+        blocks: [
+          { type: "para", text: "SS-31, known by its drug development name elamipretide, is a four-amino-acid peptide engineered to be drawn specifically into the inner membrane of mitochondria, the structures inside cells that generate energy. It works differently from most compounds in this catalog: rather than acting on a hormone receptor, it binds a molecule called cardiolipin, found almost exclusively in that inner mitochondrial membrane, which organizes the machinery that produces cellular energy." },
+          { type: "para", text: "Under the brand name Forzinity, elamipretide is FDA-approved — the only compound in this catalog that can say that — but only for one ultra-rare, genetic, pediatric-onset disease called" },
+          { type: "para", text: "Barth syndrome, and only after an earlier rejection. What is sold through compounding pharmacies and peptide vendors as \"SS-31\" for general longevity or mitochondrial-health use is a different, untested product, aimed at a population and use the approved drug's trials never studied." },
+        ],
+      },
+      {
+        heading: "What people use it for",
+        blocks: [
+          { type: "table", columns: ["USED FOR", "WHAT THAT MEANS"], rows: [
+            ["Barth syndrome — muscle strength", "Approved in 2025 through an accelerated pathway, based on a muscle-strength surrogate, after an earlier rejection; the required confirmatory trial is due in 2030 and approval could be withdrawn if it fails."],
+            ["Age-related vision loss (geographic atrophy)", "The pivotal 176-person trial missed both of its main measures; a secondary anatomical finding is being tested in an ongoing, larger trial. Not an approved use."],
+            ["Primary mitochondrial myopathy", "The pivotal 218-person trial failed both of its main measures; only an unreplicated subgroup showed benefit. Not an approved use."],
+            ["Heart failure", "A small trial found no meaningful benefit; the use does not appear to be in active further development."],
+            ["General mitochondrial health, longevity, or anti-aging", "No controlled human trial has tested this use in healthy adults; this is the population and goal the compounded product is actually sold for."],
+          ] },
+        ],
+      },
+      {
+        heading: "How it works",
+        blocks: [
+          { type: "para", text: "Cardiolipin folds the inner mitochondrial membrane into the folds that organize the electron transport chain, the machinery that produces ATP, the cell's energy currency. When cardiolipin is damaged — by oxidative stress, aging, or disease — that folded structure collapses, the electron transport chain leaks more cell-damaging byproducts, and that damages more cardiolipin, a self-reinforcing decline implicated in rare mitochondrial diseases and, more broadly, in general age-and disease-related mitochondrial dysfunction." },
+          { type: "para", text: "SS-31 binds cardiolipin directly, without disrupting the membrane itself, and is proposed to stabilize that folded structure, better organize the electron transport chain, reduce the leakage of damaging byproducts, and support ATP production. This mechanism is well characterized at the biochemical level — but as the research below shows, that has not reliably translated into positive results in the largest human trials that have tested it." },
+        ],
+      },
+      {
+        heading: "What the research actually looked at",
+        blocks: [
+          { type: "para", text: "The one approval that exists — for Barth syndrome, a rare genetic disease affecting heart and skeletal muscle — followed a difficult path: an original application was rejected by the FDA in 2025 after a lengthy review, and the drug was ultimately approved later that year only under an accelerated pathway, based on a muscle-strength measurement used as a surrogate for benefit, from a small 12-person trial whose blinded phase did not show a significant effect on its original primary measures. The confirmatory trial FDA required as a condition of approval only began in early 2026, with results not due until 2030, and the approval can be withdrawn if that trial fails." },
+          { type: "para", text: "In two other serious diseases, elamipretide's largest, most rigorous trials did not succeed. A 218-person Phase 3 trial in a genetic muscle disease called primary mitochondrial myopathy failed both of its main measures, with only an unreplicated subgroup finding a benefit. A separate 176-person Phase 2 trial in a form of age-related vision loss (geographic atrophy) also missed both of its main measures, though a secondary anatomical signal is being tested further in an ongoing, larger trial. A small heart-failure trial found no meaningful benefit, and elamipretide no longer appears in the company's stated development pipeline for that use. None of this trial history — in any of these diseases — was conducted in healthy adults, or with a longevity or general-wellness goal. That evidence base, for the way SS-31 is actually marketed through compounding today, does not exist." },
+        ],
+      },
+      {
+        heading: "Common misunderstandings",
+        blocks: [
+          { type: "list", items: [
+            "“FDA-approved means broadly proven safe and effective.” It is approved for one muscle-strength measurement in one ultra-rare pediatric genetic disease, through an accelerated pathway, after an earlier outright rejection — that says nothing about a healthy adult using it for a different goal.",
+            "“The mitochondrial mechanism is proven, so the clinical benefit must be too.” The underlying biochemistry is well documented, but the largest controlled trials in two separate serious diseases — a muscle disease and an eye disease — both failed to meet their main goals.",
+            "“Compounded SS-31 is basically the same as the approved drug.” The approved product is a specific formulation, at a specific dose, for a specific disease; compounded \"SS-31\" is a different, untested product, and compounding a near-copy of a drug that already has an approved version sits on uncertain legal footing.",
+            "“It's basically proven for wellness because it has so much trial history.” It has more human trial data than almost anything else in this catalog, but that data comes from specific serious diseases, much of it endpoint-negative — not from the healthy-adult, longevity-focused use it is actually marketed for.",
+          ] },
+        ],
+      },
+      {
+        heading: "Who it is not for",
+        blocks: [
+          { type: "list", items: [
+            "Anyone extrapolating the Barth syndrome approval, or any of the disease-specific trial results, to general wellness or longevity use — an untested population and goal.",
+            "Pregnant or breastfeeding patients, or anyone trying to conceive — no human pregnancy or lactation data exists.",
+            "Anyone with a known hypersensitivity — reactions including rash, facial swelling, and respiratory symptoms have been reported.",
+            "Anyone treating the failed-endpoint trials (muscle disease, eye disease, heart failure) as evidence of proven benefit.",
+            "Anyone sourcing product from an unverified compounder or vendor with no confirmed dose, purity, or sterility.",
+            "Competitive athletes — status has changed recently with the new approval, so current WADA/USADA status should be independently verified.",
+          ] },
+          { type: "para", text: "Competitive athletes: SS-31 does not currently appear by name on the WADA Prohibited List, and now that it holds an FDA approval for Barth syndrome, it may no longer clearly fit the catch-all category applied to unapproved substances. This is a recent, still-settling status rather than a firm, permanent clearance — competitive athletes should verify current status with their sport's anti-doping authority before use." },
+        ],
+      },
+      {
+        heading: "Who makes this, and under what rules",
+        blocks: [
+          { type: "para", text: "Everything dispensed here is prepared by a licensed 503A compounding pharmacy — not bought from a supplier and repackaged, and not sourced from an online seller. That designation carries specific, enforceable obligations:" },
+          { type: "list", items: [
+            "A prescription in your name. Compounded from a prescription for one identified patient, after an evaluation.",
+            "Licensed and inspected. A state license, subject to inspection by the state board of pharmacy.",
+            "Sterile preparation to a published standard. USP standards.",
+            "A paper trail. A lot number and beyond-use date on every preparation.",
+          ] },
+          { type: "para", text: "A compounded preparation is not an FDA-approved medicine — but it is the difference between a licensed pharmacy working to a standard and an unregulated website." },
+        ],
+      },
+      {
+        heading: "Where this stands",
+        blocks: [
+          { type: "para", text: "One narrow approval exists, reached only after an earlier rejection. Approved in 2025 for muscle strength in Barth syndrome specifically, through an accelerated pathway with a required confirmatory trial due in 2030 — not a clean, first-pass approval. The largest trials in two other serious diseases both fell short. A 218-person muscle-disease trial and a 176-person eye-disease trial each failed to meet their main measures. Real human trial history exists here, more than for most compounds in this catalog — but almost none of it is in the healthy-adult, longevity-focused population the compounded product is sold to." },
+        ],
+      },
+      {
+        heading: "Clinical detail",
+        blocks: [
+          { type: "para", text: "A four-amino-acid peptide (elamipretide, formerly Bendavia/MTP-131) that binds cardiolipin in the inner mitochondrial membrane. FDA-approved as Forzinity (elamipretide hydrochloride) in September 2025 for muscle strength in Barth syndrome, in patients 30 kg and over, via accelerated approval, after an earlier Complete Response Letter in May 2025. Confirmatory trial (4TAZPower) began dosing in early 2026; results due 2030, with approval revocable if the trial fails. Phase 3 trial in primary mitochondrial myopathy (n=218) failed both co-primary endpoints; Phase 2 trial in geographic atrophy (n=176) failed both co-primary endpoints, with a secondary signal under further study. Not on FDA's 503A or 503B compounding bulk-substance lists or the July 2026 PCAC review docket; compounding a near-copy of an already-approved drug carries its own distinct legal restriction." },
+          { type: "para", text: "The information on this page is general education. It is not medical advice and it is not a recommendation for any treatment. SS-31 is not an FDA-approved medicine for the uses described here. A compounded preparation is not an FDA-approved product and has not been reviewed by the FDA for safety, effectiveness or quality. Descriptions of what this is used for reflect how it is commonly used and discussed. They are not claims that it is effective for any purpose. Any prescription follows an individual evaluation by a licensed provider and is issued only where that provider judges it clinically appropriate. A prescription is never guaranteed." },
+        ],
+      },
+    ],
+  },
 ];
 
 export function getFullReview(kind: "peptide" | "blend", slug: string) {

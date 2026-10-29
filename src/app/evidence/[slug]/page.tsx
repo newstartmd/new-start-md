@@ -91,12 +91,23 @@ export default async function EvidencePage({
           ) : null}
           <p className="mt-4 max-w-2xl text-lg text-slate-500">{c.oneLiner}</p>
           {product ? (
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e4f3ec] px-3 py-1 text-xs font-semibold text-[#12805c]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#12805c]" aria-hidden />
+                Available to order
+              </span>
               <Button href={`/products/${product.slug}`} variant="ghost">
                 See {c.name} in the catalog
               </Button>
             </div>
-          ) : null}
+          ) : (
+            <div className="mt-6">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-mist-50 px-3 py-1 text-xs font-semibold text-slate-500 ring-1 ring-line-200">
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-400" aria-hidden />
+                Education only — not currently offered for sale
+              </span>
+            </div>
+          )}
         </Container>
       </div>
 
