@@ -57,6 +57,37 @@ const FAQ = [
   },
 ];
 
+// Devices a client can connect; their activity/sleep/recovery flow into the plan.
+const DEVICES = ["Apple Watch", "Apple Health", "Fitbit", "Oura", "Garmin", "Whoop", "Google Fit", "Samsung Health", "Strava"];
+
+// Illustrative roster for the portal preview (no real people, no real data).
+const CLIENTS = [
+  { initials: "MR", name: "Marcus R.", goal: "Weight loss", device: "Oura", checkIn: "Checked in today", adherence: 92, trend: [60, 62, 61, 64, 66, 69, 72] },
+  { initials: "JL", name: "Jamie L.", goal: "Hormones", device: "Apple Health", checkIn: "2 days ago", adherence: 78, trend: [40, 44, 43, 48, 52, 55, 58] },
+  { initials: "DP", name: "Dana P.", goal: "Recovery", device: "Fitbit", checkIn: "Checked in today", adherence: 85, trend: [70, 68, 71, 73, 72, 75, 77] },
+  { initials: "SW", name: "Sam W.", goal: "Longevity", device: "Garmin", checkIn: "Yesterday", adherence: 64, trend: [50, 52, 49, 51, 53, 52, 54] },
+];
+
+function Sparkline({ points, w = 72, h = 28 }: { points: number[]; w?: number; h?: number }) {
+  const pad = 3;
+  const min = Math.min(...points);
+  const max = Math.max(...points);
+  const span = max - min || 1;
+  const step = (w - pad * 2) / (points.length - 1);
+  const d = points
+    .map((p, i) => {
+      const x = pad + i * step;
+      const y = pad + (1 - (p - min) / span) * (h - pad * 2);
+      return `${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`;
+    })
+    .join(" ");
+  return (
+    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} className="shrink-0" aria-hidden>
+      <path d={d} fill="none" stroke="#1F4FD1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default function PartnersPage() {
   return (
     <>
@@ -109,14 +140,56 @@ export default function PartnersPage() {
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {PORTAL.map((f) => (
-                <div key={f.h} className="rounded-xl2 border border-line-200 bg-white p-5">
-                  <h3 className="text-base font-bold text-navy-950">{f.h}</h3>
-                  <p className="mt-2 text-sm text-slate-500">{f.p}</p>
+            {/* Portal preview — what a partner actually sees */}
+            <div>
+              <div className="overflow-hidden rounded-xl2 border border-line-200 bg-white shadow-card">
+                <div className="flex items-center justify-between border-b border-line-200 bg-mist-50 px-5 py-3">
+                  <span className="text-sm font-semibold text-navy-950">Your clients</span>
+                  <span className="font-mono text-[0.7rem] uppercase tracking-wide text-slate-500">
+                    4 active · synced live
+                  </span>
                 </div>
-              ))}
+                <ul className="divide-y divide-line-200">
+                  {CLIENTS.map((c) => (
+                    <li key={c.name} className="flex items-center gap-3 px-5 py-4">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sky-100 text-xs font-semibold text-royal-700">
+                        {c.initials}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="truncate text-sm font-semibold text-navy-950">{c.name}</span>
+                          <span className="rounded-full bg-mist-50 px-2 py-0.5 text-[0.55rem] font-semibold uppercase tracking-wide text-slate-500 ring-1 ring-line-200">
+                            {c.goal}
+                          </span>
+                        </div>
+                        <p className="mt-0.5 truncate text-xs text-slate-500">
+                          {c.device} synced · {c.checkIn}
+                        </p>
+                      </div>
+                      <Sparkline points={c.trend} />
+                      <div className="w-12 shrink-0 text-right">
+                        <div className="font-mono text-sm font-semibold tabular-nums text-navy-950">{c.adherence}%</div>
+                        <div className="text-[0.6rem] uppercase tracking-wide text-slate-400">adherence</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <div className="border-t border-line-200 bg-mist-50 px-5 py-3 text-xs text-slate-500">
+                  Progress your clients choose to share — never their medical record.
+                </div>
+              </div>
+              <p className="mt-3 text-center text-xs text-slate-400">Illustrative preview</p>
             </div>
+          </div>
+
+          {/* What the portal does */}
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {PORTAL.map((f) => (
+              <div key={f.h} className="rounded-xl2 border border-line-200 bg-white p-5">
+                <h3 className="text-base font-bold text-navy-950">{f.h}</h3>
+                <p className="mt-2 text-sm text-slate-500">{f.p}</p>
+              </div>
+            ))}
           </div>
 
           {/* Opt-in success sharing */}
@@ -135,6 +208,69 @@ export default function PartnersPage() {
           </div>
         </Container>
       </section>
+
+      {/* Wearables / device integration */}
+      <Section id="sync">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <Eyebrow>Wearables, built in</Eyebrow>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+              Coach on real signals, <span className="italic text-royal-600">not guesswork.</span>
+            </h2>
+            <p className="mt-4 max-w-lg text-slate-500">
+              Your clients connect the watch or ring they already wear, and their activity, sleep and
+              recovery flow into their plan automatically. With their opt-in, you see the progress
+              that matters — adherence, movement, momentum — so your check-ins land on real data
+              instead of a guess. You never see their medical record; only what they choose to share.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {DEVICES.map((d) => (
+                <span
+                  key={d}
+                  className="inline-flex items-center gap-2 rounded-full border border-line-200 bg-white px-3.5 py-1.5 text-sm font-medium text-navy-950"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-royal-600" aria-hidden />
+                  {d}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Sample client signal card */}
+          <div>
+            <div className="rounded-xl2 border border-line-200 bg-white p-6 shadow-card">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-navy-950">Marcus R.</p>
+                  <p className="text-xs text-slate-500">Synced from Oura · today</p>
+                </div>
+                <span className="rounded-full bg-[#e4f3ec] px-2.5 py-1 text-xs font-semibold text-[#12805c]">On track</span>
+              </div>
+              <div className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-line-200">
+                {[
+                  { k: "Steps", v: "8,420" },
+                  { k: "Sleep", v: "7h 12m" },
+                  { k: "Resting HR", v: "58 bpm" },
+                  { k: "Readiness", v: "84" },
+                ].map((m) => (
+                  <div key={m.k} className="bg-white p-4">
+                    <div className="font-mono text-lg font-semibold tabular-nums text-navy-950">{m.v}</div>
+                    <div className="mt-0.5 text-[0.65rem] uppercase tracking-wide text-slate-500">{m.k}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 flex items-center justify-between rounded-lg border border-line-200 px-4 py-3">
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">7-day activity</div>
+                  <div className="mt-0.5 text-xs text-slate-400">trending up</div>
+                </div>
+                <Sparkline points={[60, 62, 61, 64, 66, 69, 72]} w={120} h={36} />
+              </div>
+            </div>
+            <p className="mt-3 text-center text-xs text-slate-400">Illustrative preview</p>
+          </div>
+        </div>
+      </Section>
 
       {/* How it works */}
       <Section id="how">
