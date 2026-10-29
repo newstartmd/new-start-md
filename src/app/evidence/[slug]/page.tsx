@@ -10,6 +10,8 @@ import {
   type Citation,
 } from "@/lib/evidence";
 import { getProduct } from "@/lib/products";
+import { getFullReview } from "@/lib/fullReviews";
+import FullReviewBody from "@/components/FullReviewBody";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
 export function generateStaticParams() {
@@ -63,6 +65,7 @@ export default async function EvidencePage({
   const c = getCompound(slug);
   if (!c) notFound();
 
+  const review = getFullReview("peptide", slug);
   const product = getProduct(slug);
   const gradeLetter = c.grade[0]?.toUpperCase() ?? "";
 
@@ -148,6 +151,19 @@ export default async function EvidencePage({
               <span className="font-semibold text-navy-950">Safety. </span>
               {c.safety}
             </p>
+
+            {/* Level 2 — the full plain-English review (ported network education). */}
+            {review ? (
+              <div className="mt-12 border-t border-line-200 pt-10">
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-royal-600">Go deeper</p>
+                <h2 className="mt-2 text-3xl font-semibold text-navy-950">The full picture</h2>
+                <p className="mt-2 max-w-xl text-sm text-slate-500">
+                  The complete, plain-English review — what it is, what people use it for, how it
+                  works, what the research actually looked at, and who it&apos;s not for.
+                </p>
+                <FullReviewBody sections={review.sections} />
+              </div>
+            ) : null}
           </div>
 
           {/* Sidebar — regulatory status */}
