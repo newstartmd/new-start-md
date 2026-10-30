@@ -2,6 +2,7 @@
 
 import { readAttribution } from "@/lib/attribution-server";
 import { notify } from "@/lib/email";
+import { notifyReferral } from "@/lib/referral-notify";
 import { handoffLeadToGenHealth } from "@/lib/genhealth";
 
 export type StartState = { ok: boolean; message?: string; handoffUrl?: string } | null;
@@ -46,6 +47,16 @@ export async function startAction(_prev: StartState, formData: FormData): Promis
       Campaign: attribution?.campaign,
     },
   });
+
+  // Credit the referring partner in the portal (attribution only; never pay).
+  if (attribution?.code) {
+    notifyReferral({
+      code: attribution.code,
+      kind: "SIGNUP",
+      source: attribution.source,
+      campaign: attribution.campaign,
+    });
+  }
 
   // Hand off to GEN Health's hosted assessment/checkout (with attribution) when
   // configured. The lead is already recorded above, so if the handoff isn't set
