@@ -7,6 +7,7 @@ import {
   attributionFromParams,
   serializeAttribution,
 } from "@/lib/partners";
+import { notifyReferral } from "@/lib/referral-notify";
 
 /**
  * First-touch partner attribution capture.
@@ -29,6 +30,9 @@ export default function ReferralCapture() {
       const maxAge = ATTR_MAX_AGE_DAYS * 24 * 60 * 60;
       const value = encodeURIComponent(serializeAttribution(attr));
       document.cookie = `${ATTR_COOKIE}=${value}; path=/; max-age=${maxAge}; samesite=lax; secure`;
+      // First touch only (the `already` guard above): tell the partner portal a
+      // referred visitor landed. Best-effort; no-op until the portal is live.
+      notifyReferral({ code: attr.code, kind: "CLICK", source: attr.source, campaign: attr.campaign });
     } catch {
       // Non-fatal: attribution is best-effort, never block the page.
     }
