@@ -30,6 +30,24 @@ function stripQuotes(value: string): string {
   return trimmed;
 }
 
+/** Frontmatter is author-controlled text. Escape it before it reaches JSX. */
+export function escapeText(value: string): string {
+  return value.replace(/[&<>"']/g, (ch) => {
+    switch (ch) {
+      case "&":
+        return "&amp;";
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case '"':
+        return "&quot;";
+      default:
+        return "&#39;";
+    }
+  });
+}
+
 function parseFrontmatter(raw: string): { data: Record<string, string>; body: string } {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!match) return { data: {}, body: raw };
@@ -51,14 +69,14 @@ function toPost(fileName: string, raw: string): BlogPost | null {
   if (!slug || !data.title) return null;
   const draft = (data.draft || "").toLowerCase() === "true";
   return {
-    slug,
-    title: data.title,
-    description: data.description || "",
-    date: data.date || "",
-    author: data.author || "New Start MD",
-    image: data.image || "",
-    imageAlt: data.imageAlt || "",
-    metaTitle: data.metaTitle || data.title,
+    slug: escapeText(slug),
+    title: escapeText(data.title),
+    description: escapeText(data.description || ""),
+    date: escapeText(data.date || ""),
+    author: escapeText(data.author || "New Start MD"),
+    image: escapeText(data.image || ""),
+    imageAlt: escapeText(data.imageAlt || ""),
+    metaTitle: escapeText(data.metaTitle || data.title),
     draft,
     body: body.trim(),
   };
@@ -83,31 +101,58 @@ export function getPost(slug: string): BlogPost | undefined {
   return getPublishedPosts().find((post) => post.slug === slug);
 }
 
-function inline(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2">$1</a>')
-    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-    .replace(/(^|[\s(])\*([^*]+)\*(?=[\s).,;:!?]|$)/g, "$1<em>$2</em>");
+export type InlinePart =
+  | { type: "text"; text: string }
+  | { type: "strong"; text: string }
+  | { type: "em"; text: string }
+  | { type: "link"; text: string; href: string };
+
+export type Block =
+  | { type: "p"; parts: InlinePart[] }
+  | { type: "h2"; text: string }
+  | { type: "h3"; text: string }
+  | { type: "ul"; items: InlinePart[][] };
+
+function parseInline(text: string): InlinePart[] {
+  const parts: InlinePart[] = [];
+  const re = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|\*\*([^*]+)\*\*|(^|[\s(])\*([^*]+)\*(?=[\s).,;:!?]|$)/g;
+  let cursor = 0;
+  for (const match of text.matchAll(re)) {
+    const start = match.index ?? 0;
+    if (start > cursor) parts.push({ type: "text", text: text.slice(cursor, start) });
+    if (match[1] && match[2]) {
+      parts.push({ type: "link", text: match[1], href: match[2] });
+      cursor = start + match[0].length;
+    } else if (match[3]) {
+      parts.push({ type: "strong", text: match[3] });
+      cursor = start + match[0].length;
+    } else if (match[5]) {
+      if (match[4]) parts.push({ type: "text", text: match[4] });
+      parts.push({ type: "em", text: match[5] });
+      cursor = start + match[0].length;
+    } else {
+      cursor = start + match[0].length;
+    }
+  }
+  if (cursor < text.length) parts.push({ type: "text", text: text.slice(cursor) });
+  return parts.length ? parts : [{ type: "text", text }];
 }
 
 /** Small markdown subset: paragraphs, ## / ###, lists, links, emphasis. No raw HTML. */
-export function renderMarkdown(source: string): string {
+export function parseMarkdown(source: string): Block[] {
   const lines = source.replace(/\r\n/g, "\n").split("\n");
-  const out: string[] = [];
+  const blocks: Block[] = [];
   let paragraph: string[] = [];
   let list: string[] = [];
 
   const flushParagraph = () => {
     if (!paragraph.length) return;
-    out.push(`<p>${inline(paragraph.join(" "))}</p>`);
+    blocks.push({ type: "p", parts: parseInline(paragraph.join(" ")) });
     paragraph = [];
   };
   const flushList = () => {
     if (!list.length) return;
-    out.push(`<ul>${list.map((item) => `<li>${inline(item)}</li>`).join("")}</ul>`);
+    blocks.push({ type: "ul", items: list.map(parseInline) });
     list = [];
   };
 
@@ -122,8 +167,7 @@ export function renderMarkdown(source: string): string {
     if (heading) {
       flushParagraph();
       flushList();
-      const level = heading[1].length;
-      out.push(`<h${level}>${inline(heading[2])}</h${level}>`);
+      blocks.push({ type: heading[1].length === 2 ? "h2" : "h3", text: heading[2] });
       continue;
     }
     const item = /^[-*]\s+(.+)$/.exec(trimmed);
@@ -137,5 +181,5 @@ export function renderMarkdown(source: string): string {
   }
   flushParagraph();
   flushList();
-  return out.join("\n");
+  return blocks;
 }
