@@ -6,12 +6,14 @@
 // the site carries the care-team caveat below.
 //
 // This is the headline MONTHLY-program range (GLP-1 + TRT). Per-product prices
-// (per-vial peptides/blends, GLP-1 dose-step ladders, on-hold items) live in
-// lib/catalogPricing.ts. Figures are Todd's v16 pricing (2026-10-23), retail.
-//   Lowest active monthly program: semaglutide $169/mo (TRT $149.99 and
-//   enclomiphene $109 are on hold — not at Dirx-Hub yet). Top single step:
-//   tirzepatide $479/mo. Peptides/blends are per vial (from $99), not monthly.
-//   Keep mg strengths off the site (Todd's instruction).
+// (per-vial peptides/blends, GLP-1 dose-step ladders, TRT/enclomiphene) live in
+// lib/catalogPricing.ts. Figures track Todd's 11.05.2026 product list, retail.
+//   As of the 11.05.2026 switch, TRT ($149.99 Core / $199.99 Complete) and
+//   enclomiphene ($109) are now LIVE from Vios — no longer on hold. The headline
+//   low here is still semaglutide $169/mo; whether to drop it to the TRT/encl.
+//   figure is Michael's marketing call (left unchanged pending sign-off). Top
+//   single step: tirzepatide $479/mo. Peptides/blends are per vial (from $99),
+//   not monthly. Keep mg strengths off the site (Todd's instruction).
 // Override per-environment with NEXT_PUBLIC_PRICE_LOW/HIGH if these change.
 
 export const PRICE_LOW = Number(process.env.NEXT_PUBLIC_PRICE_LOW ?? 169);
