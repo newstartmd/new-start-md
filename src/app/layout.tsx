@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -61,6 +62,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        {/* MEGA optimizer (SEO changes + site events), approved by Gomega 2026-11-12.
+            No gaId on purpose: this site loads no Google Analytics. */}
+        <Script id="mega-tag-config" strategy="beforeInteractive">
+          {`window.MEGA_TAG_CONFIG = { siteKey: "5hmfdeyttd0i1od8" };`}
+        </Script>
+        <Script src="https://cdn.gomega.ai/scripts/optimizer.min.js" strategy="afterInteractive" />
       </body>
     </html>
   );
