@@ -7,7 +7,7 @@ author: "New Start MD"
 image: ""
 imageAlt: ""
 metaTitle: "Welcome to the New Start MD journal"
-draft: true
+draft: false
 ---
 
 This journal is where New Start MD will publish plain-language notes about physician-guided peptide, hormone, and metabolic care.
@@ -22,4 +22,4 @@ Posts explain how this kind of care works so you can ask better questions. They 
 
 ## What this page is not
 
-The Learn section stays a separate education hub. This journal is the publishing pipeline for new posts, and this first note stays unpublished until a person turns publishing on.
+The Learn section stays a separate education hub. This journal is the publishing pipeline for new posts, and this first note is the first published entry.
