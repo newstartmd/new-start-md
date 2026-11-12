@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Questions about New Start MD products, your visit, or the partner program? Get in touch.",
+  description: "Questions about New Start MD services, products, a visit, or the partner program? Contact the team for general information and guidance for adults 18+.",
 };
 
 export default function ContactPage() {
