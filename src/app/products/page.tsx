@@ -8,9 +8,9 @@ import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Protocols",
+  title: "Prescribed Protocols Built Around Your Goal",
   description:
-    "Protocols built around your goal — the prescribed compound plus the diet, training, monitoring and coaching you opt into. Set with a licensed U.S. provider after a visit.",
+    "Explore protocols built around your goal, with prescribed peptides, GLP-1s or hormones plus optional coaching, diet, training and tracking. Build yours now",
 };
 
 // The modular parts of a protocol — mirrors the opt-in functions in the
