@@ -6,6 +6,62 @@ import { getReviewBySlug } from "@/lib/fullReviews";
 import { priceFor } from "@/lib/catalogPricing";
 import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
+import { JsonLd } from "@/lib/schema";
+
+const productsSchema: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://newstartmd.com/products#collectionpage",
+      url: "https://newstartmd.com/products",
+      name: "Protocols",
+      description:
+        "A protocol is more than a vial. Start with the prescribed compound below, then build the rest of your system — diet, training, wearable tracking and coaching — around it, only the parts you want. Everything is set with a licensed provider after a visit; nothing here is sold over the counter. Programs from $169/mo.",
+      isPartOf: {
+        "@id": "https://newstartmd.com/#website",
+      },
+      publisher: {
+        "@id": "https://newstartmd.com/#organization",
+      },
+      mainEntity: {
+        "@type": "ItemList",
+        "@id": "https://newstartmd.com/products#protocols",
+        name: "Protocols",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Semaglutide" },
+          { "@type": "ListItem", position: 2, name: "Tirzepatide" },
+          { "@type": "ListItem", position: 3, name: "MOTS-c" },
+          { "@type": "ListItem", position: 4, name: "Testosterone" },
+          { "@type": "ListItem", position: 5, name: "PT-141" },
+          { "@type": "ListItem", position: 6, name: "Kisspeptin" },
+          { "@type": "ListItem", position: 7, name: "BPC-157" },
+          { "@type": "ListItem", position: 8, name: "TB-500" },
+          { "@type": "ListItem", position: 9, name: "GHK-Cu" },
+          { "@type": "ListItem", position: 10, name: "LL-37" },
+          { "@type": "ListItem", position: 11, name: "Thymosin Alpha-1" },
+          { "@type": "ListItem", position: 12, name: "IGF-1 LR3" },
+          { "@type": "ListItem", position: 13, name: "Sermorelin" },
+          { "@type": "ListItem", position: 14, name: "Tesamorelin" },
+          { "@type": "ListItem", position: 15, name: "NAD+" },
+          { "@type": "ListItem", position: 16, name: "Glutathione" },
+          { "@type": "ListItem", position: 17, name: "SS-31" },
+          { "@type": "ListItem", position: 18, name: "Epitalon" },
+          { "@type": "ListItem", position: 19, name: "DSIP" },
+          { "@type": "ListItem", position: 20, name: "Repair" },
+          { "@type": "ListItem", position: 21, name: "Glow" },
+          { "@type": "ListItem", position: 22, name: "Klow" },
+          { "@type": "ListItem", position: 23, name: "Build" },
+          { "@type": "ListItem", position: 24, name: "Sculpt" },
+          { "@type": "ListItem", position: 25, name: "Renew" },
+          { "@type": "ListItem", position: 26, name: "Rest" },
+          { "@type": "ListItem", position: 27, name: "Calm" },
+          { "@type": "ListItem", position: 28, name: "Focus" },
+        ],
+      },
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   title: { absolute: "Prescribed Protocols Built Around Your Goal | New Start MD" },
@@ -64,6 +120,7 @@ export default async function ProductsPage({
 
   return (
     <>
+      <JsonLd data={productsSchema} />
       {/* Hero band */}
       <section className="ocean">
         <Container className="py-14">

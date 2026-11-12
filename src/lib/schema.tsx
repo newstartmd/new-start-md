@@ -18,6 +18,7 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
 export const organizationSchema: Record<string, unknown> = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://newstartmd.com/#organization",
   name: SITE.name,
   legalName: SITE.legalName,
   url: SITE.url,
@@ -29,8 +30,12 @@ export const organizationSchema: Record<string, unknown> = {
 export const websiteSchema: Record<string, unknown> = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://newstartmd.com/#website",
   name: SITE.name,
   url: SITE.url,
+  publisher: {
+    "@id": "https://newstartmd.com/#organization",
+  },
 };
 
 export function breadcrumbSchema(
