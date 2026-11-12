@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: { absolute: "Prescribed Protocols Built Around Your Goal | New Start MD" },
   description:
     "Explore protocols built around your goal, with prescribed peptides, GLP-1s or hormones plus optional coaching, diet, training and tracking. Build yours now",
+  alternates: { canonical: "https://newstartmd.com/products" },
 };
 
 // The modular parts of a protocol — mirrors the opt-in functions in the

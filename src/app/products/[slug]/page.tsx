@@ -20,6 +20,18 @@ import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 import { JsonLd, breadcrumbSchema } from "@/lib/schema";
 
+const CANONICAL_PRODUCT_SLUGS = new Set([
+  "ss-31",
+  "tesamorelin",
+  "tb-500",
+  "testosterone",
+  "mots-c",
+  "semaglutide",
+  "nad",
+  "sermorelin",
+  "bpc-157",
+]);
+
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
@@ -35,6 +47,9 @@ export async function generateMetadata({
   return {
     title: product.name,
     description: `${product.name} — ${product.usedFor} Prescribed by a licensed New Start MD provider after a visit.`,
+    ...(CANONICAL_PRODUCT_SLUGS.has(product.slug)
+      ? { alternates: { canonical: `https://newstartmd.com/products/${product.slug}` } }
+      : {}),
   };
 }
 
