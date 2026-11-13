@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container, Section, Eyebrow, Button, Stat, ImageSlot, ProductImageSlot, Disclaimer, PriceBand, PriceInline } from "@/components/ui";
 import { BiomarkerRangeBar, TrendSparkline } from "@/components/graphics";
@@ -8,6 +9,12 @@ import { signupUrl } from "@/lib/site";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
 
 const FEATURED = ["semaglutide", "testosterone", "bpc-157", "sermorelin", "nad", "pt-141"];
+
+export const metadata: Metadata = {
+  title: "New Start MD | Adult Health Education & Telehealth",
+  description:
+    "New Start MD provides adult health education and physician-guided telehealth for adults exploring weight loss, hormone therapy, peptides and recovery.",
+};
 
 // Treatment-chapter imagery, keyed by goal (real Grok-generated, cool-graded).
 const CHAPTER_IMG: Record<string, string> = {
