@@ -10,6 +10,11 @@
 //   - CONTACT_WEBHOOK_URL : POST the JSON payload (Slack / Zapier / n8n / Make).
 //   - (neither)           : logged server-side so it stays recoverable.
 //
+// Each transport retries once on a transient failure (network blip / 429 / 5xx).
+// If a transport WAS configured but every attempt failed, the lead is logged at
+// error level with the tag [LEAD-DELIVERY-FAILED] so a log drain / alert catches
+// it — distinct from the quiet info log when nothing is configured at all.
+//
 // Destinations (first env that is set wins, else the site defaults):
 //   contact            -> CONTACT_INBOX  || SITE.email
 //   lead               -> LEADS_INBOX    || CONTACT_INBOX || SITE.email
@@ -80,44 +85,66 @@ function escapeHtml(s: string): string {
   return s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]!));
 }
 
-async function sendEmail(n: Notification): Promise<boolean> {
+// Outcome of one transport: delivered, tried-and-failed, or not configured.
+type TransportResult = "ok" | "fail" | "skip";
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+async function sendEmail(n: Notification): Promise<TransportResult> {
   const key = process.env.RESEND_API_KEY;
-  if (!key) return false;
+  if (!key) return "skip";
   const to = destinationFor(n.kind);
-  if (!to) return false;
+  if (!to) return "skip";
   const replyTo = n.fields.Email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n.fields.Email) ? n.fields.Email : undefined;
-  try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { authorization: `Bearer ${key}`, "content-type": "application/json" },
-      body: JSON.stringify({
-        from: FROM,
-        to: [to],
-        subject: `[New Start MD] ${n.subject}`,
-        text: renderText(n),
-        html: renderHtml(n),
-        ...(replyTo ? { reply_to: replyTo } : {}),
-      }),
-    });
-    return res.ok;
-  } catch {
-    return false;
+  const body = JSON.stringify({
+    from: FROM,
+    to: [to],
+    subject: `[New Start MD] ${n.subject}`,
+    text: renderText(n),
+    html: renderHtml(n),
+    ...(replyTo ? { reply_to: replyTo } : {}),
+  });
+  // Up to 2 attempts: a transient network blip or a 429/5xx from Resend should
+  // not silently lose a lead. A 4xx (bad payload / auth) is not retried.
+  for (let attempt = 0; attempt < 2; attempt++) {
+    if (attempt > 0) await sleep(400);
+    let status = 0;
+    try {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { authorization: `Bearer ${key}`, "content-type": "application/json" },
+        body,
+      });
+      if (res.ok) return "ok";
+      status = res.status;
+    } catch {
+      status = 0; // network error — treat as retryable
+    }
+    const retryable = status === 0 || status === 429 || status >= 500;
+    if (!retryable) return "fail";
   }
+  return "fail";
 }
 
-async function sendWebhook(n: Notification): Promise<boolean> {
+async function sendWebhook(n: Notification): Promise<TransportResult> {
   const webhook = process.env.CONTACT_WEBHOOK_URL;
-  if (!webhook) return false;
-  try {
-    const res = await fetch(webhook, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ kind: n.kind, subject: n.subject, text: renderText(n), fields: n.fields }),
-    });
-    return res.ok;
-  } catch {
-    return false;
+  if (!webhook) return "skip";
+  const body = JSON.stringify({ kind: n.kind, subject: n.subject, text: renderText(n), fields: n.fields });
+  for (let attempt = 0; attempt < 2; attempt++) {
+    if (attempt > 0) await sleep(400);
+    try {
+      const res = await fetch(webhook, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body,
+      });
+      if (res.ok) return "ok";
+      if (res.status !== 429 && res.status < 500) return "fail"; // 4xx: don't retry
+    } catch {
+      // network error — fall through to retry
+    }
   }
+  return "fail";
 }
 
 /**
@@ -126,13 +153,22 @@ async function sendWebhook(n: Notification): Promise<boolean> {
  * form handler never needs to branch on delivery.
  */
 export async function notify(n: Notification): Promise<{ ok: boolean; delivered: boolean }> {
-  // Run configured transports in parallel; delivered if any succeeds.
+  // Run configured transports in parallel; delivered if any accepts it.
   const results = await Promise.all([sendEmail(n), sendWebhook(n)]);
-  const delivered = results.some(Boolean);
+  const delivered = results.includes("ok");
+  const attempted = results.some((r) => r !== "skip");
 
   if (!delivered) {
-    // Nothing configured (or every transport failed). Log so it is recoverable.
-    console.info("[new-start-md notify]\n" + renderText(n));
+    const payload = renderText(n);
+    if (attempted) {
+      // A transport was configured and EVERY one failed after retries — this is
+      // a lead we may have lost. Emit at error level with a stable, greppable
+      // tag so a log drain / alert catches it (unlike the quiet info case below).
+      console.error(`[new-start-md LEAD-DELIVERY-FAILED] kind=${n.kind} — all transports failed after retry\n${payload}`);
+    } else {
+      // No transport configured (dev / preview): expected; logged for recovery.
+      console.info(`[new-start-md notify] no transport configured; logged for recovery\n${payload}`);
+    }
   }
   return { ok: true, delivered };
 }
