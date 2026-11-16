@@ -48,13 +48,18 @@ export default function Assessment() {
   // The step list is dynamic: the base questions, the "build your system"
   // picker, then a follow-up block for each function the visitor opted into.
   const selectedFns = (answers.functions as string[] | undefined) ?? [];
+  // Join to a stable primitive key so the memo only recomputes when the set of
+  // selected functions actually changes (the array identity changes on every
+  // render). The key must be a simple dependency expression for react-hooks.
+  const selectedFnsKey = selectedFns.join(",");
   const steps = useMemo<Step[]>(() => {
     const follow = FUNCTION_STEPS.filter(
       (s) => "gatedBy" in s && s.gatedBy && selectedFns.includes(s.gatedBy),
     );
     return [...STEPS, FUNCTIONS_STEP, ...follow];
+    // selectedFns is derived from selectedFnsKey; recompute only when it changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFns.join(",")]);
+  }, [selectedFnsKey]);
 
   const safeStep = Math.min(step, steps.length);
   const total = steps.length + 1; // +1 for the contact step
