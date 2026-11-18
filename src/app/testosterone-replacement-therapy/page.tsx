@@ -4,7 +4,7 @@ import { Container, Section, Eyebrow, Button, ImageSlot, Disclaimer } from "@/co
 import { JsonLd, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Hormone Replacement Therapy | New Start MD",
+  title: "Hormone Replacement Therapy",
   description:
     "Learn about provider-guided hormone replacement therapy and testosterone replacement therapy for adults 18+. Explore the telehealth starting process.",
   alternates: { canonical: "https://newstartmd.com/testosterone-replacement-therapy" },
