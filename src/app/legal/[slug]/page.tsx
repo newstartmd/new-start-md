@@ -15,7 +15,8 @@ export async function generateMetadata({
   const { slug } = await params;
   const doc = LEGAL_DOCS[slug];
   if (!doc) return { title: "Not found" };
-  return { title: doc.title, robots: { index: false, follow: true } };
+  // Draft placeholders stay out of the index; finalized legal pages are indexable.
+  return { title: doc.title, robots: { index: !doc.draft, follow: true } };
 }
 
 export default async function LegalPage({ params }: { params: Promise<{ slug: string }> }) {
