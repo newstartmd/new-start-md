@@ -4,7 +4,7 @@ import { Container, Section, Eyebrow, Button, ImageSlot, Disclaimer } from "@/co
 import { JsonLd, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Online Testosterone Replacement Therapy | New Start MD",
+  title: "Online Testosterone Replacement Therapy",
   description:
     "Learn about online testosterone replacement therapy for adults 18+, including provider-guided evaluation, telehealth steps, and questions to ask.",
   alternates: { canonical: "https://newstartmd.com/online-testosterone-replacement-therapy" },
@@ -145,7 +145,7 @@ export default function OnlineTestosteroneReplacementTherapyPage() {
 
       <Section>
         <Eyebrow>Common questions about online TRT</Eyebrow>
-        <h2 className="mt-4 max-w-3xl text-3xl font-semibold sm:text-4xl">Questions about online testosterone replacement therapy</h2>
+        <h2 className="mt-4 max-w-3xl text-3xl font-semibold sm:text-4xl">Common questions about online TRT</h2>
         <div className="mt-8 divide-y divide-line-200 rounded-xl2 border border-line-200 bg-white">
           {FAQ.map((item, index) => (
             <details key={item.q} open={index === 0} className="group p-5 sm:p-6">
