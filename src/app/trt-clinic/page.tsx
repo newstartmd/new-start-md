@@ -6,7 +6,7 @@ import { JsonLd, breadcrumbSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Testosterone Replacement Therapy Clinics",
   description:
-    "Looking for a TRT clinic? Learn how New Start MD's telehealth evaluation works for adults 18+ and what a provider reviews.",
+    "Looking for a TRT clinic? Learn how New Start MD’s telehealth evaluation works for adults 18+ and what a provider reviews.",
   alternates: { canonical: "https://newstartmd.com/trt-clinic" },
 };
 
@@ -17,7 +17,7 @@ const FAQ = [
   },
   {
     q: "Can I start the process online?",
-    a: "You can begin with New Start MD's online assessment. The assessment helps collect information for the starting process, but it is not a diagnosis and does not guarantee eligibility, treatment, or a prescription. A licensed provider decides the next step after reviewing the information available.",
+    a: "You can begin with New Start MD’s online assessment. The assessment helps collect information for the starting process, but it is not a diagnosis and does not guarantee eligibility, treatment, or a prescription. A licensed provider decides the next step after reviewing the information available.",
   },
   {
     q: "Will I need testing?",
@@ -131,12 +131,12 @@ export default function TrtClinicPage() {
             />
             <div>
               <Eyebrow>How the telehealth pathway works</Eyebrow>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">How New Start MD&apos;s telehealth pathway works</h2>
+              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">How New Start MD’s telehealth pathway works</h2>
               <ol className="mt-8 space-y-6">
-                <Step title="Take the 5-minute assessment.">Answer questions about your goals, health history, and reason for seeking information. This starts the information-gathering process; it does not guarantee eligibility, treatment, or a prescription.</Step>
-                <Step title="Meet your provider.">A licensed provider reviews the information you share and asks follow-up questions when needed. The provider decides what is appropriate for your situation.</Step>
-                <Step title="Complete any appropriate testing.">Your provider explains whether testing or additional information is needed and how it fits into the evaluation. Do not interpret results or change medication based only on an online page.</Step>
-                <Step title="Continue with the plan your provider explains.">If treatment is prescribed, follow the provider&apos;s instructions and use the available care and messaging path for questions, follow-up, or clarification.</Step>
+                <Step title="Take the 5-minute assessment">Answer questions about your goals, health history, and reason for seeking information. This starts the information-gathering process; it does not guarantee eligibility, treatment, or a prescription.</Step>
+                <Step title="Meet your provider">A licensed provider reviews the information you share and asks follow-up questions when needed. The provider decides what is appropriate for your situation.</Step>
+                <Step title="Complete any appropriate testing">Your provider explains whether testing or additional information is needed and how it fits into the evaluation. Do not interpret results or change medication based only on an online page.</Step>
+                <Step title="Continue with the plan your provider explains">If treatment is prescribed, follow the provider’s instructions and use the available care and messaging path for questions, follow-up, or clarification.</Step>
               </ol>
               <p className="mt-6 text-sm text-slate-500">Timelines and next steps vary by person and plan. Eligibility and treatment decisions are made by the provider.</p>
             </div>
@@ -184,9 +184,8 @@ export default function TrtClinicPage() {
       </section>
 
       <JsonLd data={breadcrumbSchema([
-        { name: "Treatments", path: "/products" },
-        { name: "Hormone therapy", path: "/products?goal=hormone" },
-        { name: "Testosterone Replacement Therapy Clinics", path: "/trt-clinic" },
+        { name: "Home", path: "/" },
+        { name: "TRT clinic", path: "/trt-clinic" },
       ])} />
       <JsonLd data={faqSchema} />
     </article>
