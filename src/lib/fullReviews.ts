@@ -931,6 +931,35 @@ export const FULL_REVIEWS: FullReview[] = [
         ],
       },
       {
+        heading: "GHK-Cu vs BPC-157: what the evidence can and cannot tell us",
+        blocks: [
+          { type: "para", text: "GHK-Cu and BPC-157 are not interchangeable. They are different molecules with different research questions, routes of administration, and evidence bases. A comparison can organize what has been studied, but it cannot establish that either compound is appropriate for a specific person or that one will produce a particular result." },
+          { type: "subhead", text: "Evidence at a glance" },
+          { type: "table", columns: ["Question", "GHK-Cu", "BPC-157"], rows: [
+            ["What is it?", "GHK-Cu is a copper-binding tripeptide studied especially in topical skin-care and skin-structure research.", "BPC-157 is a synthetic 15-amino-acid peptide investigated mainly in preclinical tissue-repair research."],
+            ["Where is human evidence most developed?", "Small controlled topical studies have measured skin appearance; those findings do not establish injectable or systemic effects.", "Human evidence is small and limited; much of the literature is preclinical, and controlled human evidence for marketed injury-healing claims is not established."],
+            ["Do findings transfer across routes?", "No. Evidence from topical use does not automatically apply to injectable or systemic use.", "No. Findings from laboratory research or one administration route do not establish effects for another route."],
+            ["Bottom line", "Some topical skin questions have more directly relevant human evidence, but that does not answer broader tissue-repair or injectable questions.", "The evidence remains too limited to treat BPC-157 as established for injury healing or broader recovery use."],
+          ] },
+          { type: "subhead", text: "What the comparison does not establish" },
+          { type: "list", items: [
+            "There is no direct head-to-head clinical trial showing that GHK-Cu is better than BPC-157, or that BPC-157 is better than GHK-Cu, for a patient outcome.",
+            "The evidence cannot be reduced to a single winner because the studies examine different molecules, routes, populations, and outcomes.",
+            "Topical GHK-Cu skin findings should not be used to infer injectable or systemic effects.",
+            "BPC-157 findings from laboratory models should not be treated as clinical proof.",
+            "A person's health history, medicines, and intended use can change the questions that matter; a qualified provider must decide whether an evaluation is appropriate.",
+          ] },
+          { type: "subhead", text: "Questions an adult can take to a qualified provider" },
+          { type: "list", items: [
+            "Which compound and route is being considered, and what human evidence matches that route and goal?",
+            "Is the cited evidence from a controlled human study, an observational report, a laboratory experiment, or a review?",
+            "What important risks, uncertainties, interactions, and alternatives should be considered for my history?",
+            "What would count as a meaningful outcome, and when should the plan be reassessed?",
+          ] },
+          { type: "para", text: "This page is education, not individualized medical advice. A qualified provider must decide whether evaluation is appropriate." },
+        ],
+      },
+      {
         heading: "Common misunderstandings",
         blocks: [
           { type: "list", items: [
