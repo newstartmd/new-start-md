@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/start",
     "/testosterone-replacement-therapy",
+    "/trt-clinic",
     "/online-testosterone-replacement-therapy",
   ];
 
