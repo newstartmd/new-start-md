@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/start",
     "/testosterone-replacement-therapy",
+    "/online-testosterone-replacement-therapy",
   ];
 
   const pages: MetadataRoute.Sitemap = staticPaths.map((p) => ({
