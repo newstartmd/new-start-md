@@ -29,7 +29,7 @@ export async function generateMetadata({
   const { slug } = await params;
   if (slug === "bpc-157") {
     return {
-      title: "BPC-157 Evidence Guide: Human Limits | New Start MD",
+            title: { absolute: "BPC-157 Evidence Guide: Human Limits | New Start MD" },
       description:
         "BPC-157 is a synthetic 15-amino-acid peptide studied mostly in animals for tissue repair; human evidence is limited and dosing is unvalidated. Read evidence.",
     };
