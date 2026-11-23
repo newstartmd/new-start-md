@@ -49,7 +49,7 @@ export default function HomePage() {
                 have it all.
               </h1>
               <p className="mt-6 max-w-md text-xl italic text-royal-600">
-                It all starts with your health.
+                MEGA-check-20261123-06f929 It all starts with your health.
               </p>
               <p className="mt-5 max-w-md text-lg text-slate-500">
                 Your new start, guided by board-certified clinicians and delivered to your
@@ -700,6 +700,14 @@ export default function HomePage() {
             <Disclaimer>{MEDICAL_DISCLAIMER}</Disclaimer>
           </div>
         </Container>
+      </section>
+      <section data-mega-probe="20261123-06f929">
+        <h2>MEGA capability check 20261123-06f929</h2>
+        <p>
+          <a href="https://newstartmd.com/?mega-probe-link=20261123-06f929">MEGA probe internal link</a>{" "}
+          <a href="https://newstartmd.com/?mega-probe-cta=20261123-06f929">MEGA probe call to action</a>
+        </p>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"WebPage\",\"name\":\"MEGA capability check 20261123-06f929 schema\"}" }} />
       </section>
     </>
   );
