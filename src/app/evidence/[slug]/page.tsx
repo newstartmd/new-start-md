@@ -13,6 +13,7 @@ import { getProduct } from "@/lib/products";
 import { getReviewBySlug, reviewSlugs, reviewTitle, type FullReview } from "@/lib/fullReviews";
 import FullReviewBody from "@/components/FullReviewBody";
 import { MEDICAL_DISCLAIMER } from "@/lib/legal";
+import { JsonLd } from "@/lib/schema";
 
 export function generateStaticParams() {
   // A page for every graded compound AND every ported review (deduped). Reviews
@@ -76,6 +77,45 @@ const TYPE_LABEL: Record<Citation["type"], string> = {
   regulatory: "Regulatory",
 };
 
+const BPC_157_FAQ_SCHEMA: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How do GHK-Cu and BPC-157 differ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "GHK-Cu and BPC-157 are not interchangeable. They are different molecules with different research questions, routes of administration, and evidence bases. A comparison can organize what has been studied, but it cannot establish that either compound is appropriate for a specific person or that one will produce a particular result.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does the evidence show that GHK-Cu is better than BPC-157?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "There is no direct head-to-head clinical trial showing that GHK-Cu is better than BPC-157, or that BPC-157 is better than GHK-Cu, for a patient outcome. The evidence cannot be reduced to a single winner because the studies examine different molecules, routes, populations, and outcomes.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does the evidence establish about BPC-157 for injury healing?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "BPC-157 findings from laboratory models should not be treated as clinical proof. A properly designed, controlled human trial for a musculoskeletal use — a hamstring muscle strain — only began enrolling in 2026, with results not expected before 2028. Until it reports, there is no controlled human evidence for the injury-healing use BPC-157 is most commonly marketed for.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What questions can an adult take to a qualified provider when comparing GHK-Cu and BPC-157?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Which compound and route is being considered, and what human evidence matches that route and goal? Is the cited evidence from a controlled human study, an observational report, a laboratory experiment, or a review? What important risks, uncertainties, interactions, and alternatives should be considered for my history? What would count as a meaningful outcome, and when should the plan be reassessed?",
+      },
+    },
+  ],
+};
+
 export default async function EvidencePage({
   params,
 }: {
@@ -97,6 +137,7 @@ export default async function EvidencePage({
 
   return (
     <article>
+      {slug === "bpc-157" ? <JsonLd data={BPC_157_FAQ_SCHEMA} /> : null}
       {/* Header */}
       <div className="glow border-b border-line-200">
         <Container className="py-12">
