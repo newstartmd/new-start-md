@@ -15,8 +15,10 @@
 //     come from Todd's approved source document + clinical sign-off and are
 //     populated into `detail` later — never invented here.
 //
-// The authoritative product list is the Final Pricing tab of Todd's v16 sheet
-// (2026-10-23); this catalog is kept in sync with it. Reta/cagrilintide are
+// The authoritative product list is the NewStartMD tab of Todd's product list
+// dated 5 Nov 2026 (the 11.05.2026 pharmacy switch to Believe Rx + Vios); this
+// catalog is kept in sync with it. Prices are unchanged from v16 except the new
+// item (Recover $279); removed: TB-500 single, SS-31, Glow. Reta/cagrilintide are
 // intentionally excluded (Michael: "we will not be providing them," 2026-10-27).
 // New Start is fully standalone — no links to, or shared data with, FitClinicMD.
 
@@ -49,8 +51,8 @@ export type Product = {
   image?: string;
 };
 
-// Singles. The catalog shows ONLY what is on Todd's v16 Final Pricing tab
-// (2026-10-23) — "NewStartMD gets everything on the sheet." Compounds the sheet
+// Singles. The catalog shows ONLY what is on Todd's 11.05.2026 NewStartMD tab
+// — "NewStartMD gets everything on the sheet." Compounds the sheet
 // sells only inside a blend (CJC-1295, Ipamorelin, Semax, Selank, KPV, Oxytocin,
 // Pinealon, PE-22-28) are NOT listed as standalone products; they live in their
 // blends. Off-sheet compounds are not carried. The educational /peptides body
@@ -62,15 +64,16 @@ export const PRODUCTS: Product[] = [
   { slug: "tirzepatide", name: "Tirzepatide", aka: ["GLP-1/GIP"], goal: "weight-loss", usedFor: "Appetite and weight management.", image: "/images/products/vial-tirzepatide.jpg" },
   { slug: "mots-c", name: "MOTS-c", goal: "weight-loss", usedFor: "Metabolic and energy support." },
 
-  // Hormone & vitality. Enclomiphene is offered ONLY inside the TRT program
-  // (Todd, 2026-10-27), so it is not a standalone product.
+  // Hormone & vitality. The 11.05.2026 NewStartMD tab lists Enclomiphene Only as
+  // its own line ($109/mo, Vios), so it is now a standalone product (Michael,
+  // 2026-11-09); enclomiphene also remains inside the TRT Complete kit.
   { slug: "testosterone", name: "Testosterone", aka: ["TRT"], goal: "hormone", usedFor: "Hormone replacement for low testosterone." },
+  { slug: "enclomiphene", name: "Enclomiphene", goal: "hormone", usedFor: "Oral support for the body's own testosterone production." },
   { slug: "pt-141", name: "PT-141", aka: ["Bremelanotide"], goal: "hormone", usedFor: "Libido and sexual-health support." },
   { slug: "kisspeptin", name: "Kisspeptin", goal: "hormone", usedFor: "Reproductive-hormone support." },
 
   // Recovery & performance
   { slug: "bpc-157", name: "BPC-157", goal: "recovery", usedFor: "Soft-tissue and gut recovery support." },
-  { slug: "tb-500", name: "TB-500", aka: ["Thymosin Beta-4"], goal: "recovery", usedFor: "Tissue recovery and flexibility support." },
   { slug: "ghk-cu", name: "GHK-Cu", goal: "recovery", usedFor: "Skin and tissue support (topical)." },
   { slug: "ll-37", name: "LL-37", goal: "recovery", usedFor: "Immune and antimicrobial support." },
   { slug: "thymosin-alpha-1", name: "Thymosin Alpha-1", goal: "recovery", usedFor: "Immune support." },
@@ -81,7 +84,6 @@ export const PRODUCTS: Product[] = [
   { slug: "tesamorelin", name: "Tesamorelin", goal: "wellness", usedFor: "Growth-hormone and body-composition support." },
   { slug: "nad", name: "NAD+", goal: "wellness", usedFor: "Cellular energy and longevity support.", image: "/images/products/vial-nad.jpg" },
   { slug: "glutathione", name: "Glutathione", goal: "wellness", usedFor: "Antioxidant and detox support." },
-  { slug: "ss-31", name: "SS-31", aka: ["Elamipretide"], goal: "wellness", usedFor: "Mitochondrial support." },
   { slug: "epitalon", name: "Epitalon", goal: "wellness", usedFor: "Longevity and sleep-cycle support." },
   { slug: "dsip", name: "DSIP", aka: ["Delta Sleep-Inducing Peptide"], goal: "wellness", usedFor: "Sleep-cycle support." },
 ];
@@ -96,13 +98,13 @@ export type Blend = {
   image?: string;
 };
 
-// Blends — Todd's real line-up from the "peptides+ by site" breakdown
-// (2026-10-27): nine blends, no Connect. (Connect was on the v16 sheet but on
-// hold, and Todd's per-site list omits it, so it is not carried.) CJC-1295 and
-// Ipamorelin appear only here as blend components, never as standalone products.
+// Blends — the 11.05.2026 NewStartMD tab: nine blends, no Connect. Glow is out;
+// Recover (BPC-157 / KPV / TB-500, $279) is the new step up from Repair. Connect
+// is not carried (price/pack TBD). CJC-1295 and Ipamorelin appear only here as
+// blend components, never as standalone products.
 export const BLENDS: Blend[] = [
   { slug: "repair", name: "Repair", goal: "recovery", components: ["BPC-157", "TB-500"], usedFor: "Combined soft-tissue recovery support." },
-  { slug: "glow", name: "Glow", goal: "recovery", components: ["BPC-157", "TB-500", "GHK-Cu"], usedFor: "Recovery with skin and tissue support." },
+  { slug: "recover", name: "Recover", goal: "recovery", components: ["BPC-157", "KPV", "TB-500"], usedFor: "BPC-157 and TB-500, the peptides in Repair, plus KPV for added inflammation support. The next step up from Repair." },
   { slug: "klow", name: "Klow", goal: "recovery", components: ["BPC-157", "GHK-Cu", "KPV", "TB-500"], usedFor: "Full tissue-recovery and gut support." },
   { slug: "build", name: "Build", goal: "wellness", components: ["CJC-1295", "Ipamorelin"], usedFor: "Growth-hormone and recovery support." },
   { slug: "sculpt", name: "Sculpt", goal: "wellness", components: ["Tesamorelin", "Ipamorelin"], usedFor: "Growth-hormone and body-composition support." },
